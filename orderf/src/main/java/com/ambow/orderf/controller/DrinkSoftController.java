@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ambow.orderf.pojo.Customer;
@@ -22,11 +23,13 @@ public class DrinkSoftController {
 	 * @return
 	 */
 	@RequestMapping("/selectAll")
-	public String selectAll() {
+	public String selectAll(Model model) {
 		List<DrinkSoft> list = drinkSoftService.selectAll();
+		model.addAttribute("list", list);
 		System.out.println(list.toString());
-		return "admin/admin-user";
+		return "admin/admin-drinksoft";
 	}
+	
 
 	/**
 	 * 添加酒水类别
