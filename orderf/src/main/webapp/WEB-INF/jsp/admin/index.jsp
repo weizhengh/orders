@@ -50,7 +50,7 @@
     <br>
 
     <form method="post" action="admin-index.jsp" class="am-form">
-      <label for="email">邮箱:</label>
+      <label for="email">账号:</label>
       <input type="email" name="" id="email" value="">
       <br>
       <label for="password">密码:</label>
