@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%><!DOCTYPE html>
 <html>
 <head lang="en">
   <meta charset="UTF-8">
@@ -8,8 +17,8 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
-  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="alternate icon" type="image/png" href="<%=basePath%>img/favicon.png">
+  <link rel="stylesheet" href="<%=basePath%>css/amazeui.min.css"/>
   <style>
     .header {
       text-align: center;
@@ -40,7 +49,7 @@
     <br>
     <br>
 
-    <form method="post" action="admin-index.html" class="am-form">
+    <form method="post" action="admin-index.jsp" class="am-form">
       <label for="email">邮箱:</label>
       <input type="email" name="" id="email" value="">
       <br>
