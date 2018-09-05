@@ -23,7 +23,7 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
- <!-- content start -->
+  <!-- content start -->
   <div class="admin-content">
 
     <div class="am-cf am-padding">
@@ -356,7 +356,10 @@
     </div>
   </div>
   <!-- content end -->
+</div>
+
 <%@ include file="footer.jsp"%>
+
 
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>

@@ -7,15 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ambow.orderf.service.TestService;
 
 @Controller
-@RequestMapping("/test")
-public class Test {
+public class RediUrl {
 	@Autowired private TestService testService;
-	@RequestMapping("/test")
+	@RequestMapping("/url")
 	public String test(String url){
-		/*List<Customer> list = testService.list();
-		for (Customer customer : list) {
-			System.out.println(customer.toString());
-		}*/
 		System.out.println("--------"+url+"----------");
 		return url;
 		
