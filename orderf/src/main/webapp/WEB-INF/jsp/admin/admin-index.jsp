@@ -1,12 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() 
-	                   + ":" + request.getServerPort() + path + "/";
-%>
+<%@ include file="header.jsp"%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -30,6 +24,7 @@
   以获得更好的体验！</p>
 <![endif]-->
 
+<<<<<<< HEAD
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
     <strong>Amaze</strong> <small>后台管理模板HTML</small>
@@ -91,6 +86,8 @@
     </div>
   </div>
   <!-- sidebar end -->
+=======
+>>>>>>> branch 'master' of https://github.com/weizhengh/orders.git
 
   <!-- content start -->
   <div class="admin-content">
@@ -336,17 +333,12 @@
     </div>
   </div>
   <!-- content end -->
-
-</div>
-
-<footer>
-  <hr>
-  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-</footer>
+  
+<%@ include file="footer.jsp"%>
 
 <!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="<%=basePath%>js/jquery.min.js"></script>
+<script src="<%=basePath%>js/modernizr.js"></script>
 <script src="<%=basePath%>js/polyfill/rem.min.js"></script>
 <script src="<%=basePath%>js/polyfill/respond.min.js"></script>
 <script src="<%=basePath%>js/amazeui.legacy.js"></script>
