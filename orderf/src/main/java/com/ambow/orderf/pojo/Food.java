@@ -12,12 +12,35 @@ public class Food implements java.io.Serializable {
 
 	private Integer food_id;
 	private FoodSoft food_soft;
+	private String food_picture;
+	private String food_note;
 	private String food_name;
 	private Float food_pirce;
 	private Set<OrderItem> order_items = new HashSet<OrderItem>(0);
 
 	public Food() {
 	}
+
+	
+	public String getFood_picture() {
+		return food_picture;
+	}
+
+
+	public void setFood_picture(String food_picture) {
+		this.food_picture = food_picture;
+	}
+
+
+	public String getFood_note() {
+		return food_note;
+	}
+
+
+	public void setFood_note(String food_note) {
+		this.food_note = food_note;
+	}
+
 
 	public Integer getFood_id() {
 		return food_id;
