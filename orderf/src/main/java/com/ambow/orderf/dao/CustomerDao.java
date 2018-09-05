@@ -50,7 +50,7 @@ public interface CustomerDao {
 	void updateCustomer(Customer customer);
 
 	/**
-	 * 修改顾客积分
+	 * 下单后修改顾客积分
 	 * @param customer 存放要修改的顾客信息，为ID与要添加的积分
 	 * */
 	void updateGrade(Customer customer);

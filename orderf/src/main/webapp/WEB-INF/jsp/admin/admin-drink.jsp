@@ -23,7 +23,7 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
- <!-- content start -->
+  <!-- content start -->
   <div class="admin-content">
 
     <div class="am-cf am-padding">
@@ -35,10 +35,10 @@
         <div class="am-fl am-cf">
           <div class="am-btn-toolbar am-fl">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+              <a href="<%=basePath%>url.action?url=admin/admin-adddrink" type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</a>
+              <a type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</a>
+              <a type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</a>
+              <a type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</a>
             </div>
 
             <div class="am-form-group am-margin-left am-fl">
@@ -356,6 +356,8 @@
     </div>
   </div>
   <!-- content end -->
+</div>
+
 <%@ include file="footer.jsp"%>
 
 <!--[if lt IE 9]>

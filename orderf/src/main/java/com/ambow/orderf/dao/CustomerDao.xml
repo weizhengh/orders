@@ -45,4 +45,11 @@
  	</update>
  	
  	<!-- 修改用户积分 -->
+ 	<update id="updateGrade" parameterType="Customer">
+ 		update customer 
+ 		<set>
+ 			cust_grade=cust_grade + #{cust_grade}
+ 		</set>
+ 		where cust_id=#{cust_id};
+ 	</update>
  </mapper>
