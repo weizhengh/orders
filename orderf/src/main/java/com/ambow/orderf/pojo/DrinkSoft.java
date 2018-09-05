@@ -10,8 +10,8 @@ import java.util.Set;
 @SuppressWarnings("serial")
 public class DrinkSoft implements java.io.Serializable {
 
-	private Integer drink_soft_id;
-	private String drink_soft_name;
+	private Integer drink_soft_id; //酒水分类Id
+	private String drink_soft_name;  //酒水类型名称
 	private Set<Drink> drinks = new HashSet<Drink>(0);
 
 	public DrinkSoft() {

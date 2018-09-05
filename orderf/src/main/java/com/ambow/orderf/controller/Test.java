@@ -7,19 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ambow.orderf.pojo.Customer;
-import com.ambow.orderf.service.TestService;
+import com.ambow.orderf.service.DrinkSoftService;
 
 @Controller
 @RequestMapping("/test")
 public class Test {
-	@Autowired private TestService testService;
+	@Autowired private DrinkSoftService testService;
 	@RequestMapping("/test")
 	public String test(){
-		List<Customer> list = testService.list();
-		for (Customer customer : list) {
-			System.out.println(customer.toString());
-		}
-		System.out.println("------------------");
+	
+	
 		return null;
 		
 	}
