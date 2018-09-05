@@ -14,10 +14,12 @@ import java.util.Set;
 @SuppressWarnings("serial")
 public class Drink implements java.io.Serializable {
 
-	private Integer drink_id; //酒水Id
-	private DrinkSoft drink_soft;  //所属类型
-	private String drink_name;  //酒水名称
-	private Float drink_price;  //酒水价格
+	private Integer drink_id; //
+	private DrinkSoft drink_soft;  //
+	private String drink_picture;
+	private String drink_note;
+	private String drink_name;  //
+	private Float drink_price;  //锟斤拷水锟桔革拷
 	
 	private Set<OrderItem> order_items = new HashSet<OrderItem>(0);
 
@@ -25,6 +27,27 @@ public class Drink implements java.io.Serializable {
 	
 	public Drink() {
 	}
+
+	
+	public String getDrink_picture() {
+		return drink_picture;
+	}
+
+
+	public void setDrink_picture(String drink_picture) {
+		this.drink_picture = drink_picture;
+	}
+
+
+	public String getDrink_note() {
+		return drink_note;
+	}
+
+
+	public void setDrink_note(String drink_note) {
+		this.drink_note = drink_note;
+	}
+
 
 	public Integer getDrink_id() {
 		return drink_id;

@@ -11,7 +11,7 @@ public class OrderItem implements java.io.Serializable {
 	private Drink drink;
 	private Order order;
 	private Food food;
-	private Float num;
+	private Integer num;
 
 	public OrderItem() {
 	}
@@ -48,11 +48,11 @@ public class OrderItem implements java.io.Serializable {
 		this.food = food;
 	}
 
-	public Float getNum() {
+	public Integer getNum() {
 		return num;
 	}
 
-	public void setNum(Float num) {
+	public void setNum(Integer num) {
 		this.num = num;
 	}
 
