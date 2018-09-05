@@ -3,11 +3,12 @@ package com.ambow.orderf.service;
 import java.util.List;
 
 import com.ambow.orderf.pojo.Customer;
+import com.ambow.orderf.pojo.DrinkSoft;
 /**
  * @author H
  *
  */
-public interface TestService {
+public interface DrinkSoftService {
 	
-	public List<Customer> list();
+	List<DrinkSoft> selectAll();//全查酒水类
 }
