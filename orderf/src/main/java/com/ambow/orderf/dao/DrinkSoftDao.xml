@@ -8,6 +8,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll" resultType="DrinkSoft">
 		select * from drink_soft;
 	</select>
+	<select id="selectByPrimaryKey" resultType="DrinkSoft">
+		select * from drink_soft
+		where drink_soft_id = #{drink_soft_id,jdbcType=INTEGER};
+	</select>
+	
+	 <insert id="insertSelective" parameterType="com.ambow.orderf.pojo.DrinkSoft">
+        insert into drink_soft
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="drink_soft_id != null">
+                drink_soft_id,
+            </if>
+            <if test="drink_soft_name != null">
+                drink_soft_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="drink_soft_id != null">
+                #{drink_soft_id,jdbcType=INTEGER},
+            </if>
+            <if test="drink_soft_name != null">
+                #{drink_soft_name,jdbcType=VARCHAR},
+            </if>
+          
+        </trim>
+    </insert>
+	
+	 <update id="updateSelective" parameterType="com.ambow.orderf.pojo.DrinkSoft">
+        update drink_soft
+        <set>
+            <if test="drink_soft_id != null">
+                drink_soft_id = #{drink_soft_id,jdbcType=INTEGER},
+            </if>
+            <if test="drink_soft_name != null">
+                drink_soft_name = #{drink_soft_name,jdbcType=VARCHAR},
+            </if>
+           
+        </set>
+        where drink_soft_id = #{drink_soft_id,jdbcType=INTEGER}
+    </update>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from drink_soft
+		where drink_soft_id = #{drink_soft_id,jdbcType=INTEGER}
+	</delete>
+	
+	
+	
+	
 	
 </mapper>
 
