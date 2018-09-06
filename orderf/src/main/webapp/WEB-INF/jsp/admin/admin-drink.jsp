@@ -39,11 +39,10 @@
 				<div class="am-fl am-cf">
 					<div class="am-btn-toolbar am-fl">
 						<div class="am-btn-group am-btn-group-xs">
-							<a href="<%=basePath%>drink/toInsert.action"
-								type="button" class="am-btn am-btn-default"><span
-								class="am-icon-plus"></span> 新增</a> <a type="button"
-								class="am-btn am-btn-default"><span class="am-icon-trash-o"></span>
-								删除</a>
+							<a href="<%=basePath%>drink/toInsert.action" type="button"
+								class="am-btn am-btn-default"><span class="am-icon-plus"></span>
+								新增</a> <a type="button" class="am-btn am-btn-default"><span
+								class="am-icon-trash-o"></span> 删除</a>
 						</div>
 
 						<div class="am-form-group am-margin-left am-fl">
@@ -98,18 +97,28 @@
 									<td>${drink.drink_price}</td>
 									<td>${drink.drink_note}</td>
 									<td>${drink.drink_soft.drink_soft_name}</td>
+									<%-- <td>
+
+										<div style="width: 90px; height: 110px; overflow: hidden;"
+											id="show">${drink.drink_picture}
+											<div class="mark"></div>
+										</div>
+									</td> --%>
+
 									<td>
 										<div class="am-btn-toolbar">
 											<div class="am-btn-group am-btn-group-xs">
-												<button
-													class="am-btn am-btn-default am-btn-xs am-text-secondary">
-													<span class="am-icon-pencil-square-o"></span> 编辑
-												</button>
+												<a
+													href="<%=basePath%>drink/selectByPrimaryKey.action?drink_id=${drink.drink_id}">
 
-												<button
-													class="am-btn am-btn-default am-btn-xs am-text-danger">
-													<span class="am-icon-trash-o"></span> 删除
-												</button>
+													<span class="am-icon-pencil-square-o"></span> 编辑
+
+												</a> <a
+													href="<%=basePath%>drink/deleteByPrimaryKey.action?drink_id=${drink.drink_id}">
+
+													<span class="am-icon-pencil-square-o"></span> 删除
+
+												</a>
 											</div>
 										</div>
 									</td>

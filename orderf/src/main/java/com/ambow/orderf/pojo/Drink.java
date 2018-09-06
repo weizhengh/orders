@@ -16,12 +16,12 @@ public class Drink implements java.io.Serializable {
 
 	private Integer drink_id; //Id
 	
-	private DrinkSoft drink_soft;  //ËùÊôÀà
+	private DrinkSoft drink_soft;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private String drink_picture; //Í¼Æ¬
-	private String drink_note; //×¢½â
-	private String drink_name;  //Ãû³Æ
-	private Float drink_price;  //¼Û¸ñ
+	private byte[] drink_picture; //Í¼Æ¬
+	private String drink_note; //×¢ï¿½ï¿½
+	private String drink_name;  //ï¿½ï¿½ï¿½ï¿½
+	private Float drink_price;  //ï¿½Û¸ï¿½
 	
 	private Set<OrderItem> order_items = new HashSet<OrderItem>(0);
 
@@ -31,12 +31,12 @@ public class Drink implements java.io.Serializable {
 	}
 
 	
-	public String getDrink_picture() {
+	public byte[] getDrink_picture() {
 		return drink_picture;
 	}
 
 
-	public void setDrink_picture(String drink_picture) {
+	public void setDrink_picture(byte[] drink_picture) {
 		this.drink_picture = drink_picture;
 	}
 

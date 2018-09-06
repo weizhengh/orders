@@ -30,26 +30,26 @@ public class DrinkController {
 	public String selectAll(Model mode) {
 		List<Drink> list = drinkService.selectAll();
 		mode.addAttribute("list", list);
-		System.out.println(list.toString());
+	
 		return "admin/admin-drink";
 	}
-	
-	
-	@RequestMapping(value="/toInsert")
+
+	@RequestMapping(value = "/toInsert")
 	public String toInsert(Model model) {
+		List<DrinkSoft> drinkSoftList=drinkSoftService.selectAll();
+		model.addAttribute("drinksoft", drinkSoftList);
 		model.addAttribute("status", "insert");
 		return "admin/admin-adddrink";
 	}
-	
 
 	/**
 	 * ��Ӿ�ˮ
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/insertSelective",method=RequestMethod.POST)
+	@RequestMapping(value = "/insertSelective", method = RequestMethod.POST)
 	public String insertSelective(Drink drink) {
-
+	System.out.println(drink.getDrink_picture());
 		drinkService.insertSelective(drink);
 		return "redirect:/drink/selectAll.action";
 	}
@@ -60,14 +60,12 @@ public class DrinkController {
 	 * @return
 	 */
 
-	@RequestMapping("/updateSelective")
-	public String updateSelective() {
+	@RequestMapping(value="/updateSelective", method = RequestMethod.POST)
+	public String updateSelective(Drink drink) {
 
-		Drink drink = new Drink();
-		drink.setDrink_id(2);
-		drink.setDrink_name("中");
+		System.out.println(drink.toString());
 		drinkService.updateSelective(drink);
-		return "admin/admin-user";
+		return "redirect:/drink/selectAll.action";
 	}
 
 	/**
@@ -77,12 +75,10 @@ public class DrinkController {
 	 */
 
 	@RequestMapping("/deleteByPrimaryKey")
-	public String deleteByPrimaryKey() {
+	public String deleteByPrimaryKey(Integer drink_id) {
 
-		Drink drink = new Drink();
-		drink.setDrink_id(3);
-		drinkService.deleteByPrimaryKey(drink.getDrink_id());
-		return "admin/admin-user";
+		drinkService.deleteByPrimaryKey(drink_id);
+		return "redirect:/drink/selectAll.action";
 	}
 
 	/**
@@ -91,11 +87,16 @@ public class DrinkController {
 	 * @return
 	 */
 	@RequestMapping("/selectByPrimaryKey")
-	public String selectByPrimaryKey() {
+	public String selectByPrimaryKey(Model model,Integer drink_id) {
 
-		Drink drink = drinkService.selectByPrimaryKey(2);
-		System.out.println(drink.toString());
-		return "admin/admin-user";
+		Drink drink = drinkService.selectByPrimaryKey(drink_id);
+		
+		List<DrinkSoft> drinkSofts=drinkSoftService.selectAll();
+		model.addAttribute("drinksoft", drinkSofts);
+		model.addAttribute("drink", drink);
+		model.addAttribute("status", "update");
+		
+		return "admin/admin-adddrink";
 	}
 
 }
