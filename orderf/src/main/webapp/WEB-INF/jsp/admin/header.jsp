@@ -109,6 +109,7 @@
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
           <li><a href="<%=basePath%>drink/selectAll.action"><span class="am-icon-table"></span> 酒水信息</a></li>
           <li><a href="<%=basePath%>drinkSoft/selectAll.action"><span class="am-icon-table"></span> 酒水分类</a></li>
+
         </ul>
       </li>
       <li><a href="admin-form.jsp"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
