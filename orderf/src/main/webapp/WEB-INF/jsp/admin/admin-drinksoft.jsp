@@ -30,7 +30,7 @@
 
 		<div class="am-cf am-padding">
 			<div class="am-fl am-cf">
-				<strong class="am-text-primary am-text-lg">表格</strong> / <small>Table</small>
+				<strong class="am-text-primary am-text-lg">酒水类别</strong> / <small>Table</small>
 			</div>
 		</div>
 
@@ -39,17 +39,11 @@
 				<div class="am-fl am-cf">
 					<div class="am-btn-toolbar am-fl">
 						<div class="am-btn-group am-btn-group-xs">
-							<a href="<%=basePath%>url.action?url=admin/admin-adddrinksoft">
-								<button type="button" class="am-btn am-btn-default">
-									<span class="am-icon-plus"></span>新增1
-								</button> 
-							</a>
-							<button type="button" class="am-btn am-btn-default">
-								<span class="am-icon-save"></span> 保存
-							</button>
-							<button type="button" class="am-btn am-btn-default">
-								<span class="am-icon-archive"></span> 审核
-							</button>
+							<a href="<%=basePath%>drinkSoft/toInsert.action" type="button"
+								class="am-btn am-btn-default"><span class="am-icon-plus"></span>
+								新增</a>
+
+
 							<button type="button" class="am-btn am-btn-default">
 								<span class="am-icon-trash-o"></span> 删除
 							</button>
@@ -84,19 +78,21 @@
 		<div class="am-g">
 			<div class="am-u-sm-12">
 				<form class="am-form">
+				
 					<table class="am-table am-table-striped am-table-hover table-main">
 						<thead>
 							<tr>
 								<th class="table-check"><input type="checkbox" /></th>
 								<th class="table-id">编号</th>
 								<th class="table-title">酒水类别</th>
-
-
-
 								<th class="table-set">操作</th>
+								
 							</tr>
 						</thead>
 						<tbody>
+						<tr>
+						<td>${str}</td>
+						</tr>
 							<c:forEach items="${list}" var="type" varStatus="status">
 								<tr>
 									<td><input type="checkbox" /></td>
@@ -107,15 +103,18 @@
 									<td>
 										<div class="am-btn-toolbar">
 											<div class="am-btn-group am-btn-group-xs">
-												<button
-													class="am-btn am-btn-default am-btn-xs am-text-secondary">
-													<span class="am-icon-pencil-square-o"></span> 编辑
-												</button>
 
-												<button
-													class="am-btn am-btn-default am-btn-xs am-text-danger">
-													<span class="am-icon-trash-o"></span> 删除
-												</button>
+												<a
+													href="<%=basePath%>drinkSoft/selectByPrimaryKey.action?drink_soft_id=${type.drink_soft_id}">
+
+													<span class="am-icon-pencil-square-o"></span> 编辑
+
+												</a> <a
+													href="<%=basePath%>drinkSoft/deleteByPrimaryKey.action?drink_soft_id=${type.drink_soft_id}">
+
+													<span class="am-icon-pencil-square-o"></span> 删除
+
+												</a>
 											</div>
 										</div>
 									</td>

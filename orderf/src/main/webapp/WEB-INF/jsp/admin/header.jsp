@@ -106,8 +106,8 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-file"></span> 酒水管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-drink"><span class="am-icon-table"></span> 酒水信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-drinksoft"><span class="am-icon-table"></span> 酒水分类</a></li>
+          <li><a href="<%=basePath%>drink/selectAll.action"><span class="am-icon-table"></span> 酒水信息</a></li>
+          <li><a href="<%=basePath%>drinkSoft/selectAll.action"><span class="am-icon-table"></span> 酒水分类</a></li>
         </ul>
       </li>
       <li><a href="admin-form.jsp"><span class="am-icon-pencil-square-o"></span> 表单</a></li>

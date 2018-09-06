@@ -22,7 +22,11 @@ public class DrinkServiceImpl implements DrinkService {
 	 * 全查酒水
 	 */
 	public List<Drink> selectAll() {
+		
+		List<Drink> list = drinkDao.selectAll();
 
+		
+		
 		return drinkDao.selectAll();
 	}
 
@@ -41,6 +45,7 @@ public class DrinkServiceImpl implements DrinkService {
 
 		return drinkDao.updateSelective(drink);
 	}
+
 	/**
 	 * 删除酒水
 	 */
@@ -54,15 +59,16 @@ public class DrinkServiceImpl implements DrinkService {
 	 * 单查酒水
 	 */
 	public Drink selectByPrimaryKey(Integer drink_id) {
-		
+
 		return drinkDao.selectByPrimaryKey(drink_id);
 	}
+
 	/**
 	 * 根据酒水类别查询
 	 */
 
 	public List<Drink> selectBySoftId(DrinkSoft drinkSoft) {
-		
+
 		return drinkDao.selectBySoftId(drinkSoft);
 	}
 

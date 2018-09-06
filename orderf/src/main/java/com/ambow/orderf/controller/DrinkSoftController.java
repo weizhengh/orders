@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ambow.orderf.pojo.Customer;
 import com.ambow.orderf.pojo.Drink;
@@ -19,71 +20,82 @@ public class DrinkSoftController {
 	private DrinkSoftService drinkSoftService;
 
 	/**
-	 * È«²é¾ÆË®Àà±ğ
+	 * È«ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
+	 * 
 	 * @return
 	 */
-	@RequestMapping("/selectAll")
+	@RequestMapping("/selectAll" )
 	public String selectAll(Model model) {
 		List<DrinkSoft> list = drinkSoftService.selectAll();
 		model.addAttribute("list", list);
 		System.out.println(list.toString());
 		return "admin/admin-drinksoft";
 	}
+	@RequestMapping(value="/toInsert")
+	public String toInsert(Model model) {
+		model.addAttribute("status", "insert");
+		return "admin/admin-adddrinksoft";
+	}
 	
 
 	/**
-	 * Ìí¼Ó¾ÆË®Àà±ğ
+	 * ï¿½ï¿½Ó¾ï¿½Ë®ï¿½ï¿½ï¿½
+	 * 
 	 * @return
 	 */
-	@RequestMapping("/insertSelective")
-	public String insertSelective() {
-		DrinkSoft drinkSoft = new DrinkSoft();
-		drinkSoft.setDrink_soft_name("Æ¡¾Æ");
+	@RequestMapping(value="/insertSelective",method=RequestMethod.POST)
+	public String insertSelective(DrinkSoft drinkSoft) {
 		drinkSoftService.insertSelective(drinkSoft);
-		return "admin/admin-user";
+		return "redirect:/drinkSoft/selectAll.action";
 	}
-	/**
-	 * ĞŞ¸Ä¾ÆË®Àà±ğ
-	 * @return
-	 */
-	
-	@RequestMapping("/updateSelective")
-	public String updateSelective() {
-		DrinkSoft drinkSoft = new DrinkSoft();
-		drinkSoft.setDrink_soft_id(1);
-		drinkSoft.setDrink_soft_name("°×¾Æ");
-		drinkSoftService.updateSelective(drinkSoft);
-		return "admin/admin-user";
-	}
-	/**
-	 * µ¥²é¾ÆË®Àà±ğ
-	 * @return
-	 */
-	
-	@RequestMapping("/selectByPrimaryKey")
-	public String selectByPrimaryKey() {
 
-		
-		DrinkSoft drinkSoft=drinkSoftService.selectByPrimaryKey(3);
+	/**
+	 * ï¿½Ş¸Ä¾ï¿½Ë®ï¿½ï¿½ï¿½
+	 * 
+	 * @return
+	 */
+
+	@RequestMapping(value="/updateSelective",method=RequestMethod.POST)
+	public String updateSelective(Model model,DrinkSoft drinkSoft) {
 		System.out.println(drinkSoft.toString());
-		return "admin/admin-user";
+		
+		drinkSoftService.updateSelective(drinkSoft);
+		
+		return "redirect:/drinkSoft/selectAll.action";
 	}
-	
+
 	/**
-	 * É¾³ı¾ÆË®Àà
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
+	 * 
 	 * @return
 	 */
-	
-	@RequestMapping("/deleteByPrimaryKey")
-	public String deleteByPrimaryKey() {
 
-		int result=drinkSoftService.deleteByPrimaryKey(1);
+	@RequestMapping("/selectByPrimaryKey" )
+	public String selectByPrimaryKey(Model model,Integer drink_soft_id) {
+
+		DrinkSoft drinkSoft = drinkSoftService.selectByPrimaryKey(drink_soft_id);
+		model.addAttribute("drinkSoft", drinkSoft);
+		model.addAttribute("status", "update");
+		System.out.println(drinkSoft.toString());
+		return "admin/admin-adddrinksoft";
+	}
+
+	/**
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½
+	 * 
+	 * @return
+	 */
+
+	@RequestMapping("/deleteByPrimaryKey")
+	public String deleteByPrimaryKey(Model model,Integer drink_soft_id) {
+
+		int result = drinkSoftService.deleteByPrimaryKey(drink_soft_id);
 		if(result==0){
-			System.out.println("É¾³ı");
+			
 		}else{
-			System.out.println("±¾ÀàÏÂÓĞĞÅÏ¢");
+		model.addAttribute("str", "æœ¬é…’æ°´ç±»ä¸‹æœ‰é…’æ°´ï¼Œä¸èƒ½åˆ é™¤");
 		}
-		return "admin/admin-user";
+		return "redirect:/drinkSoft/selectAll.action";
 	}
 
 }

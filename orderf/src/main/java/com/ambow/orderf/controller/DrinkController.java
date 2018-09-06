@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ambow.orderf.pojo.Drink;
 import com.ambow.orderf.pojo.DrinkSoft;
@@ -20,38 +22,40 @@ public class DrinkController {
 	private DrinkSoftService drinkSoftService;
 
 	/**
-	 * È«²é¾ÆË®
+	 * È«ï¿½ï¿½ï¿½Ë®
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/selectAll")
-	public String selectAll() {
+	public String selectAll(Model mode) {
 		List<Drink> list = drinkService.selectAll();
+		mode.addAttribute("list", list);
 		System.out.println(list.toString());
-		return "admin/admin-user";
+		return "admin/admin-drink";
 	}
+	
+	
+	@RequestMapping(value="/toInsert")
+	public String toInsert(Model model) {
+		model.addAttribute("status", "insert");
+		return "admin/admin-adddrink";
+	}
+	
 
 	/**
-	 * Ìí¼Ó¾ÆË®
+	 * ï¿½ï¿½Ó¾ï¿½Ë®
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/insertSelective")
-	public String insertSelective() {
+	@RequestMapping(value="/insertSelective",method=RequestMethod.POST)
+	public String insertSelective(Drink drink) {
 
-		DrinkSoft drinkSoft = new DrinkSoft();
-		drinkSoft.setDrink_soft_id(4);
-		Drink drink = new Drink();
-		drink.setDrink_name("AD¸Æ");
-		drink.setDrink_price(8f);
-		drink.setDrink_soft(drinkSoft);
-		drink.setDrink_id(2);
 		drinkService.insertSelective(drink);
-		return "admin/admin-user";
+		return "redirect:/drink/selectAll.action";
 	}
 
 	/**
-	 * ÐÞ¸Ä¾ÆË®
+	 * ï¿½Þ¸Ä¾ï¿½Ë®
 	 * 
 	 * @return
 	 */
@@ -61,13 +65,13 @@ public class DrinkController {
 
 		Drink drink = new Drink();
 		drink.setDrink_id(2);
-		drink.setDrink_name("AD¸ÆÄÌ");
+		drink.setDrink_name("ä¸­");
 		drinkService.updateSelective(drink);
 		return "admin/admin-user";
 	}
 
 	/**
-	 * É¾³ý¾ÆË®
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ë®
 	 * 
 	 * @return
 	 */
@@ -82,7 +86,7 @@ public class DrinkController {
 	}
 
 	/**
-	 * µ¥²é¾ÆË®
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ë®
 	 * 
 	 * @return
 	 */
