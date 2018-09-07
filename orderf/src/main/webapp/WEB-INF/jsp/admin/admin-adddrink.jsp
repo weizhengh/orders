@@ -168,16 +168,20 @@
 								<div class="am-u-sm-2 am-text-right">图片</div>
 								<div class="am-u-sm-4 am-u-end">
 									<div
-										style="width: 90px; height: 110px; overflow: hidden; display: none; 
+										style="width: 90px; height: 110px; overflow: hidden;" 
 										id="show">
-										<div class="mark">	<img src="<%=basePath%>${drink.drink_picture}" alt="酒水图片" width="50" height="60" /> 
+										<div id="oldpic" style="width: 90px;height: 110px;">
+										<img  src="<%=basePath%>${drink.drink_picture}" alt="酒水图片" width="50" height="60" />
+										</div>
+										<div class="mark">	 
+										
 										</div> 
 									</div>
 								
 									
 									<input type="file"
 										accept="image/png, image/jpeg, image/gif, image/jpg"
-										id="picUpload"  value="<%=basePath%>${drink.drink_picture}"  name="multipartFile"
+										id="picUpload"  name="multipartFile"
 										onchange="getImgURL(this)"  class="am-input-sm" required="required">
 								</div>
 							</div>
@@ -223,8 +227,11 @@
 
 							function creatImg(imgRUL) { //根据指定URL创建一个Img对象
 								var textHtml = "<img src='"+imgRUL+"'/>";
+								var text="<img src=''/>";
 								$(".mark").after(textHtml);
-								document.getElementById("show").style.display = "block";
+								document.getElementById("oldpic").style.display = "none";
+							
+							
 							}
 						</script>
 							
