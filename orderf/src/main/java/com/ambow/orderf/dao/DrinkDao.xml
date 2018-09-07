@@ -27,9 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<select id="selectBySoftId" parameterType="java.lang.Integer" resultType="Drink">
-		select * from drink 
-		where  drink_soft_id = #{drink_soft_id,jdbcType=INTEGER};
+	<select id="selectBySoftId" parameterType="java.lang.Integer" resultMap="DrinkMap">
+		select * from drink a,drink_soft b 
+		where  a.drink_soft_id=b.drink_soft_id and a.drink_soft_id = #{drink_soft_id,jdbcType=INTEGER};
 		
 	</select>
 

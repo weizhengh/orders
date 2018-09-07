@@ -46,19 +46,26 @@
 						</div>
 
 						<div class="am-form-group am-margin-left am-fl">
+						 <select  id="pid" onchange="gradeChange()">
 
-							<select name="drink_soft_id" onchange="">
 
-								<option>请选择</option>
 
-								<c:forEach items="${drinkSoft}" var="drink">
-									<option
-										value="<%=basePath%>drink/selectBySoftId.action?drink_soft_id=${drink.drink_soft_id}">${drink.drink_soft_name}</option>
-								</c:forEach>
+									<c:forEach items="${drinkSoft}" var="drink">
+										<option value="${drink.drink_soft_id}">${drink.drink_soft_name}</option>
+									</c:forEach>
 
 							</select>
-
+							
 						</div>
+
+						<script type="text/JavaScript">
+							function gradeChange() {
+								var soft=$("#pid option:selected").val();
+								/* url:"<c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/>" */
+										window.location.href="<%=basePath%>drink/selectBySoftId.action?drink_soft_id="+soft;
+									/* <c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/> */
+							}
+						</script>
 
 
 
@@ -105,7 +112,7 @@
 									<td>${drink.drink_price}</td>
 									<td>${drink.drink_note}</td>
 									<td>${drink.drink_soft.drink_soft_name}</td>
-								
+
 									<td><img src="<%=basePath%>${drink.drink_picture}"
 										alt="酒水图片" width="50" height="60" /></td>
 
