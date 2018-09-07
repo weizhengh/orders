@@ -9,7 +9,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>后台管理系统模板HTML登录界面 - cssmoban</title>
+  <title>豪大大餐饮集团后台登录</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
@@ -47,12 +47,12 @@
     <br>
     <br>
 
-    <form method="post" action="admin-index.jsp" class="am-form">
-      <label for="email">账号:</label>
-      <input type="email" name="" id="email" value="">
+    <form method="post" action="<%=basePath%>emp/login.action" class="am-form">
+      <label for="phone">账号:</label>
+      <input type="text" name="emp_login"  value="">
       <br>
       <label for="password">密码:</label>
-      <input type="password" name="" id="password" value="">
+      <input type="password" name="emp_password" id="password" value="">
       <br>
       <label for="remember-me">
         <input id="remember-me" type="checkbox">

@@ -28,14 +28,13 @@ public class EmpController {
 	 * */
 	@RequestMapping(value="/emp/login.action",method=RequestMethod.POST)
 	public String loginEmp(Emp emp,HttpSession session){
-		
 		Emp empInfo=empService.loginEmp(emp);
 		if(empInfo==null){
 			session.setAttribute("message", "用户名或密码错误");
 			return "login";
 		}else{
 			session.setAttribute("loginEmp", empInfo);
-			return "index";			
+			return "admin/admin-index";			
 		}
 	}
 	
