@@ -49,11 +49,15 @@ public class DrinkController {
 	        System.out.println(multipartFile + "-------------------------------");
 	        //获取文件名字
 	        
-	        String originalFilename = multipartFile.getName().substring(multipartFile.getName().lastIndexOf(".")+1); 
+	        String originalFilename = multipartFile.getOriginalFilename();
+	        System.out.println(originalFilename + "++++++++++++++++++++");
+	        
+	        String houFilename = originalFilename.substring(originalFilename.lastIndexOf(".")); 
 	        		//getOriginalFilename();
 	        
 	       
 	        System.out.println(originalFilename + "++++++++++++++++++++");
+	        System.out.println(houFilename + "++-------********************");
 	        //获取不会重复的毫秒数
 	        long l = System.currentTimeMillis();
 	        //新名字
