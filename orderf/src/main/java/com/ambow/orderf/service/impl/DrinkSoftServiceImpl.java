@@ -19,15 +19,17 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	private DrinkDao drinkDao;
 
 	/**
-	 * È«²é¾ÆË®Àà±ð
+	 * È«ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 	public List<DrinkSoft> selectAll() {
 	
-		return drinkSoftDao.selectAll();
+		List<DrinkSoft> list=drinkSoftDao.selectAll();
+		
+		return list;
 	}
 
 	/**
-	 * Ìí¼Ó¾ÆË®Àà±ð
+	 * ï¿½ï¿½Ó¾ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 	public int insertSelective(DrinkSoft drinkSoft) {
 	
@@ -35,7 +37,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 	
 	/**
-	 * ÐÞ¸Ä¾ÆË®Àà±ð
+	 * ï¿½Þ¸Ä¾ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 
 	public int updateSelective(DrinkSoft drinkSoft) {
@@ -44,7 +46,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 
 	/**
-	 * µ¥²é¾ÆË®Àà±ð
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 	public DrinkSoft selectByPrimaryKey(Integer drink_soft_id) {
 		

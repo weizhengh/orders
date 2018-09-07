@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>我的资料</title>
+<title>购物记录</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,31 +120,103 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>我的资料</h1>
+			<h1>购物记录</h1>
 			<a href="member.html" class="return"><i></i></a>
-			<a href="#" class="head-r">保存</a>
 		</div>
 	</header>
 	
 	<!--内容区-->
 	<article class="main-container">
 		
-		<div class="list list-title">
-			<ul class="line">
-				<li><i>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</i>郭小帅</li>
-				<li><i>昵　　称：</i><input type="text" id="name" placeholder="填写您的昵称" value="郭小帅"></li>
-				<li><i>性　　别：</i>
-					<label><input type="radio" name="radio" id="radio" />男</label>&nbsp;&nbsp;
-					<label><input type="radio" name="radio" id="radio" />女</label>&nbsp;&nbsp;
-					<label><input type="radio" name="radio" id="radio" />保密</label></li>
-				<li><i>出生日期：</i><input type="datetime" id="name" placeholder="填写您的出生日期"></li>
-				<li class="head"><i>我的头像：</i><img src="img/head01.jpg"><input type="hidden" name="pic" id="pic" accept="image/gif, image/x-ms-bmp, image/jpeg" /><button class="line">点击上传<br><font>(200x200像素)</font></button></li>
-			</ul>
-			<ul class="line">
-				<li><i>邮　　箱：</i><input type="text" id="name" placeholder="填写电子邮箱，可方便找回密码。"></li>
-				<li><i>手机号码：</i><input type="tel" id="name" placeholder="填写手机号码"></li>
-				<li><i>Q Q 号码：</i><input type="tel" id="name" placeholder="QQ号码"></li>
-			</ul>
+		<!--产品-->
+		<div class="list-content cartlist order-Pro">
+			
+			<div class="order-Pro-Title line">订单编号：201506101045</div>
+			<ol>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+			</ol>
+			
+			<div class="order-Pro-Title line">订单编号：201506101045</div>
+			<ol>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img06.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>赣南脐橙 （箱）</h3><b>￥26.00<s>￥36.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img09.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>新疆阿克苏冰糖心苹果 6只/盒</h3><b>￥28.80<s>￥35.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img10.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>红心猕猴桃</h3><b>￥92.80<s>￥110.00</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img13.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>营养健康 散皮蛋（无泥大）</h3><b>￥1.50<s>￥2.50</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+			</ol>
+			
+			<div class="order-Pro-Title line">订单编号：201506101045</div>
+			<ol>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+			</ol>
+			
+			<div class="order-Pro-Title line">订单编号：201506101045</div>
+			<ol>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img06.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>赣南脐橙 （箱）</h3><b>￥26.00<s>￥36.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img09.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>新疆阿克苏冰糖心苹果 6只/盒</h3><b>￥28.80<s>￥35.90</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img10.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>红心猕猴桃</h3><b>￥92.80<s>￥110.00</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+				<li class="line">
+					<a href="#"><div class="pro-img"><img src="img/img13.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>营养健康 散皮蛋（无泥大）</h3><b>￥1.50<s>￥2.50</s></b></div>
+					<i class="icon-correct"></i>
+				</li>
+			</ol>
+			
 		</div>
 		
 	</article>

@@ -29,12 +29,21 @@
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-
+	
+	<!-- 由于我的前端控制器配置的是拦截所有请求，所以要在在springmvc.xml中放行静态资源： -->
+	<mvc:resources location="/upload/" mapping="/upload/**"/>
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
 	<!-- 4.释放静态资源 -->
 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
-	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+	<mvc:resources location="/img/" mapping="/images/**"></mvc:resources>
 
 	<!-- 5.配置拦截器 
 	<mvc:interceptors>

@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>注册成功</title>
+<title>订单详情</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,25 +120,74 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>注册成功</h1>
-			<a href="#" class="return"><i></i></a>
-			<a href="login.html" class="head-r">登录</a>
+			<h1>订单详情</h1>
+			<a href="member-order.html" class="return"><i></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container loginContent">
+	<article class="main-container">
 		
-		<div class="regHeader">
-			<i class="icon-success"></i>
+		<!--订单编号-->
+		<div class="memberDetailheader line">订单号：201506111025</div>
+		
+		<!--收货地址-->
+		<div class="order-Address line select">
+			<dl>
+				<dt><i class="icon-head"></i>郭小帅&nbsp;&nbsp;<i class="icon-phone"></i>131****1111</dt>
+				<dd>广东省 广州市 天河区 广州中大道</dd>
+			</dl>
 		</div>
 		
-		<h3>恭喜您，注册成功！</h3>
-		<h4>您的用户名为：郭小帅</h4>
+		<!--购买商品-->
+		<div class="list-content cartlist order-Pro memberDetaillist">
+			<ul class="line-li">
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b><p>&times;1</p></div>
+				</li>
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b><p>&times;1</p></div>
+				</li>
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b><p>&times;1</p></div>
+				</li>
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b><p>&times;1</p></div>
+				</li>
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b><p>&times;1</p></div>
+				</li>
+				<li>
+					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b><p>&times;1</p></div>
+				</li>
+			</ul>
+		</div>
 		
-		<div class="button"><button onclick="location.href='index.html'">立即购物</button></div>
-		<div class="regFooter">
-			进入<a href="member.html">我的设置</a>，完善更多资料！
+		<!--支付方式-->
+		<div class="list list-select">
+			<ul class="line">
+				<li>支付方式：<font>货到付款</font></li>
+				<li>配送方式：<font>快递物流</font></li>
+				<li>发票信息：<font>不开发票</font></li>
+			</ul>
+		</div>
+		
+		<!--价格、下单时间-->
+		<div class="memberDetailPrice line">
+			<p>￥88.4 + ￥30<font>（运费）</font></p>
+			<p>应付：￥118.4</p>
+			<p>下单时间：2015-04-28 19:39</p>
+		</div>
+		
+		<!--按钮-->
+		<div class="memberDetailFooter line">
+			<button>去支付</button><button>取消订单</button><button>确认收货</button>
 		</div>
 		
 	</article>

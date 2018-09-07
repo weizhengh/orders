@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="selectAll" resultMap="DrinkMap">
-		select * from drink a,drink_soft b  where a.drink_soft_id=b.drink_soft_id;
+		select * from drink a,drink_soft b where a.drink_soft_id=b.drink_soft_id;
 	</select>
 
 

@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>优惠券</title>
+<title>我的资料</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,76 +120,31 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>优惠券</h1>
+			<h1>我的资料</h1>
 			<a href="member.html" class="return"><i></i></a>
+			<a href="#" class="head-r">保存</a>
 		</div>
 	</header>
 	
 	<!--内容区-->
 	<article class="main-container">
 		
-		<!--手动添加优惠券-->
-		<dl class="Coupon-add line">
-			<dt>手动添加优惠券</dt>
-			<dd class="button"><input type="number" placeholder="请输入优惠券号码"><button>激活</button></dd>
-		</dl>
-		
-		<!--优惠券列表-->
-		<div class="Coupon-Content line">
-			
-			<!--选项卡-->
-			<div class="Coupon-Content-header line">
-				<a href="#" class="line active">可用优惠券</a><a href="#">过期优惠券</a>
-			</div>
-			
-			<div class="Coupon-Content-list">
-				<!--卡1-->
-				<div class="Couponbox">
-					<div class="Couponbox-header">
-						<b><sub>￥</sub>50</b>
-						<p><font>满100元使用</font>元优惠券</p>
-					</div>
-					<div class="Couponbox-footer">
-						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
-						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
-					</div>
-				</div>
-				<!--卡2-->
-				<div class="Couponbox">
-					<div class="Couponbox-header">
-						<b><sub>￥</sub>100</b>
-						<p><font>满800元使用</font>元优惠券</p>
-					</div>
-					<div class="Couponbox-footer">
-						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
-						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
-					</div>
-				</div>
-				<!--卡3-->
-				<div class="Couponbox">
-					<div class="Couponbox-header">
-						<b><sub>￥</sub>100</b>
-						<p><font>满800元使用</font>元优惠券</p>
-					</div>
-					<div class="Couponbox-footer">
-						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
-						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
-					</div>
-				</div>
-				<!--卡4-->
-				<div class="Couponbox">
-					<div class="Couponbox-header">
-						<b><sub>￥</sub>100</b>
-						<p><font>满800元使用</font>元优惠券</p>
-					</div>
-					<div class="Couponbox-footer">
-						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
-						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
-					</div>
-				</div>
-				
-			</div>
-			
+		<div class="list list-title">
+			<ul class="line">
+				<li><i>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</i>郭小帅</li>
+				<li><i>昵　　称：</i><input type="text" id="name" placeholder="填写您的昵称" value="郭小帅"></li>
+				<li><i>性　　别：</i>
+					<label><input type="radio" name="radio" id="radio" />男</label>&nbsp;&nbsp;
+					<label><input type="radio" name="radio" id="radio" />女</label>&nbsp;&nbsp;
+					<label><input type="radio" name="radio" id="radio" />保密</label></li>
+				<li><i>出生日期：</i><input type="datetime" id="name" placeholder="填写您的出生日期"></li>
+				<li class="head"><i>我的头像：</i><img src="img/head01.jpg"><input type="hidden" name="pic" id="pic" accept="image/gif, image/x-ms-bmp, image/jpeg" /><button class="line">点击上传<br><font>(200x200像素)</font></button></li>
+			</ul>
+			<ul class="line">
+				<li><i>邮　　箱：</i><input type="text" id="name" placeholder="填写电子邮箱，可方便找回密码。"></li>
+				<li><i>手机号码：</i><input type="tel" id="name" placeholder="填写手机号码"></li>
+				<li><i>Q Q 号码：</i><input type="tel" id="name" placeholder="QQ号码"></li>
+			</ul>
 		</div>
 		
 	</article>

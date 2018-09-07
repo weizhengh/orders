@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>商品评论</title>
+<title>我的邀请</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,47 +120,29 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>商品评论</h1>
-			<a href="member-order.html" class="return"><i></i></a>
+			<h1>我的邀请</h1>
+			<a href="member.html" class="return"><i></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
 	<article class="main-container">
 		
-		<div class="list-content cartlist order-Pro memberDetaillist">
-			<ul>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b><p>&times;1</p></div>
-					<button onclick="location.href='member-comment.html'">评论</button>
-				</li>
-			</ul>
+		<div class="invite-content">
+			<p class="line">您可以通过QQ、微信等工具，或者发送短信，把下面的链接告诉你的好友，邀请他们加入，就可以获得<span>50</span>积分。<br><br><a href=""></a></p>
+			<p class="line">
+				<b>邀请码</b>
+				<input type="text" value="325645" class="line" /><button>复制</button>
+			</p>
+		</div>
+		
+		<div class="list">
+			<div class="title"><strong>邀请成功的会员</strong></div>
+			<ol class="line">
+				<li class="success">郭小帅</li>
+				<li class="success">笑就歌颂</li>
+				<li class="fail">天空</li>
+			</ol>
 		</div>
 		
 	</article>

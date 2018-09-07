@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>我的订单</title>
+<title>订单提交成功</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,78 +120,28 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>我的订单</h1>
-			<a href="member.html" class="return"><i></i></a>
+			<h1>订单提交成功</h1>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container">
+	<article class="main-container loginContent">
+
+		<div class="regHeader">
+			<i class="icon-success"></i>
+		</div>
+		<br>
 		
-		<!--选项卡-->
-		<nav class="memberOrder-nav line"><a href="#" class="line select">全部</a><a href="#" class="line">待付款</a><a href="#" class="line">待发货</a><a href="#" class="line">已发货</a><a href="#">已完成</a></nav>
-		<div class="memberOrder-header"></div>
-		
-		<!--列表-->
-		<div class="memberOrder-list line" onclick="location.href='member-detail.html'">
-			<p>订单编号：201505101551<span>（待付款）</span></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img02.jpg" alt=""><img src="img/img06.jpg" alt=""><img src="img/img07.jpg" alt=""><img src="img/img08.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>取消订单</button><button>去支付</button></p>
+		<p>选择支付方式</p>
+		<div class="list">
+			<ul class="line">
+				<li class="select"><i class="icon-alipay"></i>支付宝支付<em class="icon-correct"></em></li>
+				<li><i class="icon-weixinpay"></i>微信支付<em class="icon-correct"></em></li>
+				<li><i class="icon-bankpay"></i>银行卡支付<em class="icon-correct"></em></li>
+			</ul>
 		</div>
 		
-		<div class="memberOrder-list line">
-			<p>订单编号：201505101551<span>（待发货）</span></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img01.jpg" alt=""><img src="img/img03.jpg" alt=""><img src="img/img04.jpg" alt=""><img src="img/img05.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>取消订单</button></p>
-		</div>
-		
-		<div class="memberOrder-list line">
-			<p>订单编号：201505101551<span>（已发货）</span></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img09.jpg" alt=""><img src="img/img10.jpg" alt=""><img src="img/img11.jpg" alt=""><img src="img/img12.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>确认收货</button></p>
-		</div>
-		
-		<div class="memberOrder-list line">
-			<p>订单编号：201505101551<span>（已完成）</span><button class="icon-delete"></button></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img13.jpg" alt=""><img src="img/img14.jpg" alt=""><img src="img/img15.jpg" alt=""><img src="img/img16.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>再次购买</button><button onclick="location.href='member-commlist.html'">评论</button></p>
-		</div>
-		
-		<div class="memberOrder-list line">
-			<p>订单编号：201505101551<span>（已完成）</span><button class="icon-delete"></button></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img16.jpg" alt=""><img src="img/img17.jpg" alt=""><img src="img/img18.jpg" alt=""><img src="img/img16.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>再次购买</button><button>评论</button></p>
-		</div>
-		
-		<div class="memberOrder-list line">
-			<p>订单编号：201505101551<span>（已完成）</span><button class="icon-delete"></button></p>
-			<div class="order-product line">
-				<ul>
-					<li><img src="img/img19.jpg" alt=""><img src="img/img20.jpg" alt=""><img src="img/img21.jpg" alt=""><img src="img/img16.jpg" alt=""></li>
-				</ul>
-			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>再次购买</button><button>评论</button></p>
-		</div>
+		<div class="button"><button>立即支付</button></div>
 		
 	</article>
 

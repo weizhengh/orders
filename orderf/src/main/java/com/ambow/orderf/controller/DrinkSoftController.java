@@ -27,8 +27,9 @@ public class DrinkSoftController {
 	@RequestMapping("/selectAll" )
 	public String selectAll(Model model) {
 		List<DrinkSoft> list = drinkSoftService.selectAll();
+		
 		model.addAttribute("list", list);
-		System.out.println(list.toString());
+		
 		return "admin/admin-drinksoft";
 	}
 	@RequestMapping(value="/toInsert")

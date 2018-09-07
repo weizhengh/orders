@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>我的邀请</title>
+<title>注册</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,30 +120,25 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>我的邀请</h1>
-			<a href="member.html" class="return"><i></i></a>
+			<h1>注册</h1>
+			<a href="#" class="return"><i></i></a>
+			<a href="login.html" class="head-r">登录</a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container">
-		
-		<div class="invite-content">
-			<p class="line">您可以通过QQ、微信等工具，或者发送短信，把下面的链接告诉你的好友，邀请他们加入，就可以获得<span>50</span>积分。<br><br><a href=""></a></p>
-			<p class="line">
-				<b>邀请码</b>
-				<input type="text" value="325645" class="line" /><button>复制</button>
-			</p>
-		</div>
+	<article class="main-container loginContent">
 		
 		<div class="list">
-			<div class="title"><strong>邀请成功的会员</strong></div>
-			<ol class="line">
-				<li class="success">郭小帅</li>
-				<li class="success">笑就歌颂</li>
-				<li class="fail">天空</li>
-			</ol>
+			<ul class="line">
+				<li><i class="icon-head"></i><input type="text" id="name" placeholder="用户名/手机号码/邮箱"></li>
+				<li class="code"><i class="icon-sms"></i><input type="tel" id="code" placeholder="手机收到的校验码"><button>点击获取</button></li>
+				<li><i class="icon-pwd"></i><input type="password" id="pwd" placeholder="请输入您的密码"></li>
+				<li class="code"><i class="icon-invite"></i><input type="tel" id="code" placeholder="请输入邀请码"></li>
+			</ul>
 		</div>
+		
+		<div class="button"><button onclick="location.href='regsuc.html'">立即注册</button></div>
 		
 	</article>
 

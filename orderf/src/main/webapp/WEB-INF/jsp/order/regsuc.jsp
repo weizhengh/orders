@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>会员中心</title>
+<title>注册成功</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -110,37 +117,28 @@
 
 <body ontouchstart="return true;">
 
+	<!--头部-->
+	<header>
+		<div class="header">
+			<h1>注册成功</h1>
+			<a href="#" class="return"><i></i></a>
+			<a href="login.html" class="head-r">登录</a>
+		</div>
+	</header>
+	
 	<!--内容区-->
-	<article class="main-container">
+	<article class="main-container loginContent">
 		
-		<div class="member-header">
-			<button class="button" onclick="location.href='index.html'"><span class="return"><i></i></span></button>
-			<p>郭小帅</p>
-			<div class="memberhead"><img src="img/head01.jpg" alt=""><i class="icon-woman"></i></div>
-			<ul>
-				<li class="line-w"><b>2</b>待付款</li>
-				<li class="line-w"><b>1</b>待发货</li>
-				<li class="line-w"><b>0</b>已发货</li>
-				<li><b>36</b>发完成</li>
-			</ul>
-			<div class="waves1 icon-waves"></div>
-			<div class="waves2 icon-waves"></div>
-			<div class="waves3 icon-waves"></div>
+		<div class="regHeader">
+			<i class="icon-success"></i>
 		</div>
 		
-		<div class="list">
-			<ul class="line">
-				<li onclick="location.href='member-order.html'"><i class="icon-allorders"></i>我的订单<span class="icon-arrowright"></span></li>
-			</ul>
-			<ul class="line">
-				<li onclick="location.href='member-data.html'"><i class="icon-head"></i>我的资料<span class="icon-arrowright"></span></li>
-				<li onclick="location.href='member-pwd.html'"><i class="icon-pwd"></i>修改密码<span class="icon-arrowright"></span></li>
-				<li onclick="location.href='member-coupon.html'"><i class="icon-coupons"></i>优惠券<span class="icon-arrowright"></span></li>
-				<li onclick="location.href='member-Addrees.html'"><i class="icon-address"></i>收货地址<span class="icon-arrowright"></span></li>
-			</ul>
-			<ul class="line">
-				<li><i class="icon-out"></i>退出</li>
-			</ul>
+		<h3>恭喜您，注册成功！</h3>
+		<h4>您的用户名为：郭小帅</h4>
+		
+		<div class="button"><button onclick="location.href='index.html'">立即购物</button></div>
+		<div class="regFooter">
+			进入<a href="member.html">我的设置</a>，完善更多资料！
 		</div>
 		
 	</article>

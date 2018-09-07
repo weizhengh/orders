@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>选购产品</title>
+<title>修改密码</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,45 +120,20 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>选购产品</h1>
-			<a href="order.html" class="return"><i></i></a>
+			<h1>修改密码</h1>
+			<a href="member.html" class="return"><i></i></a>
+			<a href="#" class="head-r">保存</a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container add-product">
-
-		<!--产品-->
-		<div class="list-content cartlist order-Pro">
-			<ul>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img06.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>赣南脐橙 （箱）</h3><b>￥26.00<s>￥36.90</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img09.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>新疆阿克苏冰糖心苹果 6只/盒</h3><b>￥28.80<s>￥35.90</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img10.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>红心猕猴桃</h3><b>￥92.80<s>￥110.00</s></b>&times;1</div>
-				</li>
-				<li class="line">
-					<a href="#"><div class="pro-img"><img src="img/img13.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>营养健康 散皮蛋（无泥大）</h3><b>￥1.50<s>￥2.50</s></b>&times;1</div>
-				</li>
+	<article class="main-container">
+		
+		<div class="list">
+			<ul class="line">
+				<li><i class="icon-pwd"></i><input type="password" id="name" placeholder="原始密码"></li>
+				<li><i class="icon-pwd"></i><input type="password" id="name" placeholder="填写新密码"></li>
+				<li><i class="icon-pwd"></i><input type="password" id="name" placeholder="确认新密码"></li>
 			</ul>
 		</div>
 		

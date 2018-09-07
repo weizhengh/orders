@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>注册</title>
+<title>会员中心</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -110,28 +117,38 @@
 
 <body ontouchstart="return true;">
 
-	<!--头部-->
-	<header>
-		<div class="header">
-			<h1>注册</h1>
-			<a href="#" class="return"><i></i></a>
-			<a href="login.html" class="head-r">登录</a>
-		</div>
-	</header>
-	
 	<!--内容区-->
-	<article class="main-container loginContent">
+	<article class="main-container">
+		
+		<div class="member-header">
+			<button class="button" onclick="location.href='index.html'"><span class="return"><i></i></span></button>
+			<p>郭小帅</p>
+			<div class="memberhead"><img src="img/head01.jpg" alt=""><i class="icon-woman"></i></div>
+			<ul>
+				<li class="line-w"><b>2</b>待付款</li>
+				<li class="line-w"><b>1</b>待发货</li>
+				<li class="line-w"><b>0</b>已发货</li>
+				<li><b>36</b>发完成</li>
+			</ul>
+			<div class="waves1 icon-waves"></div>
+			<div class="waves2 icon-waves"></div>
+			<div class="waves3 icon-waves"></div>
+		</div>
 		
 		<div class="list">
 			<ul class="line">
-				<li><i class="icon-head"></i><input type="text" id="name" placeholder="用户名/手机号码/邮箱"></li>
-				<li class="code"><i class="icon-sms"></i><input type="tel" id="code" placeholder="手机收到的校验码"><button>点击获取</button></li>
-				<li><i class="icon-pwd"></i><input type="password" id="pwd" placeholder="请输入您的密码"></li>
-				<li class="code"><i class="icon-invite"></i><input type="tel" id="code" placeholder="请输入邀请码"></li>
+				<li onclick="location.href='member-order.html'"><i class="icon-allorders"></i>我的订单<span class="icon-arrowright"></span></li>
+			</ul>
+			<ul class="line">
+				<li onclick="location.href='member-data.html'"><i class="icon-head"></i>我的资料<span class="icon-arrowright"></span></li>
+				<li onclick="location.href='member-pwd.html'"><i class="icon-pwd"></i>修改密码<span class="icon-arrowright"></span></li>
+				<li onclick="location.href='member-coupon.html'"><i class="icon-coupons"></i>优惠券<span class="icon-arrowright"></span></li>
+				<li onclick="location.href='member-Addrees.html'"><i class="icon-address"></i>收货地址<span class="icon-arrowright"></span></li>
+			</ul>
+			<ul class="line">
+				<li><i class="icon-out"></i>退出</li>
 			</ul>
 		</div>
-		
-		<div class="button"><button onclick="location.href='regsuc.html'">立即注册</button></div>
 		
 	</article>
 

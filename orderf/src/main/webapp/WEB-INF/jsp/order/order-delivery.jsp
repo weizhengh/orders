@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>订单提交成功</title>
+<title>支付及配送</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,28 +120,38 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>订单提交成功</h1>
+			<h1>选购产品</h1>
+			<a href="order.html" class="return"><i></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container loginContent">
+	<article class="main-container add-product">
 
-		<div class="regHeader">
-			<i class="icon-success"></i>
+		<!--支付及配送-->
+		<div class="order-Delivery line">
+			<p>支付方式</p>
+			<ol class="FilterContentList">
+				<li><span class="select icon-correct">在线支付</span></li>
+				<li><span>货到付款</span></li>
+			</ol>
 		</div>
-		<br>
 		
-		<p>选择支付方式</p>
-		<div class="list">
-			<ul class="line">
-				<li class="select"><i class="icon-alipay"></i>支付宝支付<em class="icon-correct"></em></li>
-				<li><i class="icon-weixinpay"></i>微信支付<em class="icon-correct"></em></li>
-				<li><i class="icon-bankpay"></i>银行卡支付<em class="icon-correct"></em></li>
+		<div class="order-Delivery line">
+			<p>配送方式</p>
+			<ol class="FilterContentList">
+				<li><span>快递物流</span></li>
+				<li><span class="select icon-correct">上门自提</span></li>
+			</ol>
+			<ul>
+				<li class="line">地址1：广东省 广州市 天河区 广州中大道中111号</li>
+				<li class="line">地址2：广东省 广州市 天河区 广州中大道中112号</li>
 			</ul>
+			<dl class="order-Delivery-time line">
+				<dt>选择商品配送时间</dt>
+				<dd>2015-6-5（周五）09:00-15:00</dd><dd><i class="icon-date"></i></dd>
+			</dl>
 		</div>
-		
-		<div class="button"><button>立即支付</button></div>
 		
 	</article>
 

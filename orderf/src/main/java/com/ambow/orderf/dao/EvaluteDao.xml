@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.EvaluteDao">
+	<resultMap type="Evalute" id="evaluteMap">
+		<id column="eva_id" property="eva_id"/>
+		<result column="eva_content" property="eva_content"/>
+		<result column="eva_level" property="eva_level"/>
+		<association property="cust" javaType="Customer">
+			<id column="cust_id" property="cust_id"/>
+			<result column="cust_name" property="cust_name"/>
+		</association>
+		<association property="order" javaType="Order">
+			<id column="order_id" property="order_id"/>
+		</association>
+	</resultMap>
+	<select id="selectAll" resultMap="evaluteMap">
+		SELECT
+			eva_id,
+			eva_content,
+			eva_level,
+			eva_id,
+			e.cust_id,
+			e.order_id,
+			b.cust_name
+		FROM
+			evalute e
+		LEFT JOIN
+		(
+			select cust_id,cust_name from customer 
+		) b ON e.cust_id = b.cust_id
+		LEFT JOIN
+		(
+			SELECT orders.order_id FROM orders
+		) c ON e.order_id = c.order_id
+	</select>
+	<delete id="deleteEvaluteById" parameterType="Integer">
+		delete from evalute where eva_id = #{eva_id};
+	</delete>
+</mapper>
+

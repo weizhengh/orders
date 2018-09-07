@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>收货地址</title>
+<title>商品评论</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,50 +120,33 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>收货地址</h1>
-			<a href="member.html" class="return"><i></i></a>
-			<a href="member-Addreess.html" class="head-r">添加</a>
+			<h1>商品评论</h1>
+			<a href="member-commlist.html" class="return"><i></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
 	<article class="main-container">
 		
-		<!--地址-->
-		<div class="order-Address line select">
-			<dl>
-				<dt><i class="icon-head"></i>郭小帅&nbsp;&nbsp;<i class="icon-phone"></i>131****1111</dt>
-				<dd>广东省 广州市 天河区 广州中山大道中111号</dd>
-				<dd class="icon-correct"></dd>
-			</dl>
-			<ul class="line"><li class="line"><button>编辑</button></li><li><button>删除</button></li></ul>
-		</div>
-		
-		<div class="order-Address line">
-			<dl>
-				<dt><i class="icon-head"></i>王大帅&nbsp;&nbsp;<i class="icon-phone"></i>136****0332</dt>
-				<dd>广东省 广州市 天河区 广州中山大道中112号</dd>
-				<dd class="icon-correct"></dd>
-			</dl>
-			<ul class="line"><li class="line"><button>编辑</button></li><li><button>删除</button></li></ul>
-		</div>
-		
-		<div class="order-Address line">
-			<dl>
-				<dt><i class="icon-head"></i>刘叔&nbsp;&nbsp;<i class="icon-phone"></i>177****3180</dt>
-				<dd>广东省 深圳市 罗湖区 </dd>
-				<dd class="icon-correct"></dd>
-			</dl>
-			<ul class="line"><li class="line"><button>编辑</button></li><li><button>删除</button></li></ul>
-		</div>
-		
-		<div class="order-Address line">
-			<dl>
-				<dt><i class="icon-head"></i>小王&nbsp;&nbsp;<i class="icon-phone"></i>177****3180</dt>
-				<dd>广东省 深圳市 罗湖区</dd>
-				<dd class="icon-correct"></dd>
-			</dl>
-			<ul class="line"><li class="line"><button>编辑</button></li><li><button>删除</button></li></ul>
+		<div class="list list-title">
+			<ul class="line">
+				<li><i>评&nbsp;&nbsp;论&nbsp;&nbsp;人：</i>郭小帅</li>
+				<li><i>评论时间：</i><input type="text" id="name" placeholder="填写您的昵称" value="2015-07-31 15:58"></li>
+				<li>
+					<i>上传图片：</i>
+					<dl class="photo">
+						<dd class="active icon-correct"><img src="img/img01.jpg" alt=""></dd>
+						<dd><img src="img/img02.jpg" alt=""></dd>
+						<dd><img src="img/img03.jpg" alt=""></dd>
+						<dd><img src="img/img04.jpg" alt=""></dd>
+						<dd><img src="img/img05.jpg" alt=""></dd>
+						<dd><img src="img/img06.jpg" alt=""></dd>
+					</dl>
+					<div class="upload-button"><font class="icon-plus"></font> 上传图片</div>
+					<div class="upload-button"><font class="icon-plus"></font> 删除所选</div>
+				</li>
+				<li><i>总　　结：</i><div class="textarea" data-placeholder="点击分享您的感受吧!" contenteditable="true"></div></li>
+			</ul>
 		</div>
 		
 	</article>

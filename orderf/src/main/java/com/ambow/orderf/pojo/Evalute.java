@@ -10,8 +10,8 @@ public class Evalute implements java.io.Serializable {
 	private Integer eva_id;
 	private String eva_content;
 	private Integer eva_level;
-	private Integer cust_id;
-	private Integer order_id;
+	private Customer cust;
+	private Order order;
 
 	public Evalute() {
 	}
@@ -40,29 +40,27 @@ public class Evalute implements java.io.Serializable {
 		this.eva_level = eva_level;
 	}
 
-	public Integer getCust_id() {
-		return cust_id;
+	public Customer getCust() {
+		return cust;
 	}
 
-	public void setCust_id(Integer cust_id) {
-		this.cust_id = cust_id;
+	public void setCust(Customer cust) {
+		this.cust = cust;
 	}
 
-	public Integer getOrder_id() {
-		return order_id;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrder_id(Integer order_id) {
-		this.order_id = order_id;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	@Override
 	public String toString() {
 		return "Evalute [eva_id=" + eva_id + ", eva_content=" + eva_content
-				+ ", eva_level=" + eva_level + ", cust_id=" + cust_id
-				+ ", order_id=" + order_id + "]";
+				+ ", eva_level=" + eva_level + ", cust=" + cust + ", order="
+				+ order + "]";
 	}
-
-
-
+	
 }

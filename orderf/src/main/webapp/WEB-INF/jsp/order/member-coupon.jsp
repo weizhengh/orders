@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>购物车</title>
+<title>优惠券</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,91 +120,79 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>购物车</h1>
-			<a href="index.html" class="return"><i></i></a>
-			<a href="#" class="head-r"><i class="icon-delete"></i></a>
+			<h1>优惠券</h1>
+			<a href="member.html" class="return"><i></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container add-product">
+	<article class="main-container">
 		
-		<!--登录提示-->
-		<div class="cart-login-prompt line-ora">登录后同步手机与电脑购物车中的商品&nbsp;&nbsp;<span class="button"><button onclick="location.href='login.html'">登录</button></span></div>
+		<!--手动添加优惠券-->
+		<dl class="Coupon-add line">
+			<dt>手动添加优惠券</dt>
+			<dd class="button"><input type="number" placeholder="请输入优惠券号码"><button>激活</button></dd>
+		</dl>
 		
-		<!--购物车没有商品-->
-		<div class="NoProContent">
-			<i class="icon-cart"></i>
-			<p>您的购物车内没任何商品</p>
-			<div class="button"><button onclick="location.href='index.html'">去看看</button></div>
-		</div>
-		
-		<!--购物车列表-->
-		<div class="list-content cartlist">
-			<ul>
-				<li class="line">
-					<div class="Checkbox select"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+		<!--优惠券列表-->
+		<div class="Coupon-Content line">
+			
+			<!--选项卡-->
+			<div class="Coupon-Content-header line">
+				<a href="#" class="line active">可用优惠券</a><a href="#">过期优惠券</a>
+			</div>
+			
+			<div class="Coupon-Content-list">
+				<!--卡1-->
+				<div class="Couponbox">
+					<div class="Couponbox-header">
+						<b><sub>￥</sub>50</b>
+						<p><font>满100元使用</font>元优惠券</p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥49.90</div>
+					<div class="Couponbox-footer">
+						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
+						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥79.00</div>
+				</div>
+				<!--卡2-->
+				<div class="Couponbox">
+					<div class="Couponbox-header">
+						<b><sub>￥</sub>100</b>
+						<p><font>满800元使用</font>元优惠券</p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img06.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>赣南脐橙 （箱）</h3><b>￥26.00<s>￥36.90</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+					<div class="Couponbox-footer">
+						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
+						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img09.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>新疆阿克苏冰糖心苹果 6只/盒</h3><b>￥28.80<s>￥35.90</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+				</div>
+				<!--卡3-->
+				<div class="Couponbox">
+					<div class="Couponbox-header">
+						<b><sub>￥</sub>100</b>
+						<p><font>满800元使用</font>元优惠券</p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img10.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>红心猕猴桃</h3><b>￥92.80<s>￥110.00</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥92.80</div>
+					<div class="Couponbox-footer">
+						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
+						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
 					</div>
-				</li>
-				<li class="line">
-					<div class="Checkbox"><i class="icon-correct"></i></div>
-					<a href="#"><div class="pro-img"><img src="img/img13.jpg" alt=""></div></a>
-					<div class="pro-con"><h3>营养健康 散皮蛋（无泥大）</h3><b>￥1.50<s>￥2.50</s></b>
-						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥1.50</div>
+				</div>
+				<!--卡4-->
+				<div class="Couponbox">
+					<div class="Couponbox-header">
+						<b><sub>￥</sub>100</b>
+						<p><font>满800元使用</font>元优惠券</p>
 					</div>
-				</li>
-			</ul>
+					<div class="Couponbox-footer">
+						<p>使用范围：仅可购买手机充值商品（客户端充值）</p>
+						<p>有&nbsp;&nbsp;效&nbsp;&nbsp;期：<span>2015.06.05--2015.07.08</span></p>
+					</div>
+				</div>
+				
+			</div>
+			
 		</div>
 		
 	</article>
-
-	<!--底部栏目-->
-	<footer>
-		<div class="button"><button onclick="location.href='order.html'">去结算</button></div>
-		<div class="C-footer-left">
-			<div class="Checkbox"><i class="icon-correct"></i></div>
-			<b>总价：￥106.4</b>
-			<p>未含运费</p>
-		</div>
-	</footer>
 
 </body>
 </html>

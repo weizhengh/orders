@@ -1,3 +1,10 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
+%>
 <!doctype html>
 <html>
 <head>
@@ -99,7 +106,7 @@
 <meta property="og:image" content="图片" />
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
-<title>添加收货地址</title>
+<title>购物车</title>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/header.css">
@@ -113,75 +120,91 @@
 	<!--头部-->
 	<header>
 		<div class="header">
-			<h1>添加收货地址</h1>
-			<a href="member-Addrees.html" class="return"><i></i></a>
-			<a href="#" class="head-r">保存</a>
+			<h1>购物车</h1>
+			<a href="index.html" class="return"><i></i></a>
+			<a href="#" class="head-r"><i class="icon-delete"></i></a>
 		</div>
 	</header>
 	
 	<!--内容区-->
-	<article class="main-container">
+	<article class="main-container add-product">
 		
-		<div class="list list-title">
-			<ul class="line">
-				<li><i>收&nbsp;&nbsp;货&nbsp;&nbsp;人：</i><input type="text" id="name" placeholder="名字"></li>
-				<li><i>联系电话：</i><input type="tel" id="name" placeholder="手机或固话"></li>
-				<li class="list03"><i>所在地区：</i>
-					<select name="select" id="select">
-						<option value="" selected="selected">选择省份</option>
-						<option value="">北京</option>
-						<option value="">上海</option>
-						<option value="">江西</option>
-						<option value="">湖南</option>
-						<option value="">湖北</option>
-						<option value="">四川</option>
-						<option value="">广西</option>
-						<option value="">浙江</option>
-						<option value="">福建</option>
-						<option value="">河南</option>
-						<option value="">辽宁</option>
-						<option value="">吉林</option>
-						<option value="">安徽</option>
-						<option value="">重庆</option>
-						<option value="">贵州</option>
-						<option value="">云南</option>
-						<option value="">山西</option>
-						<option value="">陕西</option>
-						<option value="">宁夏</option>
-						<option value="">甘肃</option>
-						<option value="">新疆</option>
-						<option value="">青海</option>
-						<option value="">香港</option>
-						<option value="">澳门</option>
-						<option value="">台湾</option>
-					</select>
-					<select name="select" id="select">
-						<option value="" selected="selected">选择城市</option>
-						<option value="">北京</option>
-						<option value="">上海</option>
-						<option value="">萍乡</option>
-						<option value="">长沙</option>
-						<option value="">武汉</option>
-						<option value="">成都</option>
-						<option value="">桂林</option>
-						<option value="">广州</option>
-					</select>
-					<select name="select" id="select">
-						<option value="" selected="selected">选择区县</option>
-						<option value="">安源区</option>
-						<option value="">湘东区</option>
-						<option value="">经济开发区</option>
-						<option value="">上栗县</option>
-						<option value="">芦溪县</option>
-						<option value="">莲花县</option>
-					</select>
+		<!--登录提示-->
+		<div class="cart-login-prompt line-ora">登录后同步手机与电脑购物车中的商品&nbsp;&nbsp;<span class="button"><button onclick="location.href='login.html'">登录</button></span></div>
+		
+		<!--购物车没有商品-->
+		<div class="NoProContent">
+			<i class="icon-cart"></i>
+			<p>您的购物车内没任何商品</p>
+			<div class="button"><button onclick="location.href='index.html'">去看看</button></div>
+		</div>
+		
+		<!--购物车列表-->
+		<div class="list-content cartlist">
+			<ul>
+				<li class="line">
+					<div class="Checkbox select"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img01.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>￥150.00<s>￥180.90</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+					</div>
 				</li>
-				<li><i>详情地址：</i><input type="text" id="name" placeholder="街道门牌信息"></li>
-				<li><i>邮政编码：</i><input type="tel" id="name" placeholder="邮政编码（选填）"></li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img02.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>江西赣南脐橙</h3><b>￥49.90<s>￥69.90</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥49.90</div>
+					</div>
+				</li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img04.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>花果山 智利蓝莓</h3><b>￥79.00<s>￥90.90</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥79.00</div>
+					</div>
+				</li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img06.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>赣南脐橙 （箱）</h3><b>￥26.00<s>￥36.90</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+					</div>
+				</li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img09.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>新疆阿克苏冰糖心苹果 6只/盒</h3><b>￥28.80<s>￥35.90</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥150.00</div>
+					</div>
+				</li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img10.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>红心猕猴桃</h3><b>￥92.80<s>￥110.00</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥92.80</div>
+					</div>
+				</li>
+				<li class="line">
+					<div class="Checkbox"><i class="icon-correct"></i></div>
+					<a href="#"><div class="pro-img"><img src="img/img13.jpg" alt=""></div></a>
+					<div class="pro-con"><h3>营养健康 散皮蛋（无泥大）</h3><b>￥1.50<s>￥2.50</s></b>
+						<div class="D-BuyNum"><button class="icon-reduce"></button><input type="number" class="line" value="1"><button class="icon-plus"></button></div> <div class="subtotal">小计：￥1.50</div>
+					</div>
+				</li>
 			</ul>
 		</div>
 		
 	</article>
+
+	<!--底部栏目-->
+	<footer>
+		<div class="button"><button onclick="location.href='order.html'">去结算</button></div>
+		<div class="C-footer-left">
+			<div class="Checkbox"><i class="icon-correct"></i></div>
+			<b>总价：￥106.4</b>
+			<p>未含运费</p>
+		</div>
+	</footer>
 
 </body>
 </html>
