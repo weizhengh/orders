@@ -22,7 +22,7 @@
 			</ul>
 			<div class="am-tabs-bd">
 				<c:if test="${status=='insert'}">
-					<form class="am-form" action="insertSelective.action" method="post">
+					<form class="am-form" action="insertSelective.action" method="post" enctype="multipart/form-data">
 
 						<div class="am-tab-panel am-fade" id="tab3">
 
@@ -51,16 +51,18 @@
 										id="show">
 										<div class="mark"></div>
 									</div>
+									
+									
 									<input type="file"
 										accept="image/png, image/jpeg, image/gif, image/jpg"
-										id="picUpload" value="上传图片" name="drink_picture"
+										id="picUpload" value="上传图片"  name="multipartFile"
 										onchange="getImgURL(this)" class="am-input-sm" required>
 								</div>
 							</div>
 
 						</div>
 
-						<!--  -->
+						
 
 						<script type="text/javascript">
 							var imgurl = "";
@@ -116,9 +118,6 @@
 
 							</div>
 
-
-
-
 						</div>
 
 						<div class="am-g am-margin-top-sm">
@@ -143,7 +142,7 @@
 				</c:if>
 
 				<c:if test="${status=='update'}">
-					<form class="am-form" action="updateSelective.action" method="post">
+					<form class="am-form" action="updateSelective.action" method="post" enctype="multipart/form-data">
 
 						<div class="am-tab-panel am-fade" id="tab3">
 
@@ -164,15 +163,71 @@
 										required="required">
 								</div>
 							</div>
-
+							
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">图片</div>
 								<div class="am-u-sm-4 am-u-end">
-									<input type="number" class="am-input-sm" name="drink_price"
-										value="${drink.drink_picture }" required="required">
+									<div
+										style="width: 90px; height: 110px; overflow: hidden; display: none; 
+										id="show">
+										<div class="mark">	<img src="<%=basePath%>${drink.drink_picture}" alt="酒水图片" width="50" height="60" /> 
+										</div> 
+									</div>
+								
+									
+									<input type="file"
+										accept="image/png, image/jpeg, image/gif, image/jpg"
+										id="picUpload"  value="<%=basePath%>${drink.drink_picture}"  name="multipartFile"
+										onchange="getImgURL(this)"  class="am-input-sm" required="required">
 								</div>
 							</div>
 
+							<script type="text/javascript">
+							var imgurl = "";
+
+							function getImgURL(node) {
+							
+								var imgURL = "";
+								try {
+									var file = null;
+									if (node.files && node.files[0]) {
+										file = node.files[0];
+									} else if (node.files && node.files.item(0)) {
+										file = node.files.item(0);
+									}
+									//Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径
+									try {
+										//Firefox7.0 
+										imgURL = file.getAsDataURL();
+										//alert("//Firefox7.0"+imgRUL);             			
+									} catch (e) {
+										//Firefox8.0以上                    			
+										imgRUL = window.URL
+												.createObjectURL(file);
+										//alert("//Firefox8.0以上"+imgRUL);
+									}
+								} catch (e) { //这里不知道怎么处理了，如果是遨游的话会报这个异常           		
+									//支持html5的浏览器,比如高版本的firefox、chrome、ie10
+									if (node.files && node.files[0]) {
+										var reader = new FileReader();
+										reader.onload = function(e) {
+											imgURL = e.target.result;
+										};
+										reader.readAsDataURL(node.files[0]);
+									}
+								}
+								//imgurl = imgURL;
+								creatImg(imgRUL);
+								return imgURL;
+							}
+
+							function creatImg(imgRUL) { //根据指定URL创建一个Img对象
+								var textHtml = "<img src='"+imgRUL+"'/>";
+								$(".mark").after(textHtml);
+								document.getElementById("show").style.display = "block";
+							}
+						</script>
+							
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">备注</div>
 								<div class="am-u-sm-4 am-u-end">
@@ -214,6 +269,7 @@
 				</c:if>
 
 
+
 			</div>
 			<!-- content end -->
 
@@ -232,5 +288,6 @@
 		<script src="<%=basePath%>js/amazeui.min.js"></script>
 		<!--<![endif]-->
 		<script src="<%=basePath%>js/app.js"></script>
+
 </body>
 </html>

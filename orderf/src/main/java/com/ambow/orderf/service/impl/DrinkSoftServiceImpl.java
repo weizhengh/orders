@@ -19,7 +19,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	private DrinkDao drinkDao;
 
 	/**
-	 * È«²é¾ÆË®Àà±ð
+	 * È«ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 	public List<DrinkSoft> selectAll() {
 	
@@ -27,7 +27,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 
 	/**
-	 * Ìí¼Ó¾ÆË®Àà±ð
+	 * ï¿½ï¿½Ó¾ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 	public int insertSelective(DrinkSoft drinkSoft) {
 	
@@ -35,7 +35,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 	
 	/**
-	 * ÐÞ¸Ä¾ÆË®Àà±ð
+	 * ï¿½Þ¸Ä¾ï¿½Ë®ï¿½ï¿½ï¿½
 	 */
 
 	public int updateSelective(DrinkSoft drinkSoft) {
@@ -44,7 +44,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 
 	/**
-	 * µ¥²é¾ÆË®Àà±ð
+	 * 
 	 */
 	public DrinkSoft selectByPrimaryKey(Integer drink_soft_id) {
 		
@@ -53,9 +53,8 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 
 	public int deleteByPrimaryKey(Integer drink_soft_id) {
 		
-		DrinkSoft drinkSoft=new  DrinkSoft();
-		drinkSoft.setDrink_soft_id(drink_soft_id);
-		List<Drink> list=drinkDao.selectBySoftId(drinkSoft);
+	
+		List<Drink> list=drinkDao.selectBySoftId(drink_soft_id);
 		System.out.println(list.toString());
 		if(list.size()==0){
 			drinkSoftDao.deleteByPrimaryKey(drink_soft_id);

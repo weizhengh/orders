@@ -18,7 +18,7 @@ public class Drink implements java.io.Serializable {
 	
 	private DrinkSoft drink_soft;  //������
 	
-	private byte[] drink_picture; //ͼƬ
+	private String drink_picture; //ͼƬ
 	private String drink_note; //ע��
 	private String drink_name;  //����
 	private Float drink_price;  //�۸�
@@ -31,12 +31,12 @@ public class Drink implements java.io.Serializable {
 	}
 
 	
-	public byte[] getDrink_picture() {
+	public String getDrink_picture() {
 		return drink_picture;
 	}
 
 
-	public void setDrink_picture(byte[] drink_picture) {
+	public void setDrink_picture(String drink_picture) {
 		this.drink_picture = drink_picture;
 	}
 

@@ -46,17 +46,25 @@
 						</div>
 
 						<div class="am-form-group am-margin-left am-fl">
-							<select>
-								<option value="option1">所有类别</option>
-								<option value="option2">IT业界</option>
-								<option value="option3">数码产品</option>
-								<option value="option3">笔记本电脑</option>
-								<option value="option3">平板电脑</option>
-								<option value="option3">只能手机</option>
-								<option value="option3">超极本</option>
+
+							<select name="drink_soft_id" onchange="">
+
+								<option>请选择</option>
+
+								<c:forEach items="${drinkSoft}" var="drink">
+									<option
+										value="<%=basePath%>drink/selectBySoftId.action?drink_soft_id=${drink.drink_soft_id}">${drink.drink_soft_name}</option>
+								</c:forEach>
+
 							</select>
 
 						</div>
+
+
+
+
+
+
 					</div>
 				</div>
 			</div>
@@ -80,11 +88,11 @@
 							<tr>
 								<th class="table-check"><input type="checkbox" /></th>
 								<th class="table-id">编号</th>
-								<th class="table-id">名称</th>
+								<th class="table-title">名称</th>
 								<th class="table-title">价格</th>
 								<th class="table-title">备注</th>
 								<th class="table-type">类别</th>
-
+								<th class="table-type">图片</th>
 								<th class="table-set">操作</th>
 							</tr>
 						</thead>
@@ -97,13 +105,9 @@
 									<td>${drink.drink_price}</td>
 									<td>${drink.drink_note}</td>
 									<td>${drink.drink_soft.drink_soft_name}</td>
-									<%-- <td>
-
-										<div style="width: 90px; height: 110px; overflow: hidden;"
-											id="show">${drink.drink_picture}
-											<div class="mark"></div>
-										</div>
-									</td> --%>
+								
+									<td><img src="<%=basePath%>${drink.drink_picture}"
+										alt="酒水图片" width="50" height="60" /></td>
 
 									<td>
 										<div class="am-btn-toolbar">
@@ -152,17 +156,15 @@
 	</div>
 	<!-- content end -->
 	</div>
-
 	<%@ include file="footer.jsp"%>
-
 	<!--[if lt IE 9]>
+>>>>>>> origin/liulllxw
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="<%=basePath%>js/polyfill/rem.min.js"></script>
 <script src="<%=basePath%>js/polyfill/respond.min.js"></script>
 <script src="<%=basePath%>js/amazeui.legacy.js"></script>
 <![endif]-->
-
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script src="<%=basePath%>js/jquery.min.js"></script>
 	<script src="<%=basePath%>js/amazeui.min.js"></script>

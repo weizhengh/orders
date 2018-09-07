@@ -64,11 +64,12 @@
 <div class="am-cf admin-main">
   <!-- sidebar start -->
   <div class="admin-sidebar">
+  <div class="am-panel-group" id="accordion">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="<%=basePath%>url.action?url=admin-index"><span class="am-icon-home"></span> 首页</a></li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+      <li><a href="<%=basePath%>url.action?url=admin/admin-index"><span class="am-icon-home"></span> 首页</a></li>
+      <li class="admin-parent am-panel-hd" >
+        <a href="#collapse-nav" class="am-cf" data-am-collapse="{parent: '#accordion'}"><span class="am-icon-file" ></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
           <li><a href="<%=basePath%>url.action?url=admin/admin-user" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-help"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-gallery"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
@@ -76,43 +77,45 @@
           <li><a href="<%=basePath%>url.action?url=admin/admin-404"><span class="am-icon-bug"></span> 404</a></li>
         </ul>
       </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span> 订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
+      <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-nav2'}"><span class="am-icon-file"></span> 订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 订单管理</a></li>
         </ul>
       </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-navuser">
+      <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',parent: '#accordion',target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navuser">
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 员工信息</a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 用户信息</a></li>
         </ul>
       </li>
-       <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-navrole'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-navrole">
+       <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrole'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navrole">
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 权限分类</a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜单分类</a></li>
         </ul>
       </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span> 菜品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
+      <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-nav3'}"><span class="am-icon-file"></span> 菜品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品信息</a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品分类</a></li>
         </ul>
       </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-file"></span> 酒水管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
+      <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-nav4'}"><span class="am-icon-file"></span> 酒水管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
           <li><a href="<%=basePath%>drink/selectAll.action"><span class="am-icon-table"></span> 酒水信息</a></li>
           <li><a href="<%=basePath%>drinkSoft/selectAll.action"><span class="am-icon-table"></span> 酒水分类</a></li>
+
         </ul>
       </li>
       <li><a href="admin-form.jsp"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
       <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
     </ul>
+    </div>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">

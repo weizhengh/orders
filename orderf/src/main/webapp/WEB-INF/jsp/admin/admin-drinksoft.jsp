@@ -49,36 +49,17 @@
 							</button>
 						</div>
 
-						<div class="am-form-group am-margin-left am-fl">
-							<select>
-								<option value="option1">编号</option>
-								<option value="option2">酒水分类</option>
-								<option value="option3">数码产品</option>
-								<option value="option3">笔记本电脑</option>
-								<option value="option3">平板电脑</option>
-								<option value="option3">只能手机</option>
-								<option value="option3">超极本</option>
-							</select>
-						</div>
+					
 					</div>
 				</div>
 			</div>
-			<div class="am-u-md-3 am-cf">
-				<div class="am-fr">
-					<div class="am-input-group am-input-group-sm">
-						<input type="text" class="am-form-field"> <span
-							class="am-input-group-btn">
-							<button class="am-btn am-btn-default" type="button">搜索</button>
-						</span>
-					</div>
-				</div>
-			</div>
+		
 		</div>
 
 		<div class="am-g">
 			<div class="am-u-sm-12">
 				<form class="am-form">
-				
+
 					<table class="am-table am-table-striped am-table-hover table-main">
 						<thead>
 							<tr>
@@ -86,13 +67,13 @@
 								<th class="table-id">编号</th>
 								<th class="table-title">酒水类别</th>
 								<th class="table-set">操作</th>
-								
+
 							</tr>
 						</thead>
 						<tbody>
-						<tr>
-						<td>${str}</td>
-						</tr>
+							<tr>
+								<td>${str}</td>
+							</tr>
 							<c:forEach items="${list}" var="type" varStatus="status">
 								<tr>
 									<td><input type="checkbox" /></td>
@@ -148,19 +129,9 @@
 	</div>
 
 	<%@ include file="footer.jsp"%>
-
-	<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="<%=basePath%>js/polyfill/rem.min.js"></script>
-<script src="<%=basePath%>js/polyfill/respond.min.js"></script>
-<script src="<%=basePath%>js/amazeui.legacy.js"></script>
-<![endif]-->
-
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script src="<%=basePath%>js/jquery.min.js"></script>
 	<script src="<%=basePath%>js/amazeui.min.js"></script>
-	<!--<![endif]-->
 	<script src="<%=basePath%>js/app.js"></script>
 </body>
 </html>
