@@ -46,16 +46,16 @@
 						</div>
 
 						<div class="am-form-group am-margin-left am-fl">
-						 <select  id="pid" onchange="gradeChange()">
+							<select id="pid" onchange="gradeChange()">
+								<option>请选择</option>
 
 
-
-									<c:forEach items="${drinkSoft}" var="drink">
-										<option value="${drink.drink_soft_id}">${drink.drink_soft_name}</option>
-									</c:forEach>
+								<c:forEach items="${drinkSoft}" var="drink">
+									<option value="${drink.drink_soft_id}">${drink.drink_soft_name}</option>
+								</c:forEach>
 
 							</select>
-							
+
 						</div>
 
 						<script type="text/JavaScript">
@@ -63,7 +63,7 @@
 								var soft=$("#pid option:selected").val();
 								/* url:"<c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/>" */
 										window.location.href="<%=basePath%>drink/selectBySoftId.action?drink_soft_id="+soft;
-									/* <c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/> */
+								/* <c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/> */
 							}
 						</script>
 
@@ -76,14 +76,16 @@
 				</div>
 			</div>
 			<div class="am-u-md-3 am-cf">
-				<div class="am-fr">
-					<div class="am-input-group am-input-group-sm">
-						<input type="text" class="am-form-field"> <span
-							class="am-input-group-btn">
-							<button class="am-btn am-btn-default" type="button">搜索</button>
-						</span>
+				<form action="selectByLike.action" method="post">
+					<div class="am-fr">
+						<div class="am-input-group am-input-group-sm">
+							<input type="text" class="am-form-field" name="blur"> <span
+								class="am-input-group-btn"> <input
+								class="am-btn am-btn-default" type="submit">搜索
+							</span>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 
@@ -162,7 +164,7 @@
 		</div>
 	</div>
 	<!-- content end -->
-	</div>
+
 	<%@ include file="footer.jsp"%>
 	<!--[if lt IE 9]>
 >>>>>>> origin/liulllxw

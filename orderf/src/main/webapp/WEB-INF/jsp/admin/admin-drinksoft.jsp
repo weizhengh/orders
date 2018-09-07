@@ -33,6 +33,14 @@
 				<strong class="am-text-primary am-text-lg">酒水类别</strong> / <small>Table</small>
 			</div>
 		</div>
+		<c:if test="${str}!=''">
+<script type="text/javascript">
+alert("123");
+alert(${str});
+</script>
+			
+		</c:if>
+
 
 		<div class="am-g">
 			<div class="am-u-md-6 am-cf">
@@ -49,11 +57,11 @@
 							</button>
 						</div>
 
-					
+
 					</div>
 				</div>
 			</div>
-		
+
 		</div>
 
 		<div class="am-g">

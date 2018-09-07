@@ -91,6 +91,7 @@ public class DrinkSoftController {
 
 		int result = drinkSoftService.deleteByPrimaryKey(drink_soft_id);
 		if(result==0){
+			model.addAttribute("str"," ");
 			
 		}else{
 		model.addAttribute("str", "本酒水类下有酒水，不能删除");

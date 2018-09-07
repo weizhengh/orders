@@ -22,5 +22,7 @@ public interface DrinkService {
 	
 	Drink selectByPrimaryKey(Integer drink_id); //���� ��ˮ
 	
-	List<Drink> selectBySoftId(Integer drink_soft_id); //���ݾ�ˮ����ѯ
+	List<Drink> selectBySoftId(Integer drink_soft_id); //根据分类查询
+	
+	List<Drink> selectByLike(String blur);//模糊查询
 }

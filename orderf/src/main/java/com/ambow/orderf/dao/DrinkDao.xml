@@ -33,7 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 
-
+	<select id="selectByLike" parameterType="java.lang.String" resultMap="DrinkMap">
+		select * from drink a,drink_soft b 
+		where  a.drink_soft_id=b.drink_soft_id and drink_name like "%"#{blur,jdbcType=VARCHAR}"%";
+		
+	</select>
 
 	<insert id="insertSelective" parameterType="com.ambow.orderf.pojo.Drink">
 		insert into drink

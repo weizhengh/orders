@@ -171,8 +171,10 @@ public class DrinkController {
 	@RequestMapping(value = "/updateSelective", method = RequestMethod.POST)
 	public String updateDrink(Drink drink, MultipartFile multipartFile,
 			HttpServletRequest request) throws IOException {
-		System.out.println(drink.toString());
-
+		System.out.println(drink.getDrink_picture()+"aaaaaaaaaaaaaaa");
+		System.out.println(multipartFile.getOriginalFilename()+1211);
+		if(multipartFile.getOriginalFilename()!=""){
+		
 		System.out.println(multipartFile + "-------------------------------");
 		// 获取文件名字
 
@@ -238,6 +240,8 @@ public class DrinkController {
 		System.out.println(lsPath);
 
 		drink.setDrink_picture(ljPath);
+		
+	}
 		drinkService.updateSelective(drink);
 
 		return "redirect:/drink/selectAll.action";
@@ -273,6 +277,23 @@ public class DrinkController {
 		model.addAttribute("status", "update");
 
 		return "admin/admin-adddrink";
+	}
+	/**
+	 * 模糊查询
+	 * @param model
+	 * @param drink_id
+	 * @return
+	 */
+	@RequestMapping("/selectByLike")
+	public String selectByLike(Model model, String blur) {
+System.out.println(blur);
+		List<Drink> list=drinkService.selectByLike(blur);
+		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
+		System.out.println(list.toString());
+		model.addAttribute("list", list);
+		model.addAttribute("drinksoft", drinkSofts);
+
+		return "admin/admin-drink";
 	}
 
 }

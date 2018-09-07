@@ -22,7 +22,7 @@ public class DrinkServiceImpl implements DrinkService {
 	 * ȫ���ˮ
 	 */
 	public List<Drink> selectAll() {
-		
+
 		List<Drink> list = drinkDao.selectAll();
 
 		return drinkDao.selectAll();
@@ -67,9 +67,17 @@ public class DrinkServiceImpl implements DrinkService {
 
 	public List<Drink> selectBySoftId(Integer drink_soft_id) {
 
-		List<Drink> list= drinkDao.selectBySoftId(drink_soft_id);
+		List<Drink> list = drinkDao.selectBySoftId(drink_soft_id);
 		System.out.println(list.toString());
 		return list;
+	}
+
+	/**
+	 * 模糊查询
+	 */
+	public List<Drink> selectByLike(String blur) {
+		
+		return drinkDao.selectByLike(blur);
 	}
 
 }

@@ -20,5 +20,7 @@ public interface DrinkDao {
 	List<Drink> selectBySoftId(Integer drink_soft_id); //���ݾ�ˮ����ѯ
 	
 	Drink selectByPrimaryKey(Integer drink_id); //���� ��ˮ
+	
+	List<Drink> selectByLike(String blur);//模糊查询
 
 }
