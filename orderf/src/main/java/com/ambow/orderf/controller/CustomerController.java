@@ -155,12 +155,12 @@ public class CustomerController {
 			return "error";
 		}
 	}
-	
+
 	
 /*	 添加订单后自动增加顾客的积分
 	 增加规则为消费金额的1/10
-	 @param customer 存放顾客ID与新增的积分
-	
+	 * @param customer 存放顾客ID与新增的积分
+	 * */
 	@RequestMapping(value="/customer/updateGrade.action",method=RequestMethod.POST)
 	public String updateGrade(Customer customer){
 		
@@ -173,4 +173,5 @@ public class CustomerController {
 		}
 	}*/
 }
+
 
