@@ -3,18 +3,13 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.ambow.orderf.dao.EmpDao">
- 
  <resultMap type="Emp" id="EmpMap">
- 	<id column="emp_id" property="empId"/>
- 	<result column="emp_name" property="empName"/>
- 	<result column="emp_password" property="empName"/>
- 	<result column="emp_login" property="empName"/>
- 	<result column="emp_salary" property="empName"/>
- 	<result column="emp_push" property="empName"/>
- 	<association property="Role">
- 		<id column="role_id" property="roleId"/>
- 		<result column="role_name" property="roleName"/>
- 	</association>
+ 	<id column="emp_id" property="emp_id"/>
+ 	<result column="emp_name" property="emp_name"/>
+ 	<result column="emp_password" property="emp_password"/>
+ 	<result column="emp_login" property="emp_login"/>
+ 	<result column="emp_salary" property="emp_salary"/>
+ 	<result column="emp_push" property="emp_push"/>
  </resultMap>
  
  <!-- 员工根据用户名和密码登录 -->
@@ -29,20 +24,20 @@
  
  <!-- 根据员工ID查询员工信息 -->
  <select id="findById" parameterType="Integer" resultMap="EmpMap">
- 	select * from emp where emp_id=#{empId};
+ 	select * from emp where emp_id=#{emp_id};
  </select>
  
  <!-- 根据员工ID删除员工信息 -->
  <delete id="deleteById" parameterType="Integer">
- 	delete from emp where emp_id=#{empId};
+ 	delete from emp where emp_id=#{emp_id};
  </delete>
  
  <!-- 添加新员工  -->
  <insert id="addEmp" parameterType="Emp">
  	insert into emp(emp_name,emp_password,emp_login,
- 	emp_salary,role_id) 
+ 	emp_salary) 
  	values(#{emp_name},#{emp_password},#{emp_login},
- 	#{emp_salary},#{role_id})
+ 	#{emp_salary})
  </insert>
  
  <!-- 根据员工ID修改员工信息 -->
@@ -54,9 +49,6 @@
 		emp_login=#{emp_login},
 		emp_salary=#{emp_salary},
 		emp_push=#{emp_push},
-		<if test="role_id!=null">
-		role_id=#{role_id} 			
-		</if>
  	</set>
  	where emp_id=#{emp_id};
  </update>
