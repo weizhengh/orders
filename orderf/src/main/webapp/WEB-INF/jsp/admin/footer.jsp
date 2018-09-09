@@ -6,7 +6,7 @@
 <body>
 <footer>
   <hr>
-  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+  <p class="am-padding-left">© 2018 六组联合出品。</p>
 </footer>
 </body>
 </html>

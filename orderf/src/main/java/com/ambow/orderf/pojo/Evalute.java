@@ -1,5 +1,7 @@
 package com.ambow.orderf.pojo;
 
+import java.util.Date;
+
 
 /**
  * Evalute
@@ -12,8 +14,17 @@ public class Evalute implements java.io.Serializable {
 	private Integer eva_level;
 	private Customer cust;
 	private Order order;
+	private Date eva_time;
 
 	public Evalute() {
+	}
+
+	public Date getEva_time() {
+		return eva_time;
+	}
+
+	public void setEva_time(Date eva_time) {
+		this.eva_time = eva_time;
 	}
 
 	public Integer getEva_id() {
@@ -60,7 +71,8 @@ public class Evalute implements java.io.Serializable {
 	public String toString() {
 		return "Evalute [eva_id=" + eva_id + ", eva_content=" + eva_content
 				+ ", eva_level=" + eva_level + ", cust=" + cust + ", order="
-				+ order + "]";
+				+ order + ", eva_time=" + eva_time + "]";
 	}
+
 	
 }

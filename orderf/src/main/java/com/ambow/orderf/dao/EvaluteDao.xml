@@ -38,5 +38,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteEvaluteById" parameterType="Integer">
 		delete from evalute where eva_id = #{eva_id};
 	</delete>
+	
 </mapper>
 

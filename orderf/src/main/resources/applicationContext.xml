@@ -3,7 +3,7 @@
 	xmlns="http://www.springframework.org/schema/beans" 
 	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:context="http://www.springframework.org/schema/context" 
-	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
 		http://www.springframework.org/schema/aop 
@@ -11,7 +11,11 @@
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-4.2.xsd 
 		http://www.springframework.org/schema/tx 
-		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		">
+		<!--  xmlns:websocket="http://www.springframework.org/schema/websocket" 
+		http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd -->
 	
 	<!-- 1.读取dbcp.properties -->	
 	<context:property-placeholder location="classpath:dbcp.properties" />
@@ -65,11 +69,12 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.ambow.orderf.dao"></property>	
 	</bean>
+	<!-- 配置WebSocket Handler
+	<websocket:handlers>
+        <websocket:mapping path="/myHandler" handler="myHandler"/>
+    </websocket:handlers>
+
+    <bean id="myHandler" class="com.ambow.orderf.handler.BgoHandler"/> -->
 	<!-- 订单管理 -->
-	
-	
-	
-	
-	
 	
 </beans>

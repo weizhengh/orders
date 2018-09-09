@@ -10,7 +10,7 @@
 <head lang="en">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze后台管理系统模板HTML首页 - cssmoban</title>
+  <title>后台管理系统模板HTML首页 - cssmoban</title>
   <meta name="description" content="这是一个 index 页面">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -64,7 +64,6 @@
 <div class="am-cf admin-main">
   <!-- sidebar start -->
   <div class="admin-sidebar">
-<<<<<<< HEAD
   <div class="am-panel-group" id="accordion">
     <ul class="am-list admin-sidebar-list">
       <li><a href="<%=basePath%>url.action?url=admin/admin-index"><span class="am-icon-home"></span> 首页</a></li>
@@ -129,65 +128,3 @@
   <!-- sidebar end -->
 </body>
 </html>
-=======
-    <ul class="am-list admin-sidebar-list">
-      <li><a href="<%=basePath%>url.action?url=admin-index"><span class="am-icon-home"></span> 首页</a></li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-user" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-help"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-gallery"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-log"><span class="am-icon-calendar"></span> 系统日志</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-404"><span class="am-icon-bug"></span> 404</a></li>
-        </ul>
-      </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span> 订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 订单管理</a></li>
-        </ul>
-      </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-navuser">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 员工信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 用户信息</a></li>
-        </ul>
-      </li>
-       <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-navrole'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-navrole">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 权限分类</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜单分类</a></li>
-        </ul>
-      </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span> 菜品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品分类</a></li>
-        </ul>
-      </li>
-      <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-file"></span> 酒水管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav4">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-drink"><span class="am-icon-table"></span> 酒水信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-drinksoft"><span class="am-icon-table"></span> 酒水分类</a></li>
-        </ul>
-      </li>
-      <li><a href="admin-form.jsp"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
-      <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
-    </ul>
-
-    <div class="am-panel am-panel-default admin-sidebar-panel">
-      <div class="am-panel-bd">
-        <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
-      </div>
-    </div>
-  </div>
-  <!-- sidebar end -->
-</body>
-</html>
->>>>>>> branch 'master' of https://github.com/weizhengh/orders.git

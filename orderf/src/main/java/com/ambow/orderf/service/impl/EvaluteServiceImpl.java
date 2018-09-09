@@ -32,7 +32,8 @@ public class EvaluteServiceImpl implements EvaluteService {
 		evaluteDao.deleteEvaluteById(eva_id);
 	}
 
-	public Evalute selectEvaluteById(Integer evalute_id) {
+	public Evalute selectEvaluteById(Integer eva_id) {
 		return null;
+//		return evaluteDao.selectEvaluteById(eva_id);
 	}
 }
