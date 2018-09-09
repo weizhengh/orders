@@ -46,7 +46,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 
 	/**
-	 * �����ˮ���
+	 * 
 	 */
 	public DrinkSoft selectByPrimaryKey(Integer drink_soft_id) {
 		
@@ -55,9 +55,8 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 
 	public int deleteByPrimaryKey(Integer drink_soft_id) {
 		
-		DrinkSoft drinkSoft=new  DrinkSoft();
-		drinkSoft.setDrink_soft_id(drink_soft_id);
-		List<Drink> list=drinkDao.selectBySoftId(drinkSoft);
+	
+		List<Drink> list=drinkDao.selectBySoftId(drink_soft_id);
 		System.out.println(list.toString());
 		if(list.size()==0){
 			drinkSoftDao.deleteByPrimaryKey(drink_soft_id);

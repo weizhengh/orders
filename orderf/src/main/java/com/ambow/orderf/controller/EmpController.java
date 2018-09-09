@@ -38,6 +38,8 @@ public class EmpController {
 			return "index";			
 		}
 	}
+
+	
 	
 	/**
 	 * 查询所有员工信息

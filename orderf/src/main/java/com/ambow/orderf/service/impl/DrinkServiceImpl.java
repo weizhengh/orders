@@ -19,19 +19,17 @@ public class DrinkServiceImpl implements DrinkService {
 	private DrinkDao drinkDao;
 
 	/**
-	 * È«²é¾ÆË®
+	 * È«ï¿½ï¿½ï¿½Ë®
 	 */
 	public List<Drink> selectAll() {
-		
+
 		List<Drink> list = drinkDao.selectAll();
 
-		
-		
 		return drinkDao.selectAll();
 	}
 
 	/**
-	 * Ìí¼Ó¾ÆË®
+	 * ï¿½ï¿½Ó¾ï¿½Ë®
 	 */
 	public int insertSelective(Drink drink) {
 
@@ -39,7 +37,7 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	/**
-	 * ÐÞ¸Ä¾ÆË®
+	 * ï¿½Þ¸Ä¾ï¿½Ë®
 	 */
 	public int updateSelective(Drink drink) {
 
@@ -47,7 +45,7 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	/**
-	 * É¾³ý¾ÆË®
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ë®
 	 */
 
 	public int deleteByPrimaryKey(Integer drink_id) {
@@ -56,7 +54,7 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	/**
-	 * µ¥²é¾ÆË®
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ë®
 	 */
 	public Drink selectByPrimaryKey(Integer drink_id) {
 
@@ -64,12 +62,22 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	/**
-	 * ¸ù¾Ý¾ÆË®Àà±ð²éÑ¯
+	 * ï¿½ï¿½ï¿½Ý¾ï¿½Ë®ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 */
 
-	public List<Drink> selectBySoftId(DrinkSoft drinkSoft) {
+	public List<Drink> selectBySoftId(Integer drink_soft_id) {
 
-		return drinkDao.selectBySoftId(drinkSoft);
+		List<Drink> list = drinkDao.selectBySoftId(drink_soft_id);
+		System.out.println(list.toString());
+		return list;
+	}
+
+	/**
+	 * æ¨¡ç³ŠæŸ¥è¯¢
+	 */
+	public List<Drink> selectByLike(String blur) {
+		
+		return drinkDao.selectByLike(blur);
 	}
 
 }
