@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.OrderDao">
+
+
+	<insert id="addOrder" parameterType="order" useGeneratedKeys="true"
+		keyProperty="order_id">
+
+		INSERT
+		INTO ORDERS (
+		order_id,
+		order_time,
+		order_price,
+		order_priced,
+		order_pay,
+		order_meth,
+		order_state, 
+		order_info, 
+		cust_id
+		)
+		VALUES
+		(
+		
+		#{ order_id },
+		#{ order_time },
+		#{order_price}, 
+		#{ order_priced },
+		#{ order_pay},
+		#{ order_meth },
+		#{order_state }, 
+		#{ order_info }, 
+		#{ customer.cust_id}
+		);
+	</insert>
+
+	<insert id="addOrderitem" parameterType="orderitem">
+
+		INSERT
+		INTO ORDER_ITEM (
+		order_id,
+		food_id,
+		drink_id,
+		num
+		)
+		VALUE
+		(
+		#{ order.order_id }, #{food.food_id}, #{ drink.drink_id }, #{ num}
+		)
+	</insert>
+
+	<update id="updateOrder" parameterType="order">
+		update orders set order_state=#{order_state}
+		<if test="order_info!=null">
+			order_info=#{ordr_info}
+		</if>
+		where order_id=#{order_id}
+	</update>
+
+	<select id="findOrderByCidOnFood" parameterType="int"
+		resultMap="OrderFoodMap">
+		SELECT
+		*
+		FROM
+		orders o
+		JOIN order_item i ON o.order_id = i.order_id
+		JOIN
+		food f ON i.food_id = f.food_id
+		WHERE
+		o.cust_id=#{cust_id}
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="OrderFoodMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="food" column="food_id"
+			javaType="com.ambow.orderf.pojo.Food">
+			<id property="food_id" column="food_id" />
+			<result property="food_name" column="food_name" />
+			<result property="food_price" column="food_price" />
+			<result property="food_picture" column="food_picture" />
+			<result property="food_note" column="food_note" />
+			<result property="food_discount" column="drink_discount" />
+			<association property="food_soft" column="food_soft_id"
+				javaType="com.ambow.orderf.pojo.FoodSoft">
+				<id property="food_soft_id" column="food_soft_id" />
+				<result property="food_soft_name" column="food_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="findOrderByCidOnDrink" parameterType="int"
+		resultMap="OrderDrinkMap">
+		SELECT
+		*
+		FROM
+		orders o
+		JOIN order_item i ON o.order_id = i.order_id
+		JOIN
+		drink d ON i.drink_id = d.drink_id
+		WHERE
+		o.cust_id=#{cust_id}
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="OrderDrinkMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="drink" column="drink_id"
+			javaType="com.ambow.orderf.pojo.Drink">
+			<id property="drink_id" column="food_id" />
+			<result property="drink_name" column="drink_name" />
+			<result property="drink_price" column="drink_price" />
+			<result property="drink_picture" column="drink_picture" />
+			<result property="drink_note" column="drink_note" />
+			<result property="drink_discount" column="drink_discount" />
+			<association property="drink_soft" column="drink_soft_id"
+				javaType="com.ambow.orderf.pojo.DrinkSoft">
+				<id property="drink_soft_id" column="drink_soft_id" />
+				<result property="drink_soft_name" column="drink_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+	
+
+	<select id="findAllOrderOnFood" resultMap="AllOrderFoodMap">
+		SELECT
+		*
+		FROM
+		orders o,
+		order_item i,
+		food f,
+		customer c
+		WHERE
+		o.cust_id = c.cust_id
+		AND f.food_id = i.food_id
+		AND o.order_id =
+		i.order_id
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="AllOrderFoodMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="food" column="food_id"
+			javaType="com.ambow.orderf.pojo.Food">
+			<id property="food_id" column="food_id" />
+			<result property="food_name" column="food_name" />
+			<result property="food_price" column="food_price" />
+			<result property="food_picture" column="food_picture" />
+			<result property="food_note" column="food_note" />
+			<result property="food_discount" column="drink_discount" />
+			<association property="food_soft" column="food_soft_id"
+				javaType="com.ambow.orderf.pojo.FoodSoft">
+				<id property="food_soft_id" column="food_soft_id" />
+				<result property="food_soft_name" column="food_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="findAllOrderOnDrink" resultMap="AllOrderDrinkMap">
+		SELECT
+		*
+		FROM
+		orders o,
+		order_item i,
+		drink d,
+		customer c
+		WHERE
+		o.cust_id = c.cust_id
+		AND d.drink_id = i.drink_id
+		AND o.order_id =
+		i.order_id
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="AllOrderDrinkMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="drink" column="drink_id"
+			javaType="com.ambow.orderf.pojo.Drink">
+			<id property="drink_id" column="food_id" />
+			<result property="drink_name" column="drink_name" />
+			<result property="drink_price" column="drink_price" />
+			<result property="drink_picture" column="drink_picture" />
+			<result property="drink_note" column="drink_note" />
+			<result property="drink_discount" column="drink_discount" />
+			<association property="drink_soft" column="drink_soft_id"
+				javaType="com.ambow.orderf.pojo.DrinkSoft">
+				<id property="drink_soft_id" column="drink_soft_id" />
+				<result property="drink_soft_name" column="drink_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+
+	<select id="findOrderByStateOnFood" resultMap="OrderByStateFoodMap">
+		SELECT
+		*
+		FROM
+		orders o,
+		order_item i,
+		food f,
+		customer c
+		WHERE
+		o.cust_id = c.cust_id
+		AND f.food_id = i.food_id
+		AND o.order_id = i.order_id
+		AND o.order_state = 2
+		ORDER BY
+		o.order_time ASC
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="OrderByStateFoodMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="food" column="food_id"
+			javaType="com.ambow.orderf.pojo.Food">
+			<id property="food_id" column="food_id" />
+			<result property="food_name" column="food_name" />
+			<result property="food_price" column="food_price" />
+			<result property="food_picture" column="food_picture" />
+			<result property="food_note" column="food_note" />
+			<result property="food_discount" column="drink_discount" />
+			<association property="food_soft" column="food_soft_id"
+				javaType="com.ambow.orderf.pojo.FoodSoft">
+				<id property="food_soft_id" column="food_soft_id" />
+				<result property="food_soft_name" column="food_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="findOrderByStateOnDrink" resultMap="OrderByStateDrinkMap">
+		SELECT
+		*
+		FROM
+		orders o,
+		order_item i,
+		drink d,
+		customer c
+		WHERE
+		o.cust_id = c.cust_id
+		AND d.drink_id = i.drink_id
+		AND o.order_id = i.order_id
+		AND o.order_state = 2
+		ORDER BY
+		o.order_time ASC
+	</select>
+	
+	<resultMap type="com.ambow.orderf.pojo.OrderItem"
+		id="OrderByStateDrinkMap">
+		<id property="order_item_id" column="order_item_id" />
+		<result property="num" column="num" />
+		<association property="drink" column="drink_id"
+			javaType="com.ambow.orderf.pojo.Drink">
+			<id property="drink_id" column="food_id" />
+			<result property="drink_name" column="drink_name" />
+			<result property="drink_price" column="drink_price" />
+			<result property="drink_picture" column="drink_picture" />
+			<result property="drink_note" column="drink_note" />
+			<result property="drink_discount" column="drink_discount" />
+			<association property="drink_soft" column="drink_soft_id"
+				javaType="com.ambow.orderf.pojo.DrinkSoft">
+				<id property="drink_soft_id" column="drink_soft_id" />
+				<result property="drink_soft_name" column="drink_soft_name" />
+			</association>
+		</association>
+
+		<association property="order" column="order_id"
+			javaType="com.ambow.orderf.pojo.Order">
+			<id property="order_id" column="order_id" />
+			<result property="order_price" column="order_price" />
+			<result property="order_priced" column="order_priced" />
+			<result property="order_time" column="order_time" />
+			<result property="order_pay" column="order_pay" />
+			<result property="order_meth" column="order_meth" />
+			<result property="order_state" column="order_state" />
+			<result property="order_info" column="order_info" />
+			<association property="customer" column="cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+
+
+</mapper>
+
