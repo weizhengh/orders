@@ -10,6 +10,14 @@
  	<result column="emp_login" property="emp_login"/>
  	<result column="emp_salary" property="emp_salary"/>
  	<result column="emp_push" property="emp_push"/>
+ 	<result column="emp_state" property="emp_state"/>
+ 	<collection property="middleList" column="emp_id"
+ 	 javaType="ArrayList" ofType="EmpRoleMiddle"
+ 	 select="com.ambow.orderf.dao.EmpRoleMiddleDao.findRoleByEmpId">
+ 	 	<id column="middle_id" property="middle_id"/>
+ 	 	<result column="emp_id" property="emp_id"/> 
+ 	 	<result column="role_id" property="role_id"/> 			
+ 	 </collection>
  </resultMap>
  
  <!-- 员工根据用户名和密码登录 -->

@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ambow.orderf.pojo.Emp;
+import com.ambow.orderf.pojo.EmpRoleMiddle;
+import com.ambow.orderf.pojo.Role;
+import com.ambow.orderf.service.EmpRoleMiddleService;
 import com.ambow.orderf.service.EmpService;
+import com.ambow.orderf.service.RoleService;
 
 /**
  * 员工管理的controller层
@@ -20,6 +24,8 @@ import com.ambow.orderf.service.EmpService;
 public class EmpController {
 
 	@Autowired EmpService empService;
+	@Autowired EmpRoleMiddleService empRoleMiddleService;
+	@Autowired RoleService roleService;
 	
 	/**
 	 * 管理员后台登录
@@ -43,10 +49,12 @@ public class EmpController {
 	 * @param model 
 	 * */
 	@RequestMapping(value="/emp/findAll.action",method=RequestMethod.GET)
-	public String findAllEmp(Model model){
+	public String findAllEmp(Model model,HttpSession session){
 		List<Emp> list=empService.findAllEmp();
+		List<Role> roleList=roleService.findAllRole();
+		session.setAttribute("ROLELIST", roleList);
 		model.addAttribute("empList", list);
-		return "emp";
+		return "/admin/admin-emp";
 	}
 	
 	/**

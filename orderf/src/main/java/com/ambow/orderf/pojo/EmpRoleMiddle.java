@@ -1,10 +1,12 @@
 package com.ambow.orderf.pojo;
 
-public class UserRoleMiddle {
+public class EmpRoleMiddle {
 	
 	private Integer middle_id;
 	private Emp emp;
 	private Role role;
+	
+	
 	public Integer getMiddle_id() {
 		return middle_id;
 	}

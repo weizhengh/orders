@@ -1,5 +1,7 @@
 package com.ambow.orderf.pojo;
 
+import java.util.List;
+
 
 /**
  * Emp
@@ -13,6 +15,22 @@ public class Emp implements java.io.Serializable {
 	private String emp_login;
 	private Double emp_salary;
 	private Double emp_push;
+	private Integer emp_state;
+	private List<EmpRoleMiddle> middleList;
+	
+
+	public Integer getEmp_state() {
+		return emp_state;
+	}
+	public void setEmp_state(Integer emp_state) {
+		this.emp_state = emp_state;
+	}
+	public List<EmpRoleMiddle> getMiddleList() {
+		return middleList;
+	}
+	public void setMiddleList(List<EmpRoleMiddle> middleList) {
+		this.middleList = middleList;
+	}
 	public Integer getEmp_id() {
 		return emp_id;
 	}
@@ -53,7 +71,11 @@ public class Emp implements java.io.Serializable {
 	public String toString() {
 		return "Emp [emp_id=" + emp_id + ", emp_name=" + emp_name
 				+ ", emp_password=" + emp_password + ", emp_login=" + emp_login
-				+ ", emp_salary=" + emp_salary + ", emp_push=" + emp_push + "]";
+				+ ", emp_salary=" + emp_salary + ", emp_push=" + emp_push
+				+ ", emp_state=" + emp_state + ", middleList=" + middleList
+				+ "]";
 	}
-
+	
+	
+	
 }

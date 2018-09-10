@@ -86,7 +86,7 @@
       <li class="admin-parent am-panel-hd">
         <a class="am-cf" data-am-collapse="{parent: '#accordion',parent: '#accordion',target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navuser">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 员工信息</a></li>
+          <li><a href="<%=basePath%>emp/findAll.action"><span class="am-icon-table"></span> 员工信息</a></li>
           <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 用户信息</a></li>
         </ul>
       </li>
