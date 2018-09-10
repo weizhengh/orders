@@ -54,12 +54,14 @@
       </div>
       <div class="am-u-md-3 am-cf">
         <div class="am-fr">
+        <form action="<%=basePath%>/emp/findAll.action" method="get">
           <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field">
+            <input type="text" name="emp_name" class="am-form-field">
                 <span class="am-input-group-btn">
                   <button class="am-btn am-btn-default" type="button">搜索</button>
                 </span>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -82,7 +84,7 @@
               </tr>
           </thead>
           <tbody>
-          <c:forEach items="${empList}" var="emp">
+          <c:forEach items="${empInfo.list}" var="emp">
             <tr>
               <td><input type="checkbox" /></td>
               <td>${emp.emp_id}</td>
@@ -124,21 +126,18 @@
          </tbody>
         </table>
           <div class="am-cf">
-  共 15 条记录
+  共 ${empInfo.total} 条记录
   <div class="am-fr">
     <ul class="am-pagination">
-      <li class="am-disabled"><a href="#">«</a></li>
-      <li class="am-active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">»</a></li>
+      <li><a href="<%=basePath%>/emp/findAll.action?page=1">首页</a></li>
+      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pageNum-1}">«</a></li>
+      <li><a href="#">${empInfo.pageNum}</a></li>
+      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pageNum+1}">»</a></li>
+      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pages}">尾页</a></li>
     </ul>
   </div>
 </div>
           <hr />
-          <p>注：.....</p>
         </form>
       </div>
 

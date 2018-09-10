@@ -1,20 +1,16 @@
 package com.ambow.orderf.pojo;
 
 /**
- * @author H
- *
+ * CarItem
  */
 @SuppressWarnings("serial")
 public class CarItem implements java.io.Serializable {
 
-	private Integer car_item_id; 
-	private Car car_id;  
-	private Food car_food_id;
-	private Drink car_drink_id;
+	private Integer car_item_id;
+	private Drink drink;
+	private Car car;
+	private Food food;
 	private Integer num;
-	
-	public CarItem() {
-	}
 
 	public Integer getCar_item_id() {
 		return car_item_id;
@@ -24,28 +20,28 @@ public class CarItem implements java.io.Serializable {
 		this.car_item_id = car_item_id;
 	}
 
-	public Car getCar_id() {
-		return car_id;
+	public Drink getDrink() {
+		return drink;
 	}
 
-	public void setCar_id(Car car_id) {
-		this.car_id = car_id;
+	public void setDrink(Drink drink) {
+		this.drink = drink;
 	}
 
-	public Food getCar_food_id() {
-		return car_food_id;
+	public Car getCar() {
+		return car;
 	}
 
-	public void setCar_food_id(Food car_food_id) {
-		this.car_food_id = car_food_id;
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
-	public Drink getCar_drink_id() {
-		return car_drink_id;
+	public Food getFood() {
+		return food;
 	}
 
-	public void setCar_drink_id(Drink car_drink_id) {
-		this.car_drink_id = car_drink_id;
+	public void setFood(Food food) {
+		this.food = food;
 	}
 
 	public Integer getNum() {
@@ -58,9 +54,8 @@ public class CarItem implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "CarItem [car_item_id=" + car_item_id + ", car_id=" + car_id
-				+ ", car_food_id=" + car_food_id + ", car_drink_id="
-				+ car_drink_id + ", num=" + num + "]";
+		return "CarItem [car_item_id=" + car_item_id + ", drink=" + drink + ", car=" + car + ", food=" + food + ", num="
+				+ num + "]";
 	}
-	
+
 }

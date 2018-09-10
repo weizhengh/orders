@@ -131,7 +131,7 @@
 	<div class="search-content" id="search-content">
 		<i class="icon-font"></i>
 	</div>
-
+	
 	<!--内容区-->
 	<article class="main-container">
 		
@@ -404,6 +404,8 @@
 			</div>
 			
 		</div>
+
+		
 		<!--配送点范围-->
 		<div class="DeliverysContent fadeInBottom100" id="DeliverysContent">
 			<div class="LayerHeader">

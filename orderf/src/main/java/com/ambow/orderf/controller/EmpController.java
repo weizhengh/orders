@@ -1,5 +1,6 @@
 package com.ambow.orderf.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ambow.orderf.pojo.Emp;
 import com.ambow.orderf.pojo.EmpRoleMiddle;
@@ -16,6 +18,8 @@ import com.ambow.orderf.pojo.Role;
 import com.ambow.orderf.service.EmpRoleMiddleService;
 import com.ambow.orderf.service.EmpService;
 import com.ambow.orderf.service.RoleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 /**
  * 员工管理的controller层
@@ -46,14 +50,37 @@ public class EmpController {
 	
 	/**
 	 * 查询所有员工信息
+	 * @param page 当前页
+	 * @param emp_name 员工姓名
+	 * @param role_id 角色ID
+	 * @param session
 	 * @param model 
 	 * */
 	@RequestMapping(value="/emp/findAll.action",method=RequestMethod.GET)
-	public String findAllEmp(Model model,HttpSession session){
-		List<Emp> list=empService.findAllEmp();
+	public String findAllEmp(@RequestParam(defaultValue="1") Integer page,
+			String emp_name,Model model,HttpSession session,
+			Integer role_id){
+		List<Emp> list=new ArrayList<Emp>();
+		
+		Emp emp=new Emp();
 		List<Role> roleList=roleService.findAllRole();
+		PageHelper.startPage(page, 5);
+		if(role_id==null){
+			list=empService.findAllEmp(emp_name);
+		}else{
+			List<EmpRoleMiddle> middle=empRoleMiddleService.findEmpByRoleId(role_id);
+			for(EmpRoleMiddle m:middle){
+				List<EmpRoleMiddle> ll=new ArrayList<EmpRoleMiddle>();
+				emp=m.getEmp();
+				ll.add(m);
+				emp.setMiddleList(ll);
+				list.add(emp);
+			}
+		}
+		PageInfo pageList=new PageInfo<>(list,5);
 		session.setAttribute("ROLELIST", roleList);
-		model.addAttribute("empList", list);
+		
+		model.addAttribute("empInfo", pageList);
 		return "/admin/admin-emp";
 	}
 	

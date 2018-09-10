@@ -17,9 +17,10 @@ public interface EmpService {
 	
 	/**
 	 * 查询所有员工
+	 * @param emp_name 员工姓名
 	 * @return 封装所有员工信息的集合
 	 * */
-	public List<Emp> findAllEmp();
+	public List<Emp> findAllEmp(String emp_name);
 	
 	/**
 	 * 根据员工ID查询员工信息

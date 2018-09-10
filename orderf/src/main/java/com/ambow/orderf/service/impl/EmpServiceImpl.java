@@ -24,9 +24,9 @@ public class EmpServiceImpl implements EmpService{
 		return empInfo;
 	}
 
-	public List<Emp> findAllEmp() {
+	public List<Emp> findAllEmp(String emp_name) {
 		
-		List<Emp> list=empDao.findAllEmp();
+		List<Emp> list=empDao.findAllEmp(emp_name);
 		return list;
 	}
 

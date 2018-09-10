@@ -18,9 +18,10 @@ public interface EmpDao {
 
 	/**
 	 * 查询所有员工
+	 * @param emp_name 员工姓名
 	 * @return 查询出的所有员工的信息
 	 * */
-	List<Emp> findAllEmp();
+	List<Emp> findAllEmp(String emp_name);
 
 	/**
 	 * 根据员工ID查询员工信息

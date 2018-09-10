@@ -1,8 +1,7 @@
 package com.ambow.orderf.pojo;
 
-
 /**
- * OrderItem 
+ * OrderItem
  */
 @SuppressWarnings("serial")
 public class OrderItem implements java.io.Serializable {
@@ -58,9 +57,8 @@ public class OrderItem implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "OrderItem [order_item_id=" + order_item_id + ", drink=" + drink
-				+ ", order=" + order + ", food=" + food + ", num=" + num + "]";
+		return "OrderItem [order_item_id=" + order_item_id + ", drink=" + drink + ", order=" + order + ", food=" + food
+				+ ", num=" + num + "]";
 	}
 
-	
 }
