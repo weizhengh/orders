@@ -118,7 +118,7 @@
         </ul>
       </li>
       <li><a href="<%=basePath%>evalute/selectAll.action"><span class="am-icon-pencil-square-o"></span> 评论管理</a></li>
-      <li><a href="<%=basePath%>evalute/selectAll.action"><span class="am-icon-pencil-square-o"></span> 菜单列表</a></li>
+      <li><a href="<%=basePath%>bgo/bgostage.action"><span class="am-icon-pencil-square-o"></span> 菜单列表</a></li>
 <%--       <li><a href="<%=basePath%>url.action?url=admin/test"><span class="am-icon-pencil-square-o"></span> 图片</a></li>
  --%>      <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
     </ul>

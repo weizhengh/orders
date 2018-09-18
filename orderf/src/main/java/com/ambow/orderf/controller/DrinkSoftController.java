@@ -11,6 +11,12 @@ import java.util.Map;
 
 
 
+
+
+
+
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +36,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.ambow.orderf.pojo.Drink;
 import com.ambow.orderf.pojo.DrinkSoft;
+import com.ambow.orderf.pojo.Evalute;
 import com.ambow.orderf.service.DrinkSoftService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("/drinkSoft")
@@ -43,14 +52,22 @@ public class DrinkSoftController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/selectAll" )
-	public String selectAll(Model model) {
-		List<DrinkSoft> list = drinkSoftService.selectAll();
+	@RequestMapping(value="/selectAll" )
+	public String selectAll(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn,Model model) {
 		
-		model.addAttribute("list", list);
+		PageHelper.startPage(pn,2);
+		List<DrinkSoft> list = drinkSoftService.selectAll();
+		PageInfo<DrinkSoft> pageInfo = new PageInfo<DrinkSoft>(list,5);
+		
+		for (DrinkSoft evalute : list) {
+			System.out.println(evalute.toString());
+		}
+		
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return "admin/admin-drinksoft";
 	}
+	
 	
 	/**
 	 * 查重
@@ -77,7 +94,26 @@ public class DrinkSoftController {
 			
 		
 	}
+	/**
+	 * 批量删除
+	 */
 	
+	@RequestMapping("/deleteByPrimaryKey")
+	public String deleteByPrimaryKey(Integer drink_soft_id,HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println(drink_soft_id+"1111111111111111");
+		String items = request.getParameter("delitems");
+		 System.out.println(items);
+		String[] strs = items.split(",");
+		for (int i = 0; i < strs.length; i++) {
+			
+			int oid = Integer.parseInt(strs[i]);
+			System.out.println(oid);
+			drinkSoftService.deleteByPrimaryKey(oid);
+		}
+		
+		return "redirect:/drinkSoft/selectAll.action";
+	}
 	
 	/**
 	 * 到新增页面
@@ -142,9 +178,9 @@ public class DrinkSoftController {
 
 	
 	
-	@RequestMapping(value="/deleteByPrimaryKey",method=RequestMethod.POST)
+	@RequestMapping(value="/deleteone",method=RequestMethod.POST)
 	@ResponseBody
-	public JSONObject  deleteByPrimaryKey(Integer drink_soft_id,HttpServletResponse resp) throws IOException {
+	public JSONObject  deleteone(Integer drink_soft_id,HttpServletResponse resp) throws IOException {
 		resp.setContentType("json/text");
      System.out.println(drink_soft_id+"controller");
      JSONObject jsonObject = new JSONObject();

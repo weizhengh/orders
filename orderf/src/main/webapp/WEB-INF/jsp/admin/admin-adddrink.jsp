@@ -33,7 +33,7 @@
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">名称</div>
 								<div class="am-u-sm-4 am-u-end">
-									<input type="text" required="required" id="name" maxlength="20"
+									<input type="text" required="required" onkeyup="this.value=this.value.replace(/\s+/g,'')" id="name" maxlength="20"
 										class="am-input-sm" name="drink_name" onblur="save()">
 								</div>
 							</div>
@@ -117,7 +117,7 @@
 							<div class="am-u-sm-2 am-text-right">备注</div>
 							<div class="am-u-sm-4 am-u-end">
 
-								<textarea maxlength="50" rows="4" class="am-input-sm"
+								<textarea onkeyup="this.value=this.value.replace(/\s+/g,'')" maxlength="50" rows="4" class="am-input-sm"
 									name="drink_note" required></textarea>
 
 							</div>
@@ -140,7 +140,7 @@
 						<div class="am-margin">
 							<input type="submit" value="提交保存"
 								class="am-btn am-btn-primary am-btn-xs">
-							<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+							<a href="<%=basePath%>drink/toInsert.action"><button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button></a>
 						</div>
 					</form>
 				</c:if>
@@ -191,7 +191,7 @@
 									name="drink_id">
 								<div class="am-u-sm-4 am-u-end">
 									<input type="text" class="am-input-sm" id="name"
-										name="drink_name" onblur="update()" value="${drink.drink_name}" maxlength="50"
+										name="drink_name" onblur="update()" onkeyup="this.value=this.value.replace(/\s+/g,'')" value="${drink.drink_name}" maxlength="50"
 										required="required">
 								</div>
 							</div>
@@ -317,7 +317,7 @@
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">备注</div>
 								<div class="am-u-sm-4 am-u-end">
-									<textarea maxlength="50" name="drink_note" rows="4"
+									<textarea maxlength="50" onkeyup="this.value=this.value.replace(/\s+/g,'')" name="drink_note" rows="4"
 										required="required">${drink.drink_note }</textarea>
 								</div>
 							</div>
@@ -348,7 +348,7 @@
 							<div class="am-margin">
 								<input type="submit" id="but" value="提交保存"
 									class="am-btn am-btn-primary am-btn-xs">
-								<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+							<a href="<%=basePath%>drink/selectByPrimaryKey.action?drink_id=${drink.drink_id}">	<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button></a>
 							</div>
 						</div>
 					</form>

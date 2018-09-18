@@ -16,32 +16,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</association>
 	</resultMap>
 
-	<select id="selectAll" resultMap="DrinkMap">
-		select * from drink a,drink_soft b where a.drink_soft_id=b.drink_soft_id;
+	<select id="selectDrink" resultMap="DrinkMap">
+		select 
+		*
+		from drink a,drink_soft b where a.drink_soft_id=b.drink_soft_id 
+		
 	</select>
 
 
 	<select id="selectByPrimaryKey" resultMap="DrinkMap">
 		select * from drink a,drink_soft b  
-		where  a.drink_soft_id=b.drink_soft_id and drink_id = #{drink_id,jdbcType=INTEGER};
+		where  a.drink_soft_id=b.drink_soft_id and drink_id = #{drink_id,jdbcType=INTEGER}
 	</select>
 
 <select id="selectByDrinkName" parameterType="java.lang.String" resultMap="DrinkMap">
 	select * from drink
 	a,drink_soft b
 	where a.drink_soft_id=b.drink_soft_id and drink_name =
-	#{drink_name,jdbcType=INTEGER};
+	#{drink_name,jdbcType=INTEGER}
 	</select>
 
 	<select id="selectBySoftId" parameterType="java.lang.Integer" resultMap="DrinkMap">
 		select * from drink a,drink_soft b 
-		where  a.drink_soft_id=b.drink_soft_id and a.drink_soft_id = #{drink_soft_id,jdbcType=INTEGER};
+		where  a.drink_soft_id=b.drink_soft_id and a.drink_soft_id = #{drink_soft_id,jdbcType=INTEGER} 
 		
 	</select>
 
-	<select id="selectByLike" parameterType="java.lang.String" resultMap="DrinkMap">
-		select * from drink a,drink_soft b 
-		where  a.drink_soft_id=b.drink_soft_id and drink_name like "%"#{blur,jdbcType=VARCHAR}"%";
+	<select id="selectByLike"  resultMap="DrinkMap">
+		select 
+		a.*
+		from drink a,drink_soft b where a.drink_soft_id=b.drink_soft_id 
+		<if test="blur!=null and blur!=''">
+		 and drink_name like "%"#{blur,jdbcType=VARCHAR}"%" 
+		 </if>
 		
 	</select>
 

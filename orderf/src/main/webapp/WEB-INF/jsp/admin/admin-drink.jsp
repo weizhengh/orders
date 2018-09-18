@@ -36,11 +36,14 @@
 						<div class="am-btn-group am-btn-group-xs">
 							<a href="<%=basePath%>drink/toInsert.action" type="button"
 								class="am-btn am-btn-default"><span class="am-icon-plus"></span>
-								新增</a> <a type="button" onclick="batchDeletes()" class="am-btn am-btn-default"><span
-								class="am-icon-trash-o"></span> 删除</a>
+								新增</a>
+								 <a type="button" onclick="batchDeletes()" class="am-btn am-btn-default">
+								 <span class="am-icon-trash-o"></span> 删除</a>
 						</div>
 						<script type="text/javascript">
 						function batchDeletes(){ 
+							
+							
 							//判断至少写了一项 
 							var checkedNum = $("input[name='subcheck']:checked").length; 
 							if(checkedNum==0){ 
@@ -92,7 +95,7 @@
 				<form action="selectByLike.action" method="post">
 					<div class="am-fr">
 						<div class="am-input-group am-input-group-sm">
-							<input type="text" class="am-form-field" name="blur"> <span
+							<input type="text" class="am-form-field" name="blur" onkeyup="this.value=this.value.replace(/\s+/g,'')"> <span
 								class="am-input-group-btn"> <input
 								class="am-btn am-btn-default" type="submit">搜索
 							</span>
@@ -107,8 +110,8 @@
 					<table class="am-table am-table-striped am-table-hover table-main" >
 						<thead>
 							<tr>
-								<th class="table-check"><input type="checkbox" /></th>
-								<th class="table-id">编号</th>
+								
+								<th class="table-title"></th>
 								<th class="table-title">名称</th>
 								<th class="table-title">价格</th>
 								<th class="table-title">备注</th>
@@ -122,7 +125,7 @@
 								<tr>
 									<td><input id="subcheck" name="subcheck"  type="checkbox"
 										value="${drink.drink_id}" /></td>
-									<td>${status.count}</td>
+									
 									<td>${drink.drink_name }</td>
 									<td>${drink.drink_price}</td>
 									<td ><div style="width: 100px; word-wrap:break-word;word-break:break-all;">${drink.drink_note}</div></td>
@@ -140,8 +143,7 @@
 
 													<span class="am-icon-pencil-square-o"></span> 编辑
 
-												</a> <a
-													href="<%=basePath%>drink/deleteone.action?drink_id=${drink.drink_id}">
+												</a> <a href="<%=basePath%>drink/deleteone.action?drink_id=${drink.drink_id}" onclick="return confirm('确定将此记录删除?')">
 
 													<span class="am-icon-pencil-square-o"></span> 删除
 
@@ -156,20 +158,105 @@
 
 						</tbody>
 					</table>
-					<div class="am-cf">
-						共 15 条记录
+					<c:if test="${status=='all'}">
+						<div class="am-cf">
+						共 ${pageInfo.pages} 条记录
 						<div class="am-fr">
 							<ul class="am-pagination">
-								<li class="am-disabled"><a href="#">«</a></li>
-								<li class="am-active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">»</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectAll.action?pn=1">首页</a></li>
+								<c:if test="${pageInfo.hasPreviousPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectAll.action?pn=${pageInfo.pageNum-1}">«</a></li>
+								</c:if>
+								<!--循环遍历连续显示的页面，若是当前页就高亮显示，并且没有链接-->
+								<c:forEach items="${pageInfo.navigatepageNums}" var="page_num">
+									<c:if test="${page_num == pageInfo.pageNum}">
+										<li class="am-active"><a href="#">${page_num}</a></li>
+									</c:if>
+									<c:if test="${page_num != pageInfo.pageNum}">
+										<li><a
+											href="${pageContext.request.contextPath}/drink/selectAll.action?pn=${page_num}">${page_num}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pageInfo.hasNextPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectAll.action?pn=${pageInfo.pageNum+1}">»</a></li>
+								</c:if>
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectAll.action?pn=${pageInfo.pages}">尾页</a></li>
 							</ul>
 						</div>
 					</div>
+					</c:if>
+					
+					
+						<c:if test="${status=='type'}">
+						<div class="am-cf">
+						共 ${pageInfo.total} 条记录
+						<div class="am-fr">
+							<ul class="am-pagination">
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectBySoftId.action?pn=1&&drink_soft_id=${drink_soft_id}">首页</a></li>
+								<c:if test="${pageInfo.hasPreviousPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectBySoftId.action?pn=${pageInfo.pageNum-1}&&drink_soft_id=${drink_soft_id}">«</a></li>
+								</c:if>
+								<!--循环遍历连续显示的页面，若是当前页就高亮显示，并且没有链接-->
+								<c:forEach items="${pageInfo.navigatepageNums}" var="page_num">
+									<c:if test="${page_num == pageInfo.pageNum}">
+										<li class="am-active"><a href="#">${page_num}</a></li>
+									</c:if>
+									<c:if test="${page_num != pageInfo.pageNum}">
+										<li><a
+											href="${pageContext.request.contextPath}/drink/selectBySoftId.action?pn=${page_num}&&drink_soft_id=${drink_soft_id}">${page_num}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pageInfo.hasNextPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectBySoftId.action?pn=${pageInfo.pageNum+1}&&drink_soft_id=${drink_soft_id}">»</a></li>
+								</c:if>
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectBySoftId.action?pn=${pageInfo.pages}&&drink_soft_id=${drink_soft_id}">尾页</a></li>
+							</ul>
+						</div>
+					</div>
+					</c:if>
+					
+					
+						<c:if test="${status=='blur'}">
+						<div class="am-cf">
+						共${pageInfo.total}条记录
+						<div class="am-fr">
+							<ul class="am-pagination">
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectByLike.action?pn=1&&blur=${blur} ">首页</a></li>
+								<c:if test="${pageInfo.hasPreviousPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectByLike.action?pn=${pageInfo.pageNum-1}&&blur=${blur}">«</a></li>
+								</c:if>
+								<!--循环遍历连续显示的页面，若是当前页就高亮显示，并且没有链接-->
+								<c:forEach items="${pageInfo.navigatepageNums}" var="page_num">
+									<c:if test="${page_num == pageInfo.pageNum}">
+										<li class="am-active"><a href="#">${page_num}</a></li>
+									</c:if>
+									<c:if test="${page_num != pageInfo.pageNum}">
+										<li><a
+											href="${pageContext.request.contextPath}/drink/selectByLike.action?pn=${page_num}&&blur=${blur}">${page_num}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${pageInfo.hasNextPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/drink/selectByLike.action?pn=${pageInfo.pageNum+1}&&blur=${blur}">»</a></li>
+								</c:if>
+								<li><a
+									href="${pageContext.request.contextPath}/drink/selectByLike.action?pn=${pageInfo.pages}&&blur=${blur}">尾页</a></li>
+							</ul>
+						</div>
+					</div>
+					</c:if>
+					
+					
 					<hr />
 					<p>注：.....</p>
 				</form>

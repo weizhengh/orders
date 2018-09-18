@@ -21,11 +21,11 @@ public class DrinkServiceImpl implements DrinkService {
 	/**
 	 * ȫ���ˮ
 	 */
-	public List<Drink> selectAll() {
+	public List<Drink> selectDrink() {
 
-		List<Drink> list = drinkDao.selectAll();
+	
 
-		return drinkDao.selectAll();
+		return drinkDao.selectDrink();
 	}
 
 	/**

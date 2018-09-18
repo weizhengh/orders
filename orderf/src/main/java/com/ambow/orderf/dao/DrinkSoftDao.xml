@@ -4,16 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ambow.orderf.dao.DrinkSoftDao">
 	
+	
 	<select id="selectAll" resultType="DrinkSoft">
-		select * from drink_soft;
+		select * from drink_soft
 	</select>
 	<select id="selectByPrimaryKey" resultType="DrinkSoft">
 		select * from drink_soft
-		where drink_soft_id = #{drink_soft_id,jdbcType=INTEGER};
+		where drink_soft_id = #{drink_soft_id,jdbcType=INTEGER}
 	</select>
 	<select id="selectByName" parameterType="java.lang.String" resultType="DrinkSoft">
 		select * from drink_soft
-		where drink_soft_name = #{drink_soft_name,jdbcType=INTEGER};
+		where drink_soft_name = #{drink_soft_name,jdbcType=INTEGER}
 	</select>
 	
 	 <insert id="insertSelective" parameterType="com.ambow.orderf.pojo.DrinkSoft">

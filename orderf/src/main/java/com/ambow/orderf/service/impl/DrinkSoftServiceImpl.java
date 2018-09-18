@@ -19,7 +19,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	private DrinkDao drinkDao;
 
 	/**
-	 * ȫ���ˮ���
+	 * 
 	 */
 	public List<DrinkSoft> selectAll() {
 	
@@ -29,7 +29,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 
 	/**
-	 * ��Ӿ�ˮ���
+	 * 
 	 */
 	public int insertSelective(DrinkSoft drinkSoft) {
 	
@@ -37,7 +37,7 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 	}
 	
 	/**
-	 * �޸ľ�ˮ���
+	 * 
 	 */
 
 	public int updateSelective(DrinkSoft drinkSoft) {

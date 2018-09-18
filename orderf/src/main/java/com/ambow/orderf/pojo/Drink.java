@@ -16,12 +16,12 @@ public class Drink implements java.io.Serializable {
 
 	private Integer drink_id; //Id
 	
-	private DrinkSoft drink_soft;  //������
+	private DrinkSoft drink_soft;  
 	
-	private String drink_picture; //ͼƬ
-	private String drink_note; //ע��
-	private String drink_name;  //����
-	private Float drink_price;  //�۸�
+	private String drink_picture; 
+	private String drink_note; 
+	private String drink_name;  
+	private Float drink_price;  
 	
 	private Set<OrderItem> order_items = new HashSet<OrderItem>(0);
 

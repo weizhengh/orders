@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +24,9 @@ import com.ambow.orderf.pojo.Drink;
 import com.ambow.orderf.pojo.DrinkSoft;
 import com.ambow.orderf.service.DrinkService;
 import com.ambow.orderf.service.DrinkSoftService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("/drink")
@@ -38,14 +42,31 @@ public class DrinkController {
 	 * @return
 	 */
 	@RequestMapping("/selectAll")
-	public String selectAll(Model mode) {
-		List<Drink> list = drinkService.selectAll();
-		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
-		mode.addAttribute("drinkSoft", drinkSofts);
+	public String selectAll(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn,Model mode) {
+//	
+		
+		PageHelper.startPage(pn,2);
+		List<Drink> list = drinkService.selectDrink();
+		
+		System.out.println(list.toString());
+	
+		PageInfo<Drink> pageInfo = new PageInfo<Drink>(list,5);
+		for (Drink evalute : list) {
+			System.out.println(evalute.toString());
+		}
+		mode.addAttribute("status", "all");
+		mode.addAttribute("pageInfo", pageInfo);
+		
 		mode.addAttribute("list", list);
 
+		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
+		mode.addAttribute("drinkSoft", drinkSofts);
 		return "admin/admin-drink";
+		
+		
+		
 	}
+
 	/**
 	 * 查重
 	 * @param mode
@@ -90,7 +111,7 @@ public class DrinkController {
 		System.out.println(drink_name);
 		
 		JSONObject jsonObject = new JSONObject();
-		List<Drink> list = drinkService.selectAll();
+		List<Drink> list = drinkService.selectDrink();
 		for (Drink drink : list) {
 			if(drink.getDrink_name().equals(drink_name)){
 				if(drink.getDrink_id()==id){continue;}
@@ -124,8 +145,10 @@ public class DrinkController {
 	@RequestMapping(value = "/insertSelective", method = RequestMethod.POST)
 	public String addDrink(Drink drink, MultipartFile multipartFile,
 			HttpServletRequest request) throws IOException {
-		System.out.println(drink.toString());
-
+		
+		System.out.println(multipartFile.getOriginalFilename()+1211);
+		if(multipartFile.getOriginalFilename()!=""){
+		
 		System.out.println(multipartFile + "-------------------------------");
 		// 获取文件名字
 
@@ -138,10 +161,11 @@ public class DrinkController {
 
 		System.out.println(originalFilename + "++++++++++++++++++++");
 		System.out.println(houFilename + "++-------********************");
+		
 		// 获取不会重复的毫秒数
 		long l = System.currentTimeMillis();
 		// 新名字
-		String newName = l + originalFilename;
+		String newName = l + houFilename;
 		System.out.println(newName + "----------++++++");
 		// 图片的输入流名字
 		InputStream inputStream = multipartFile.getInputStream();
@@ -191,6 +215,7 @@ public class DrinkController {
 		System.out.println(lsPath);
 
 		drink.setDrink_picture(ljPath);
+		}
 		drinkService.insertSelective(drink);
 
 		return "redirect:/drink/selectAll.action";
@@ -205,17 +230,47 @@ public class DrinkController {
 	 * @return
 	 */
 	@RequestMapping("/selectBySoftId")
-	public String selectBySoftId(Model mode, Integer drink_soft_id) {
-		
+	public String selectBySoftId(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn,Model mode, Integer drink_soft_id) {
+		PageHelper.startPage(pn,2);
 		List<Drink> list = drinkService.selectBySoftId(drink_soft_id);
-		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
+		
 		System.out.println(list.toString());
-		mode.addAttribute("drinkSoft", drinkSofts);
+	
+		PageInfo<Drink> pageInfo = new PageInfo<Drink>(list,5);
+		for (Drink evalute : list) {
+			System.out.println(evalute.toString());
+		}
+		mode.addAttribute("status", "type");
+		mode.addAttribute("pageInfo", pageInfo);
+		mode.addAttribute("drink_soft_id", drink_soft_id);
 		mode.addAttribute("list", list);
 
+		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
+		mode.addAttribute("drinkSoft", drinkSofts);
 		return "admin/admin-drink";
 	}
 
+	/**
+	 * 主页面分类查询
+	 * 
+	 * @param mode
+	 * @param drink_soft_id
+	 * @return
+	 */
+	@RequestMapping("/selectBySoftIdIndex")
+	public String selectBySoftIdIndex(@RequestParam(defaultValue="1")Integer drink_soft_id,Model mode) {
+	System.out.println(drink_soft_id);
+	List<Drink> list = drinkService.selectBySoftId(drink_soft_id);
+      System.out.println(list.toString());
+		mode.addAttribute("drink", list);
+
+		List<DrinkSoft> listsoft = drinkSoftService.selectAll();
+		
+		
+		mode.addAttribute("list", listsoft);
+	
+		return "order/index";
+	}
 	/**
 	 * 到新增页面
 	 * 
@@ -375,14 +430,23 @@ public class DrinkController {
 	 * @return
 	 */
 	@RequestMapping("/selectByLike")
-	public String selectByLike(Model model, String blur) {
-System.out.println(blur);
+	public String selectByLike(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn,Model model, String blur) {
+   
+    PageHelper.startPage(pn,2);
 		List<Drink> list=drinkService.selectByLike(blur);
 		List<DrinkSoft> drinkSofts = drinkSoftService.selectAll();
+		PageInfo<Drink> pageInfo = new PageInfo<Drink>(list,5);
+		for (Drink evalute : list) {
+			System.out.println(evalute.toString());
+		}
+		
+		model.addAttribute("pageInfo", pageInfo);
+		
 		System.out.println(list.toString());
+		model.addAttribute("blur", blur);
 		model.addAttribute("list", list);
 		model.addAttribute("drinksoft", drinkSofts);
-
+		model.addAttribute("status", "blur");
 		return "admin/admin-drink";
 	}
 

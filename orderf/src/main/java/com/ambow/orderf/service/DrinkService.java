@@ -12,15 +12,15 @@ import com.ambow.orderf.pojo.DrinkSoft;
  */
 public interface DrinkService {
 
-	List<Drink> selectAll();// ȫ���ˮ
+	List<Drink> selectDrink();
 
-	int insertSelective(Drink drink); // ��Ӿ�ˮ
+	int insertSelective(Drink drink);  
 
-	int updateSelective(Drink drink); // �޸ľ�ˮ
+	int updateSelective(Drink drink); 
 
-	int deleteByPrimaryKey(Integer drink_id); // ɾ����ˮ
+	int deleteByPrimaryKey(Integer drink_id); 
 
-	Drink selectByPrimaryKey(Integer drink_id); // ���� ��ˮ
+	Drink selectByPrimaryKey(Integer drink_id); 
 
 	List<Drink> selectBySoftId(Integer drink_soft_id); // 根据分类查询
 
