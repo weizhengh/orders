@@ -87,14 +87,19 @@
         <a class="am-cf" data-am-collapse="{parent: '#accordion',parent: '#accordion',target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navuser">
           <li><a href="<%=basePath%>emp/findAll.action"><span class="am-icon-table"></span> 员工信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 用户信息</a></li>
+          <li><a href="<%=basePath%>customer/findAllCustomer.action"><span class="am-icon-table"></span> 用户信息</a></li>
         </ul>
       </li>
        <li class="admin-parent am-panel-hd">
-        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrole'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrole'}"><span class="am-icon-file"></span> 角色管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navrole">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 权限分类</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜单分类</a></li>
+          <li><a href="<%=basePath%>role/findAllRole.action"><span class="am-icon-table"></span> 角色管理</a></li>
+        </ul>
+      </li>
+         <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrol'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navrol">
+          <li><a href="<%=basePath%>power/findAll.action"><span class="am-icon-table"></span> 权限管理</a></li>
         </ul>
       </li>
       <li class="admin-parent am-panel-hd">

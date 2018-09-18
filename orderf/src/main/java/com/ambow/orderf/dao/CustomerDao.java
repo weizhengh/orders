@@ -2,6 +2,8 @@ package com.ambow.orderf.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ambow.orderf.pojo.Customer;
 
 /**
@@ -18,9 +20,10 @@ public interface CustomerDao {
 
 	/**
 	 * 查询所有顾客
+	 * @param cust_name 
 	 * @return 封装所有顾客信息的集合
 	 * */
-	List<Customer> findAllCustomer();
+	List<Customer> findAllCustomer(@Param("cust_name") String cust_name);
 
 	/**
 	 * 根据顾客ID查询顾客信息

@@ -17,6 +17,8 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="<%=basePath%>css/amazeui.min.css"/>
   <link rel="stylesheet" href="<%=basePath%>css/admin.css">
+  <script src="<%=basePath%>js/jquery.js"></script>
+  <script src="<%=basePath%>js/bootstrap-modal.js"></script>
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -35,7 +37,7 @@
         <div class="am-fl am-cf">
           <div class="am-btn-toolbar am-fl">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button"  class="am-btn am-btn-default"><a href="<%=basePath%>url.action?url=admin/add-customer" class="am-icon-plus">新增</a></button>
+              <button type="button"  class="am-btn am-btn-default"><a href="<%=basePath%>url.action?url=admin/add-role" class="am-icon-plus">新增</a></button>
 <!--           <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
               <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button> -->
               <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
@@ -79,27 +81,22 @@
               <tr>
                 <th class="table-check"><input type="checkbox" /></th>
                 <th class="table-id">ID</th>
-                <th class="table-title">姓名</th>
-                <th class="table-type">电话</th>
-                <th class="table-author">密码</th>
-                <th class="table-date">积分</th>
+                <th class="table-title">名称</th>
                 <th class="table-set">操作</th>
               </tr>
           </thead>
           <tbody>
-          <c:forEach items="${custlist.list}" var="cust">
+          <c:forEach items="${roleList}" var="role">
             <tr>
               <td><input type="checkbox" /></td>
-              <td>${cust.cust_id}</td>
-              <td>${cust.cust_name}</td>
-              <td>${cust.cust_phone}</td>
-              <td>${cust.cust_password}</td>
-              <td>${cust.cust_grade}</td>
+              <td>${role.role_id}</td>
+              <td>${role.role_name}</td>
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<%=basePath%>customer/findById.action?custId=${cust.cust_id}" class="am-icon-pencil-square-o">编辑</a>
-                    <button onclick="deleteemp(${cust.cust_id})" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<%=basePath%>role/toUpdate.action?role_id=${role.role_id}&role_name=${role.role_name}">编辑</a>
+                    <button onclick="deleteemp(${role.role_id})" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                    <a href="<%=basePath%>role/findPowerByRole.action?roleId=${role.role_id}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span>查看权限</a>
                   </div>
                 </div>
               </td>
@@ -107,31 +104,37 @@
           </c:forEach>
          </tbody>
         </table>
-          <div class="am-cf">
-  共 ${custlist.total} 条记录
-  <div class="am-fr">
-    <ul class="am-pagination">
-      <li><a href="<%=basePath%>customer/findAllCustomer.action?page=1&cust_name=${cust_name}" >首页</a></li>
-      <li><a href="<%=basePath%>customer/findAllCustomer.action?page=${custlist.pageNum-1}&cust_name=${cust_name}" >«</a></li>
-        <c:forEach items="${custlist.navigatepageNums}" var="page_num">
-                        <c:if test="${page_num == custlist.pageNum}">
-                            <li class="am-active"><a href="#">${page_num}</a></li>
-                        </c:if>
-                        <c:if test="${page_num != custlist.pageNum}">
-                            <li><a href="<%=basePath%>customer/findAllCustomer.action?page=${page_num}&cust_name=${cust_name}">${page_num}</a></li>
-                        </c:if>
-                    </c:forEach>
-      <li><a href="<%=basePath%>customer/findAllCustomer.action?page=${custlist.pageNum+1}&cust_name=${cust_name}">»</a></li>
-      <li><a href="<%=basePath%>customer/findAllCustomer.action?page=${custlist.pages}&cust_name=${cust_name}">尾页</a></li>
-    </ul>
-  </div>
-</div>
-          <hr />
         </form>
       </div>
 
     </div>
   </div>
+  
+  <div id="addRole" class="modal hide fade in" style="display: none; ">
+ <div class="modal-dialog">
+        <div class="modal-content">
+        	
+        	
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+            
+            <div class="modal-body">
+            	 <div class="form-group">
+   				 <label for="exampleInputEmail1">名称</label>
+    			 <input type="email" style="width: 100%;" id="exampleInputEmail1" placeholder="名称">
+  			   	 </div>
+            </div>
+            
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
   <!-- content end -->
 <%@ include file="footer.jsp"%>
 
@@ -154,8 +157,8 @@
 function deleteemp(empid){
 	$.ajax({
 		type:"get",
-		url:"<%=basePath%>customer/deleteById.action",
-		data:{"custId":empid},
+		url:"<%=basePath%>role/delRole.action",
+		data:{"roleId":empid},
 		success:function(data){
 			if(date=="ok"){
 				alert("删除成功");

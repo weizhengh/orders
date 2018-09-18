@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze后台管理系统模板HTML 表格页面 - cssmoban</title>
+  <title>员工管理</title>
   <meta name="description" content="这是一个 table 页面">
   <meta name="keywords" content="table">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,7 +27,7 @@
   <div class="admin-content">
 
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表格</strong> / <small>Table</small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">员工管理</strong></div>
     </div>
 
     <div class="am-g">
@@ -35,35 +35,40 @@
         <div class="am-fl am-cf">
           <div class="am-btn-toolbar am-fl">
             <div class="am-btn-group am-btn-group-xs">
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-<!--               <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+              <button type="button"  class="am-btn am-btn-default"><a href="<%=basePath%>url.action?url=admin/add-emp" class="am-icon-plus">新增</a></button>
+<!--           <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
               <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button> -->
               <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
             </div>
 
             <div class="am-form-group am-margin-left am-fl">
-              <select name="roleId">
-                <option>--请选择--</option>
+              <select id="roleId" name="role_id"  onchange="findbyrole()">
+                <option value="">--请选择--</option>
               <c:forEach items="${ROLELIST}" var="role">
-                <option value="${role.role_id}">${role.role_name}</option>
+            	<c:if test="${roleId==role.role_id}">
+                <option selected="selected" value="${role.role_id}">${role.role_name}</option>
+                </c:if>
+                 <option value="${role.role_id}">${role.role_name}</option>
               </c:forEach>
               </select>
             </div>
           </div>
         </div>
       </div>
+       <form action="<%=basePath%>emp/findAll.action" method="get">
       <div class="am-u-md-3 am-cf">
         <div class="am-fr">
-        <form action="<%=basePath%>/emp/findAll.action" method="get">
+       
           <div class="am-input-group am-input-group-sm">
-            <input type="text" name="emp_name" class="am-form-field">
+            <input type="text" name="emp_name" class="am-form-field" value="${emp_name}">
                 <span class="am-input-group-btn">
-                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                  <input class="am-btn am-btn-default" type="submit" value="搜索">
                 </span>
           </div>
-          </form>
+     
         </div>
       </div>
+           </form>
     </div>
 
     <div class="am-g">
@@ -108,16 +113,16 @@
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy">
+                   <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<%=basePath%>emp/findById.action?empId=${emp.emp_id}" class="am-icon-pencil-square-o">编辑</a>
+                    
                     <c:if test="${emp.emp_state==1}">
-						辞退
+						<button onclick="updatestate(${emp.emp_id},2)" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy">辞退</span></button>
 					</c:if>
 					<c:if test="${emp.emp_state==2}">
-						上岗
+						<button onclick="updatestate(${emp.emp_id},1)" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy">上岗</span></button>
 					</c:if>
-                    </span></button>
-                    <button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                    
+                    <button onclick="deleteemp(${emp.emp_id},${empInfo.pageNum})" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
                   </div>
                 </div>
               </td>
@@ -129,11 +134,18 @@
   共 ${empInfo.total} 条记录
   <div class="am-fr">
     <ul class="am-pagination">
-      <li><a href="<%=basePath%>/emp/findAll.action?page=1">首页</a></li>
-      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pageNum-1}">«</a></li>
-      <li><a href="#">${empInfo.pageNum}</a></li>
-      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pageNum+1}">»</a></li>
-      <li><a href="<%=basePath%>/emp/findAll.action?page=${empInfo.pages}">尾页</a></li>
+      <li><a href="<%=basePath%>emp/findAll.action?page=1&role_id=${roleId}&emp_name=${emp_name}">首页</a></li>
+      <li><a href="<%=basePath%>emp/findAll.action?page=${empInfo.pageNum-1}&role_id=${roleId}&emp_name=${emp_name}">«</a></li>
+        <c:forEach items="${empInfo.navigatepageNums}" var="page_num">
+                        <c:if test="${page_num == empInfo.pageNum}">
+                            <li class="am-active"><a href="#">${page_num}</a></li>
+                        </c:if>
+                        <c:if test="${page_num != empInfo.pageNum}">
+                            <li><a href="<%=basePath%>emp/findAll.action?page=${page_num}&role_id=${roleId}&emp_name=${emp_name}">${page_num}</a></li>
+                        </c:if>
+                    </c:forEach>
+      <li><a href="<%=basePath%>emp/findAll.action?page=${empInfo.pageNum+1}&role_id=${roleId}&emp_name=${emp_name}">»</a></li>
+      <li><a href="<%=basePath%>emp/findAll.action?page=${empInfo.pages}&role_id=${roleId}&emp_name=${emp_name}">尾页</a></li>
     </ul>
   </div>
 </div>
@@ -159,6 +171,56 @@
 <script src="<%=basePath%>js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="<%=basePath%>js/app.js"></script>
+<script type="text/javascript">
+	function findbyrole(){
+		var id=$("#roleId").val();
+		window.location.href="<%=basePath%>emp/findAll.action?role_id="+id;
+		<%-- alert(id);
+		$.ajax({
+			type:"post",
+			url:"<%=basePath%>emp/findAll.action",
+			data:{"role_id":id}
+		}); --%>
+		
+	}
+	
+</script>
+<script type="text/javascript">
+function addEmp(){
+	window.loaction.href="<%=basePath%>url.action?url=admin/add-emp";
+}
+function deleteemp(empid,page){
+	$.ajax({
+		type:"get",
+		url:"<%=basePath%>emp/deleteById.action",
+		data:{"empId":empid,"page":page},
+		success:function(data){
+			if(date=="ok"){
+				alert("删除成功");
+				location.reload(true);
+			}else{
+				alert("删除失败");
+			}
+		}
+	});
+}
+
+function updatestate(empid,state){
+	$.ajax({
+		type:"get",
+		url:"<%=basePath%>emp/updateState.action",
+		data:{"emp_id":empid,"emp_state":state},
+		success:function(data){
+			if(data=="ok"){
+				alert("修改成功");
+				location.reload(true);
+			}else{
+				alert("修改失败");
+			}
+		}
+	});
+}
+</script>
 </body>
 </html>
 

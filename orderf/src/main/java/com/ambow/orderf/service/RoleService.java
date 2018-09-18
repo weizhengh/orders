@@ -32,4 +32,5 @@ public interface RoleService {
 	 * @return 捕捉dao层抛出的异常信息,有返回false,没有返回true
 	 * */
 	public boolean updateRole(Role role);
+
 }

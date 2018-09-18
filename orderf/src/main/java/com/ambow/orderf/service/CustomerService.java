@@ -18,9 +18,10 @@ public interface CustomerService {
 	
 	/**
 	 * 查询所有顾客
+	 * @param cust_name 用户名
 	 * @return 封装所有顾客信息的集合
 	 * */
-	public List<Customer> findAllCustomer();
+	public List<Customer> findAllCustomer(String cust_name);
 	
 	/**
 	 * 根据顾客ID查询顾客信息

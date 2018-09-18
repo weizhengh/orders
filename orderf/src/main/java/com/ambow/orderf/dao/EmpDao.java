@@ -2,6 +2,9 @@ package com.ambow.orderf.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.ambow.orderf.pojo.Emp;
 
 /**
@@ -21,7 +24,8 @@ public interface EmpDao {
 	 * @param emp_name 员工姓名
 	 * @return 查询出的所有员工的信息
 	 * */
-	List<Emp> findAllEmp(String emp_name);
+
+	List<Emp> findAllEmp(@Param("emp_name") String emp_name);
 
 	/**
 	 * 根据员工ID查询员工信息
@@ -47,5 +51,11 @@ public interface EmpDao {
 	 * @param emp 存放要修改的员工信息的实体
 	 * */
 	void updateEmp(Emp emp);
+
+	/**
+	 * 修改员工状态
+	 * @param emp 存放要修改的员工信息的实体
+	 * */
+	void updateState(Emp emp);
 
 }

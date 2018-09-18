@@ -35,7 +35,7 @@
   </filter-mapping>
   <welcome-file-list>
 
-    <welcome-file>/WEB-INF/jsp/order/index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/jsp/order/register.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>

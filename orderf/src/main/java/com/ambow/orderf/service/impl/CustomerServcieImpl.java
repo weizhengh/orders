@@ -26,9 +26,9 @@ public class CustomerServcieImpl implements CustomerService{
 		return customerInfo;
 	}
 
-	public List<Customer> findAllCustomer() {
+	public List<Customer> findAllCustomer(String cust_name) {
 		
-		List<Customer> list=customerDao.findAllCustomer();
+		List<Customer> list=customerDao.findAllCustomer(cust_name);
 		return list;
 	}
 

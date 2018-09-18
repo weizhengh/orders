@@ -26,11 +26,11 @@
  </select>
  
  <!-- 查询所有员工信息 -->
- <select id="findAllEmp" resultMap="EmpMap" parameterType="String">
+ <select id="findAllEmp" parameterType="emp" resultMap="EmpMap">
  	select * from emp 
- 	<if test="emp_name!=null">
- 	where emp_name like "%" #{emp_name} "%"
- 	</if>
+	 	<if test="emp_name != null">
+	 	 where 1= 1 and emp_name like "%"#{emp_name}"%"
+	 	</if>
  </select>
  
  <!-- 根据员工ID查询员工信息 -->
@@ -46,9 +46,9 @@
  <!-- 添加新员工  -->
  <insert id="addEmp" parameterType="Emp">
  	insert into emp(emp_name,emp_password,emp_login,
- 	emp_salary) 
+ 	emp_salary,emp_state) 
  	values(#{emp_name},#{emp_password},#{emp_login},
- 	#{emp_salary})
+ 	#{emp_salary},1)
  </insert>
  
  <!-- 根据员工ID修改员工信息 -->
@@ -62,5 +62,10 @@
 		emp_push=#{emp_push},
  	</set>
  	where emp_id=#{emp_id};
+ </update>
+ 
+ <!-- 修改员工状态 -->
+ <update id="updateState" parameterType="Emp">
+ 	update emp set emp_state=#{emp_state} where emp_id=#{emp_id}
  </update>
  </mapper>

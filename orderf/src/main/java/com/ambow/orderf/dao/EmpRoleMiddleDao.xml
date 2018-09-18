@@ -24,11 +24,12 @@
  
  <!-- 根据员工ID查找员工的角色  -->
  <select id="findRoleByEmpId" resultMap="EmpRoleMiddleMap" parameterType="Integer">
- 	select * from emp_role_middle m,role r where m.role_id=r.role_id and emp_id=#{emp_id};
+ 	select * from emp_role_middle m,role r where m.role_id=r.role_id and emp_id=#{emp_id}
  </select>
  
  <!-- 根据角色ID查找员工  -->
  <select id="findEmpByRoleId" resultMap="EmpRoleMiddleMap" parameterType="Integer">
- 	select * from emp_role_middle where role_id=#{role_id};
+ 	select * from emp_role_middle m,role r,emp e where m.role_id=r.role_id and 
+ 	m.emp_id=e.emp_id and m.role_id=#{role_id}
  </select>
  </mapper>

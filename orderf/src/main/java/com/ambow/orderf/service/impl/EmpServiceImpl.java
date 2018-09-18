@@ -25,7 +25,6 @@ public class EmpServiceImpl implements EmpService{
 	}
 
 	public List<Emp> findAllEmp(String emp_name) {
-		
 		List<Emp> list=empDao.findAllEmp(emp_name);
 		return list;
 	}
@@ -60,6 +59,17 @@ public class EmpServiceImpl implements EmpService{
 		
 		try {
 			empDao.updateEmp(emp);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateState(Emp emp) {
+
+		try {
+			empDao.updateState(emp);
 		} catch (Exception e) {
 			return false;
 		}

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ambow.orderf.pojo.Emp;
 import com.ambow.orderf.pojo.EmpRoleMiddle;
@@ -65,24 +66,28 @@ public class EmpController {
 		Emp emp=new Emp();
 		List<Role> roleList=roleService.findAllRole();
 		PageHelper.startPage(page, 5);
+		List<EmpRoleMiddle> ll=new ArrayList<EmpRoleMiddle>();
 		if(role_id==null){
 			list=empService.findAllEmp(emp_name);
+			
 		}else{
 			List<EmpRoleMiddle> middle=empRoleMiddleService.findEmpByRoleId(role_id);
 			for(EmpRoleMiddle m:middle){
-				List<EmpRoleMiddle> ll=new ArrayList<EmpRoleMiddle>();
 				emp=m.getEmp();
 				ll.add(m);
 				emp.setMiddleList(ll);
 				list.add(emp);
+				ll.clear();
 			}
 		}
 		PageInfo pageList=new PageInfo<>(list,5);
 		session.setAttribute("ROLELIST", roleList);
-		
 		model.addAttribute("empInfo", pageList);
-		return "/admin/admin-emp";
+		model.addAttribute("roleId", role_id);
+		model.addAttribute("emp_name", emp_name);
+		return "admin/admin-emp";
 	}
+	
 	
 	/**
 	 * 根据员工ID查询员工信息
@@ -96,7 +101,7 @@ public class EmpController {
 			return "error";
 		}else{
 			model.addAttribute("empInfo", emp);
-			return "findById";			
+			return "admin/update-emp";			
 		}
 	}
 	
@@ -105,12 +110,13 @@ public class EmpController {
 	 * @param empId 员工ID
 	 * */
 	@RequestMapping(value="/emp/deleteById.action",method=RequestMethod.GET)
-	public String deleteById(Integer empId){
+	@ResponseBody
+	public String deleteById(Integer empId,Integer page){
 		
 		if(empService.deleteById(empId)){
-			return "error";
+			return "ok";
 		}else{
-			return "redirect:emp/findAll";			
+			return "error";			
 		}
 	}
 	
@@ -119,12 +125,13 @@ public class EmpController {
 	 * @param emp 存放新员工信息的实体
 	 * */
 	@RequestMapping(value="/emp/addEmp.action",method=RequestMethod.POST)
+	@ResponseBody
 	public String addEmp(Emp emp){
 		
 		if(empService.addEmp(emp)){
-			return "error";
+			return "ok";
 		}else{
-			return "redirect:/emp/findAll";			
+			return "error";			
 		}
 	}
 	
@@ -132,7 +139,7 @@ public class EmpController {
 	 * 员工修改自己信息
 	 * @param emp 存放员工个人信息的实体
 	 * */
-	@RequestMapping(value="/emp/updateEmp.action",method=RequestMethod.POST)
+	@RequestMapping(value="/emp/updateself.action",method=RequestMethod.POST)
 	public String empupdateSelf(Emp emp){
 		
 		if(empService.updateEmp(emp)){
@@ -146,13 +153,31 @@ public class EmpController {
 	 * 管理员修改员工信息
 	 * @param emp 存放员工个人信息的实体
 	 * */
-	@RequestMapping(value="/emp/updateEmp.action",method=RequestMethod.GET)
+	@RequestMapping(value="/emp/updateEmp.action",method=RequestMethod.POST)
 	public String updateEmp(Emp emp){
 		
 		if(empService.updateEmp(emp)){
-			return "error";
+			return "redirect:/emp/findAll.action";
 		}else{
-			return "redirect:/emp/findAll";			
+			return "/admin/admin-404";			
+		}
+	}
+	
+	/**
+	 * 管理员修改员工状态
+	 * @param emp_id 员工ID
+	 * @param emp_state 员工状态
+	 * */
+	@RequestMapping(value="emp/updateState.action",method=RequestMethod.GET)
+	@ResponseBody
+	public String updateState(Integer emp_id,Integer emp_state){
+		Emp emp=new Emp();
+		emp.setEmp_id(emp_id);
+		emp.setEmp_state(emp_state);
+		if(empService.updateState(emp)){
+			return "ok";
+		}else{
+			return "error";			
 		}
 	}
 }

@@ -49,4 +49,11 @@ public interface EmpService {
 	 * @return 捕捉dao层抛出的异常信息,有返回false,没有返回true
 	 * */
 	public boolean updateEmp(Emp emp);
+	
+	/**
+	 * 修改员工状态
+	 * @param emp 存放要修改的员工信息
+	 * @return 捕捉dao层抛出的异常信息,有返回false,没有返回true
+	 * */
+	public boolean updateState(Emp emp);
 }

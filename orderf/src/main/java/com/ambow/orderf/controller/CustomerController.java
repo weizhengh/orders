@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ambow.orderf.pojo.Customer;
 import com.ambow.orderf.service.CustomerService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 /**
  * 顾客管理controller层
@@ -44,13 +48,19 @@ public class CustomerController {
 	/**
 	 * 后台管理员查询所有顾客信息
 	 * @param model 
+	 * @param page 当前页数
+	 * @param cusrt_name 用户名 
 	 * */
 	@RequestMapping(value="/customer/findAllCustomer.action",method=RequestMethod.GET)
-	public String findAllCustomer(Model model){
+	public String findAllCustomer(Model model,@RequestParam(defaultValue="1")Integer page,
+			String cust_name){
 		
-		List<Customer> list=customerService.findAllCustomer();
-		model.addAttribute("custlist", list);
-		return "findAllCustomer";
+		PageHelper.startPage(page, 5);
+		List<Customer> list=customerService.findAllCustomer(cust_name);
+		PageInfo pageList=new PageInfo<>(list,5);
+		model.addAttribute("custlist", pageList);
+		model.addAttribute("cust_name", cust_name);
+		return "/admin/admin-customer";
 	}
 	
 /* 
@@ -74,7 +84,7 @@ public class CustomerController {
 		
 		Customer customer=customerService.findById(custId);
 		model.addAttribute("customer", customer);
-		return "findCustById";
+		return "admin/update-customer";
 	}
 	
 	/**
@@ -98,11 +108,12 @@ public class CustomerController {
 	 * @param customer 存放新增顾客信息的实体
 	 * */
 	@RequestMapping(value="/customer/addCustomer.action",method=RequestMethod.POST)
+	@ResponseBody
 	public String addCustomer(Customer customer){
 		
 		if(customerService.addCustomer(customer)){
 			
-			return "redirect:/customer/findAllCustomer.action";
+			return "ok";
 		}else{
 			
 			return "error";
