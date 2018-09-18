@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.FoodDao">
+<resultMap type="Food" id="foodMap">
+
+   <id column="food_id" property="food_id"/>
+   <result column="food_name" property="food_name"/>
+   <result column="food_pirce" property="food_pirce"/>
+   <result column="food_picture" property="food_picture"/>
+    <result column="food_note" property="food_note"/>
+   <association property="food_soft" javaType="FoodSoft">
+   <id column="food_soft_id" property="food_soft_id"/>
+   <result column="food_soft_name" property="food_soft_name"/>
+   </association>
+   
+</resultMap>
+
+<select id="findAllfood"  resultMap="foodMap" >
+		select * from food,food_soft where food.food_soft_id=food_soft.food_soft_id
+	</select>
+	
+	
+	<delete id="deletefood" parameterType="Integer">
+	
+	DELETE FROM food WHERE food_id = #{fid}
+	
+	</delete>
+	
+	
+	
+	
+	
+	<insert id="addFood" parameterType="Food">
+		
+	insert into food(food_id,food_name,food_note,food_picture,food_pirce,food_soft_id)
+		
+			values (#{food_id},#{food_name},#{food_note},#{food_picture},#{food_pirce},#{food_soft.food_soft_id});
+    
+		
+		
+	</insert>
+	
+	
+	
+	<!-- 根据id查询信息 -->
+	<select id="findfoodByid"  resultMap="foodMap">
+	
+	select * from food a,food_soft b where  a.food_soft_id=b.food_soft_id and food_id = #{fid};
+	
+	</select>
+	
+	
+		
+  <update id="updatefood" parameterType="Food" >
+	
+	UPDATE food 
+	
+	<set>
+	
+	<if test="food_name != null">		
+	food_name = #{food_name},
+	</if>
+	<if test="food_picture != null">		
+	food_picture = #{food_picture},
+	</if>
+	<if test="food_note != null">		
+	food_note = #{food_note},
+	</if>
+	<if test="food_soft!= null">		
+	food_soft_id = #{food_soft.food_soft_id},
+	</if>
+	<if test="food_pirce != null">		
+	food_pirce = #{food_pirce},
+	</if>
+	
+	</set>
+	
+	WHERE food_id = #{food_id};
+	
+	</update>	
+	
+	
+	<select id="findmhfood" resultMap="foodMap" parameterType="Food">
+	
+	SELECT
+		food_id,
+		food_name,
+		food_note,
+		food_picture,
+		food_pirce,
+		a.food_soft_id
+	FROM
+		food a,
+		food_soft b
+	WHERE
+		a.food_soft_id = b.food_soft_id and a.food_name LIKE "%"#{food_name}"%"
+	
+	</select>
+	
+	
+	
+	<select id="selectByfoodId" parameterType="Integer" resultMap="foodMap">
+		select * from food a,food_soft b 
+		where  a.food_soft_id=b.food_soft_id and a.food_soft_id = #{food_soft_id}
+
+		
+	</select>
+	
+	
+	<select id="findFoodName" resultType="Integer" parameterType="String">
+	
+	 select food_id from food where food_name = #{food_name}
+	
+	</select>
+	
+	
+
+</mapper>

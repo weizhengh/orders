@@ -190,18 +190,13 @@
 					<li><img src="img/img19.jpg" alt=""><img src="img/img20.jpg" alt=""><img src="img/img21.jpg" alt=""><img src="img/img16.jpg" alt=""></li>
 				</ul>
 			</div>
-			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>再次购买</button><button onclick="evalute()">评1论</button></p>
+			<p>共<span>9</span>件，总价：<span>￥117.00</span><button>再次购买</button><button>评论</button></p>
 		</div>
 		
 	</article>
 
 </body>
+</html>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="js/swipe-min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript">
-	function evalute(order_id){
-		window.location.href="<%=basePath%>evalute/evalute.action";
-	}
-</script>
-</html>

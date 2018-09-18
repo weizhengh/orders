@@ -11,11 +11,55 @@ public class Stock implements java.io.Serializable {
 
 	private Integer stock_id;
 	private String stock_info;
-	private Float stock_peice;
+	private Float stock_price;
 	private Date stock_time;
+	private Integer stock_type;
+	private Emp emp_id;
 
 	public Stock() {
 	}
+	
+	
+
+	public Float getStock_price() {
+		return stock_price;
+	}
+
+
+
+	public void setStock_price(Float stock_price) {
+		this.stock_price = stock_price;
+	}
+
+
+
+	public Integer getStock_type() {
+		return stock_type;
+	}
+
+
+
+	public void setStock_type(Integer stock_type) {
+		this.stock_type = stock_type;
+	}
+
+
+
+	
+
+
+
+	public Emp getEmp_id() {
+		return emp_id;
+	}
+
+
+
+	public void setEmp_id(Emp emp_id) {
+		this.emp_id = emp_id;
+	}
+
+
 
 	public Integer getStock_id() {
 		return stock_id;
@@ -33,14 +77,7 @@ public class Stock implements java.io.Serializable {
 		this.stock_info = stock_info;
 	}
 
-	public Float getStock_peice() {
-		return stock_peice;
-	}
-
-	public void setStock_peice(Float stock_peice) {
-		this.stock_peice = stock_peice;
-	}
-
+	
 	public Date getStock_time() {
 		return stock_time;
 	}
@@ -49,12 +86,22 @@ public class Stock implements java.io.Serializable {
 		this.stock_time = stock_time;
 	}
 
-	@Override
-	public String toString() {
-		return "Stock [stock_id=" + stock_id + ", stock_info=" + stock_info
-				+ ", stock_peice=" + stock_peice + ", stock_time=" + stock_time
-				+ "]";
+
+
+	public Stock(Integer stock_id, String stock_info, Float stock_price,
+			Date stock_time, Integer stock_type, Emp emp_id) {
+		super();
+		this.stock_id = stock_id;
+		this.stock_info = stock_info;
+		this.stock_price = stock_price;
+		this.stock_time = stock_time;
+		this.stock_type = stock_type;
+		this.emp_id = emp_id;
 	}
 
+
+
+	
+	
 
 }

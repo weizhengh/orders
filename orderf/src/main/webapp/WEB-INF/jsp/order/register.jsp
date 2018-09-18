@@ -143,7 +143,7 @@
 	</article>
 
 </body>
+</html>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="js/swipe-min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-</html>

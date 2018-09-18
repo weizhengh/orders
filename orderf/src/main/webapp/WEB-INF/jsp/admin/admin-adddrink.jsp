@@ -1,20 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html class="no-js">
 <head>
 </head>
 <body>
-	<%@ include file="header.jsp"%>
-	<!-- content start -->
-	<div class="admin-content">
+<%@ include file="header.jsp"%>
+<!-- content start -->
+<div class="admin-content">
 
-		<div class="am-cf am-padding">
-			<div class="am-fl am-cf">
-				<strong class="am-text-primary am-text-lg">表单</strong> / <small>form</small>
-			</div>
-		</div>
+  <div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表单</strong> / <small>form</small></div>
+  </div>
 
 
 		<div class="am-tabs am-margin" data-am-tabs>
@@ -33,8 +31,8 @@
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">名称</div>
 								<div class="am-u-sm-4 am-u-end">
-									<input type="text" required="required" onkeyup="this.value=this.value.replace(/\s+/g,'')" id="name" maxlength="20"
-										class="am-input-sm" name="drink_name" onblur="save()">
+									<input type="text" required="required" maxlength="20"
+										class="am-input-sm" name="drink_name">
 								</div>
 							</div>
 
@@ -117,7 +115,7 @@
 							<div class="am-u-sm-2 am-text-right">备注</div>
 							<div class="am-u-sm-4 am-u-end">
 
-								<textarea onkeyup="this.value=this.value.replace(/\s+/g,'')" maxlength="50" rows="4" class="am-input-sm"
+								<textarea maxlength="50" rows="4" class="am-input-sm"
 									name="drink_note" required></textarea>
 
 							</div>
@@ -140,102 +138,25 @@
 						<div class="am-margin">
 							<input type="submit" value="提交保存"
 								class="am-btn am-btn-primary am-btn-xs">
-							<a href="<%=basePath%>drink/toInsert.action"><button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button></a>
+							<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
 						</div>
 					</form>
 				</c:if>
 
-				<script type="text/javascript">
-				function save(){
-					var name=document.getElementById("name").value;
-					
-				    $.ajax({
-				    	contentType: "application/x-www-form-urlencoded; charset=utf-8",
-				    	scriptCharset: 'utf-8',
-				        url : '${pageContext.request.contextPath }/drink/selectByDrinkName.action', 
-				        type : "POST",
-				        data:{"drink_name":name},
-				        
-				        success:function(jsonStr){
-				        	
-				        	if(jsonStr.message=="有"){
-				        		alert("已经存在，不能添加");
-				        		 window.location.href="<%=basePath%>drink/toInsert.action";
-									
-				        	
-										} 
-									},
-							    	error: function(XMLHttpRequest, textStatus, errorThrown) {
-							    	//alert(XMLHttpRequest.status); 
-							    		//alert(XMLHttpRequest.readyState); 
-							          //    alert(textStatus);        
-							    		
-    	},
-
-								});
-					}
-				</script>
-
-
-
 				<c:if test="${status=='update'}">
-					<form class="am-form" onsubmit="return update()"
-						action="updateSelective.action" method="post"
+					<form class="am-form" action="updateSelective.action" method="post"
 						enctype="multipart/form-data">
 
 						<div class="am-tab-panel am-fade" id="tab3">
 
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">名称</div>
-								<input type="hidden" id="id" value="${drink.drink_id}"
-									name="drink_id">
+								<input type="hidden" value="${drink.drink_id}" name="drink_id">
 								<div class="am-u-sm-4 am-u-end">
-									<input type="text" class="am-input-sm" id="name"
-										name="drink_name" onblur="update()" onkeyup="this.value=this.value.replace(/\s+/g,'')" value="${drink.drink_name}" maxlength="50"
-										required="required">
+									<input type="text" class="am-input-sm" name="drink_name"
+										value="${drink.drink_name}" required="required">
 								</div>
 							</div>
-							<script type="text/javascript">
-				function update(){
-					var name=document.getElementById("name").value;
-					var id=document.getElementById("id").value;
-					
-				    $.ajax({
-				    	contentType: "application/x-www-form-urlencoded; charset=utf-8",
-				    	scriptCharset: 'utf-8',
-				        url : '${pageContext.request.contextPath}/drink/selectupdateDrinkName.action', 
-				        type : "POST",
-				        data:{"drink_name":name,"id":id},
-				        
-				        success:function(jsonStr){
-				        	
-				        	//alert(jsonStr.message)
-				        	if(jsonStr.message=="没有"){
-				        		alert("已经存在，不能修改");
-				        		$("#but").attr("disabled", true);
-				        		 window.locaftion.href="<%=basePath%>drink/selectAll.action";
-													} else {
-														$("#but").attr("disabled",false);
-														return false;
-													}
-
-													return true;
-												},
-												error : function(
-														XMLHttpRequest,
-														textStatus, errorThrown) {
-													
-													
-													//    alert(textStatus);        
-
-												},
-
-											});
-								}
-							</script>
-
-
-
 
 
 							<div class="am-g am-margin-top-sm">
@@ -258,7 +179,7 @@
 										</div>
 										<div class="mark"></div>
 									</div>
-									<input type="file"
+								<input type="file"
 										accept="image/png, image/jpeg, image/gif, image/jpg"
 										id="picUpload" name="multipartFile" onchange="getImgURL(this)"
 										class="am-input-sm">
@@ -317,7 +238,7 @@
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">备注</div>
 								<div class="am-u-sm-4 am-u-end">
-									<textarea maxlength="50" onkeyup="this.value=this.value.replace(/\s+/g,'')" name="drink_note" rows="4"
+									<textarea maxlength="50" name="drink_note" rows="4"
 										required="required">${drink.drink_note }</textarea>
 								</div>
 							</div>
@@ -346,9 +267,9 @@
 							</div>
 
 							<div class="am-margin">
-								<input type="submit" id="but" value="提交保存"
+								<input type="submit" value="提交保存"
 									class="am-btn am-btn-primary am-btn-xs">
-							<a href="<%=basePath%>drink/selectByPrimaryKey.action?drink_id=${drink.drink_id}">	<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button></a>
+								<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
 							</div>
 						</div>
 					</form>

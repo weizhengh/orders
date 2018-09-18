@@ -86,27 +86,22 @@
       <li class="admin-parent am-panel-hd">
         <a class="am-cf" data-am-collapse="{parent: '#accordion',parent: '#accordion',target: '#collapse-navuser'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navuser">
-          <li><a href="<%=basePath%>emp/findAll.action"><span class="am-icon-table"></span> 员工信息</a></li>
-          <li><a href="<%=basePath%>customer/findAllCustomer.action"><span class="am-icon-table"></span> 用户信息</a></li>
+          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 员工信息</a></li>
+          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 用户信息</a></li>
         </ul>
       </li>
        <li class="admin-parent am-panel-hd">
-        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrole'}"><span class="am-icon-file"></span> 角色管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrole'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navrole">
-          <li><a href="<%=basePath%>role/findAllRole.action"><span class="am-icon-table"></span> 角色管理</a></li>
-        </ul>
-      </li>
-         <li class="admin-parent am-panel-hd">
-        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-navrol'}"><span class="am-icon-file"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-navrol">
-          <li><a href="<%=basePath%>power/findAll.action"><span class="am-icon-table"></span> 权限管理</a></li>
+          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 权限分类</a></li>
+          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜单分类</a></li>
         </ul>
       </li>
       <li class="admin-parent am-panel-hd">
         <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-nav3'}"><span class="am-icon-file"></span> 菜品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品信息</a></li>
-          <li><a href="<%=basePath%>url.action?url=admin/admin-table"><span class="am-icon-table"></span> 菜品分类</a></li>
+          <li><a href="<%=basePath%>findAllfood.action"><span class="am-icon-table"></span> 菜品信息</a></li>
+          <li><a href="<%=basePath%>findAllfoodsoft.action"><span class="am-icon-table"></span> 菜品分类</a></li>
         </ul>
       </li>
       <li class="admin-parent am-panel-hd">
@@ -117,10 +112,23 @@
 
         </ul>
       </li>
+
+      
+       <li class="admin-parent am-panel-hd">
+        <a class="am-cf" data-am-collapse="{parent: '#accordion',target: '#collapse-nav5'}"><span class="am-icon-file"></span> 财务管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav5">
+          <li><a href="<%=basePath%>findAllexchange.action"><span class="am-icon-table"></span> 交易查询</a></li>
+          <li><a href="<%=basePath%>findAllexpends.action"><span class="am-icon-table"></span>支出管理</a></li>
+          <li><a href="<%=basePath%>findTotal.action"><span class="am-icon-table"></span>月报统计</a></li>
+        </ul>
+      </li>
+
       <li><a href="<%=basePath%>evalute/selectAll.action"><span class="am-icon-pencil-square-o"></span> 评论管理</a></li>
-      <li><a href="<%=basePath%>bgo/bgostage.action"><span class="am-icon-pencil-square-o"></span> 菜单列表</a></li>
+      	      <li><a href="<%=basePath%>bgo/selectAllOrder.action"><span class="am-icon-pencil-square-o"></span> 菜单列表</a></li>
+      	      <li><a href="<%=basePath%>bgo/bgostage.action"><span class="am-icon-pencil-square-o"></span> 收银列表</a></li>
 <%--       <li><a href="<%=basePath%>url.action?url=admin/test"><span class="am-icon-pencil-square-o"></span> 图片</a></li>
  --%>      <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+
     </ul>
     </div>
 

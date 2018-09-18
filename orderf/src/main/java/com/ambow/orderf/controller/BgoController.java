@@ -37,7 +37,7 @@ public class BgoController {
 		//PageInfo<Order> pageInfo = new PageInfo<Order>(evaluteList,5);
 		//model.addAttribute("pageInfo", pageInfo);
 	}
-	@RequestMapping(value="/bgostage")
+	@RequestMapping(value="/selectAllOrder")
 	public void selectAllOrder(Model model){
 		List<OrderItem> orderFoodList = orderService.findOrderByCidOnFood(1);
 //		List<OrderItem> orderFoodList = orderService.findOrderByCidOnFood(1);

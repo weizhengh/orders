@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.StockDao">
+
+
+<resultMap type="Stock" id="stockMap">
+
+   <id column="stock_id" property="stock_id"/>
+   <result column="stock_info" property="stock_info"/>
+   <result column="stock_price" property="stock_price"/>
+   <result column="stock_time" property="stock_time"/>
+    <result column="stock_type" property="stock_type"/>
+   <association property="emp_id" javaType="Emp">
+   <id column="emp_id" property="emp_id"/>
+   <result column="emp_name" property="emp_name"/>
+   </association>
+   
+</resultMap>
+
+<select id="findAllstock"  resultMap="stockMap" parameterType="Stock">
+		select * from stock,emp where stock.emp_id=emp.emp_id
+		
+		
+		<if test="stock_type!=null">
+          AND stock_type =#{stock_type}
+          </if>
+		
+		
+	</select>
+	
+	
+	<insert id="addStocks" parameterType="stock">
+	
+	INSERT INTO stock (
+	stock_price,
+	stock_info,
+	stock_time,
+	emp_id,
+	stock_type
+    )
+    VALUES
+	(
+		#{stock_price},#{stock_info},#{stock_time},#{emp_id.emp_id},#{stock_type})
+	
+	</insert>
+
+<delete id="deletestocks" parameterType="Integer">
+	
+	DELETE FROM stock WHERE stock_id = #{sid}
+	
+	</delete>
+	
+	<!-- 根据id查询信息 -->
+	<select id="findstocksbyid"  resultMap="stockMap">
+	
+	select * from stock,emp where stock.emp_id=emp.emp_id and stock_id = #{sid};
+	
+	</select>
+	
+	
+	<select id="yearall" resultType="TotalType">
+	
+	 SELECT MON as paytype,SUM(temp) AS scount
+			FROM
+			(
+			SELECT SUBSTRING(order_time, 6, 2) AS mon,SUM(order_price) AS temp
+			FROM orders
+			WHERE SUBSTRING(order_time, 1, 4)='2018'
+			GROUP BY SUBSTRING(order_time, 6, 2)
+			UNION
+			SELECT '01' as mon,'0' as temp
+				union  
+			SELECT '02' as mon,'0' as temp
+				union  
+			SELECT '03' as mon,'0' as temp
+  				union  
+			SELECT '04' as mon,'0' as temp
+  				union  
+			SELECT '05' as mon,'0' as temp
+				union  
+			SELECT '06' as mon,'0' as temp
+  				union  
+			SELECT '07' as mon,'0' as temp
+				union  
+			SELECT '08' as mon,'0' as temp
+  				union  
+			SELECT '09' as mon,'0' as temp
+  				union  
+			SELECT '10' as mon,'0' as temp
+  				union  
+			SELECT '11' as mon,'0' as temp
+   				union  
+			SELECT '12' as mon,'0' as temp
+				)B
+					GROUP BY B.mon
+					ORDER BY B.MON 
+	
+	</select>
+	
+	
+	<select id="yearout" resultType="TotalType">
+	
+	 SELECT MON as paytype,SUM(temp) AS scount
+			FROM
+			(
+			SELECT SUBSTRING(stock_time, 6, 2) AS mon,SUM(stock_price) AS temp
+			FROM stock
+			WHERE SUBSTRING(stock_time, 1, 4)='2018'
+			GROUP BY SUBSTRING(stock_time, 6, 2)
+			UNION
+			SELECT '01' as mon,'0' as temp
+				union  
+			SELECT '02' as mon,'0' as temp
+				union  
+			SELECT '03' as mon,'0' as temp
+  				union  
+			SELECT '04' as mon,'0' as temp
+  				union  
+			SELECT '05' as mon,'0' as temp
+				union  
+			SELECT '06' as mon,'0' as temp
+  				union  
+			SELECT '07' as mon,'0' as temp
+				union  
+			SELECT '08' as mon,'0' as temp
+  				union  
+			SELECT '09' as mon,'0' as temp
+  				union  
+			SELECT '10' as mon,'0' as temp
+  				union  
+			SELECT '11' as mon,'0' as temp
+   				union  
+			SELECT '12' as mon,'0' as temp
+				)B
+					GROUP BY B.mon
+					ORDER BY B.MON 
+	
+	</select>
+	
+	
+	<select id="income" resultType="String">
+        SELECT
+	SUM(order_price)
+FROM
+	orders
+WHERE
+	YEAR (order_time) = YEAR (now())
+AND MONTH (order_time) = MONTH (now())
+AND DAY (order_time) = DAY (now())
+       </select>
+       
+       <select id="outcome" resultType="String">
+       SELECT
+	SUM(stock_price)
+FROM
+	stock
+WHERE
+	YEAR (stock_time) = YEAR (now())
+AND MONTH (stock_time) = MONTH (now())
+AND DAY (stock_time) = DAY (now())
+       </select>
+       
+
+</mapper>

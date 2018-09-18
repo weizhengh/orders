@@ -1,45 +1,40 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() 
+	                   + ":" + request.getServerPort() + path + "/";
 %>
 <!doctype html>
 <html>
 <head>
-
-
 <!-- 声明文档使用的字符编码 -->
 <meta charset='utf-8'>
-
 <!-- 优先使用 IE 最新版本和 Chrome -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <!-- 页面描述 -->
-<meta name="description" content="不超过150个字符" />
+<meta name="description" content="不超过150个字符"/>
 <!-- 页面关键词 -->
-<meta name="keywords" content="" />
+<meta name="keywords" content=""/>
 <!-- 网页作者 -->
-<meta name="author" content="guo,1057540638@qq.com" />
+<meta name="author" content="guo,1057540638@qq.com"/>
 <!-- 搜索引擎抓取 -->
-<meta name="robots" content="index,follow" />
+<meta name="robots" content="index,follow"/>
 <!-- 为移动设备添加 viewport -->
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0,maximum-scale=3,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densityDpi=medium-dpi, minimal-ui" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=3,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densityDpi=medium-dpi, minimal-ui" />
 <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
 
 <!-- iOS 设备 begin -->
 <meta name="apple-mobile-web-app-title" content="标题">
 <!-- 添加到主屏后的标题（iOS 6 新增） -->
-<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
 <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
 
 <!--meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL" -->
 <!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 <!-- 设置苹果工具栏颜色 -->
-<meta name="format-detection" content="telphone=no, email=no" />
+<meta name="format-detection" content="telphone=no, email=no"/>
 <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
 
 <!-- 启用360浏览器的极速模式(webkit) -->
@@ -67,60 +62,41 @@
 <!-- windows phone 点击无高光 -->
 <meta name="msapplication-tap-highlight" content="no">
 <!-- iOS 图标 begin -->
-<link rel="apple-touch-icon-precomposed"
-	href="/apple-touch-icon-57x57-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
 <!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="/apple-touch-icon-114x114-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png"/>
 <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="/apple-touch-icon-144x144-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png"/>
 <!-- Retina iPad，144x144 像素，可以没有，但推荐有 -->
 <!-- iOS 图标 end -->
 
 <!-- iOS 启动画面 begin -->
-
-<link rel="apple-touch-startup-image" sizes="768x1004" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="768x1004" href="img/App-ios-logo-152x152.png"/>
 <!-- iPad 竖屏 768 x 1004（标准分辨率） -->
-
-<link rel="apple-touch-startup-image" sizes="1536x2008" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="1536x2008" href="img/App-ios-logo-152x152.png"/>
 <!-- iPad 竖屏 1536x2008（Retina） -->
-
-<link rel="apple-touch-startup-image" sizes="1024x748" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="1024x748" href="img/App-ios-logo-152x152.png"/>
 <!-- iPad 横屏 1024x748（标准分辨率） -->
-
-<link rel="apple-touch-startup-image" sizes="2048x1496" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="2048x1496" href="img/App-ios-logo-152x152.png"/>
 <!-- iPad 横屏 2048x1496（Retina） -->
 
-
-<link rel="apple-touch-startup-image" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" href="img/App-ios-logo-152x152.png"/>
 <!-- iPhone/iPod Touch 竖屏 320x480 (标准分辨率) -->
-
-<link rel="apple-touch-startup-image" sizes="640x960" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="640x960" href="img/App-ios-logo-152x152.png"/>
 <!-- iPhone/iPod Touch 竖屏 640x960 (Retina) -->
-
-<link rel="apple-touch-startup-image" sizes="640x1136" href="<%=basePath%>img/App-ios-logo-152x152.png"/>
-
+<link rel="apple-touch-startup-image" sizes="640x1136" href="img/App-ios-logo-152x152.png"/>
 <!-- iPhone 5/iPod Touch 5 竖屏 640x1136 (Retina) -->
 <!-- iOS 启动画面 end -->
 
 <!-- iOS 设备 end -->
-<meta name="msapplication-TileColor" content="#000" />
+<meta name="msapplication-TileColor" content="#000"/>
 <!-- Windows 8 磁贴颜色 -->
-<meta name="msapplication-TileImage" content="icon.png" />
+<meta name="msapplication-TileImage" content="icon.png"/>
 <!-- Windows 8 磁贴图标 -->
 
-
-<link rel="alternate" type="application/rss+xml" title="RSS" href="<%=basePath%>/rss.xml"/>
-
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"/>
 <!-- 添加 RSS 订阅 -->
-<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+<link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
 <!-- 添加 favicon icon -->
 <!-- sns 社交标签 begin -->
 <!-- 参考微博API -->
@@ -131,14 +107,12 @@
 <meta property="og:description" content="描述" />
 <!-- sns 社交标签 end -->
 <title>首页</title>
-
-<link rel="stylesheet" href="<%=basePath%>css/common.css">
-<link rel="stylesheet" href="<%=basePath%>css/font.css">
-<link rel="stylesheet" href="<%=basePath%>css/header.css">
-<link rel="stylesheet" href="<%=basePath%>css/footer.css">
-<link rel="stylesheet" href="<%=basePath%>css/index.css">
-<link rel="stylesheet" href="<%=basePath%>css/responsive.css">
-
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body ontouchstart="return true;">
@@ -146,11 +120,9 @@
 	<!--头部-->
 	<header class="search" id="search">
 		<div class="header">
-
-			<h1><img src="<%=basePath%>img/logo.png"></h1>
+			<h1><img src="img/logo.png"></h1>
 			<div class="search-box" id="search-box"><i class="icon-sousuo"></i><input type="search" id="search-input" class="" placeholder="搜索商品" /><button id="search-cancel">取消</button><button id="search-submit">搜索</button></div>
 			<div class="head-delivery head-r" id="Delivery"><i class="icon-address"></i><span id="head-delivery">选择配送点</span></div>
-
 		</div>
 		<!--通知公告/客服电话-->
 	</header>
@@ -162,53 +134,46 @@
 
 	<!--内容区-->
 	<article class="main-container">
-
+		
 		<!--左侧栏目-->
 		<div class="sortNav" id="sortNav">
 			<a href="#" class="icon-stars ">活动专区</a>
 			<p class="icon-sort line">分类导航</p>
 			<a href="#">蔬菜水果</a>
-			 <a href="#" class="select">肉类禽蛋</a> 
-			 <a href="#">乳品面点</a>
-			<a href="#">海鲜水产</a> 
-			<a href="#">零食冲饮</a> 
-			<a href="#">粮油副食</a> <a
-				href="#">干 货</a> 
-				<a href="#">礼 包</a>
-				 <a href="#">乳品面点</a> 
-				<a href="#">海鲜水产</a>
-				 <a href="#">零食冲饮</a> 
-				 <a href="#">粮油副食1</a>
-				<c:forEach items="${list}" var="soft">
-				 <a href="<%=basePath%>drink/selectBySoftIdIndex.action?drink_soft_id=${soft.drink_soft_id}">${soft.drink_soft_name}</a>
-				</c:forEach>
+			<a href="#" class="select">肉类禽蛋</a>
+			<a href="#">乳品面点</a>
+			<a href="#">海鲜水产</a>
+			<a href="#">零食冲饮</a>
+			<a href="#">粮油副食</a>
+			<a href="#">干    货</a>
+			<a href="#">礼    包</a>
+			<a href="#">乳品面点</a>
+			<a href="#">海鲜水产</a>
+			<a href="#">零食冲饮</a>
+			<a href="#">粮油副食1</a>
 		</div>
-
+		
 		<!--右侧产品-->
 		<div class="sortContent line">
 			<!--活动列表-->
 			<div class="Activity" style="display: none;">
 				<ul>
-					<li><img src="<%=basePath%>img/slide01.webp" alt=""></li>
-					<li><img src="<%=basePath%>img/slide02.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide03.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide04.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide05.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide06.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide07.jpg" alt=""></li>
-					<li><img src="<%=basePath%>img/slide08.jpg" alt=""></li>
+					<li><img src="img/slide01.webp" alt=""></li>
+					<li><img src="img/slide02.jpg" alt=""></li>
+					<li><img src="img/slide03.jpg" alt=""></li>
+					<li><img src="img/slide04.jpg" alt=""></li>
+					<li><img src="img/slide05.jpg" alt=""></li>
+					<li><img src="img/slide06.jpg" alt=""></li>
+					<li><img src="img/slide07.jpg" alt=""></li>
+					<li><img src="img/slide08.jpg" alt=""></li>
 				</ul>
 			</div>
 			<!--产品列表-->
-
 			<ol class="list-content" id="list-content" style="display: ;">
-			
-			<c:forEach items="${drink}" var="drink">
 				<li class="line">
-				
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>${drink.drink_picture}" alt=""></div>
-						<div class="pro-con"><h3>${drink.drink_name }</h3><b>¥${drink.drink_price }</b><p>${drink.drink_soft.drink_soft_name}</p></div>
+						<div class="pro-img"><img src="img/img03.jpg" alt=""></div>
+						<div class="pro-con"><h3>家乐都有机里脊肉 500g</h3><b>¥150.00</b><p>乐果派旗舰店</p></div>
 					</a>
 					<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					
@@ -217,227 +182,190 @@
 						
 						<div class="LayerHeader">
 							<button class="button"><span class="close"><i class="icon-plus rot45"></i></span></button>
-
 						</div>
-						<div class="pro-con">
-							<h3>家乐都有机里脊肉 500g</h3>
-							<b>¥150.00</b>
-							<p>乐果派旗舰店</p>
-						</div>
-				</a>
-					<div class="D-BuyNum">
-						<button>
-							<i class="icon-reduce"></i>
-						</button>
-						<input type="number" class="line" value="9">
-						<button>
-							<i class="icon-plus"></i>
-						</button>
-					</div> <!--产品介绍-->
-					<div class="DetailContent fadeInBottom100" id="DetailContent">
-
-						<div class="LayerHeader">
-							<button class="button">
-								<span class="close"><i class="icon-plus rot45"></i></span>
-							</button>
-						</div>
-
+						
 						<div class="DetailContentBox">
-
 			
-							<div class="D-slide"><img src="<%=basePath%>img/pro01.jpg" alt=""></div>
+							<div class="D-slide"><img src="img/pro01.jpg" alt=""></div>
 					
-
 							<!--标题-->
 							<div class="D-head line">
 								<h2>天然牧草养殖冷鲜 内蒙古呼伦贝尔优质牛后腿肉1000g</h2>
 								<font>365天纯生态放养 肉质细腻紧实 品质高</font>
 							</div>
-
+							
 							<div class="D-pro-content line">
-
-								<img src="<%=basePath%>img/Pic02.jpg" alt="">
-								<img src="<%=basePath%>img/Pic03.jpg" alt="">
-								<img src="<%=basePath%>img/Pic04.jpg" alt="">
-								<img src="<%=basePath%>img/Pic05.jpg" alt="">
-								<img src="<%=basePath%>img/Pic06.jpg" alt="">
-								<img src="<%=basePath%>img/Pic07.jpg" alt="">
-								<img src="<%=basePath%>img/Pic08.jpg" alt="">
-								<img src="<%=basePath%>img/Pic09.jpg" alt="">
-								<img src="<%=basePath%>img/Pic10.jpg" alt="">
-								<img src="<%=basePath%>img/Pic11.jpg" alt="">
-								<img src="<%=basePath%>img/Pic12.jpg" alt="">
-								<img src="<%=basePath%>img/Pic13.jpg" alt="">
-								<img src="<%=basePath%>img/Pic14.jpg" alt="">
-								<img src="<%=basePath%>img/Pic15.jpg" alt="">
-								<img src="<%=basePath%>img/Pic16.jpg" alt="">
-								<img src="<%=basePath%>img/Pic17.jpg" alt="">
-								<img src="<%=basePath%>img/Pic18.jpg" alt="">
-								<img src="<%=basePath%>img/Pic19.jpg" alt="">
-								<img src="<%=basePath%>img/Pic20.jpg" alt="">
-								<img src="<%=basePath%>img/Pic21.jpg" alt="">
-								<img src="<%=basePath%>img/Pic22.jpg" alt="">
-								<img src="<%=basePath%>img/Pic23.jpg" alt="">
-								<img src="<%=basePath%>img/Pic24.jpg" alt="">
-								<img src="<%=basePath%>img/Pic25.jpg" alt="">
-								<img src="<%=basePath%>img/Pic26.jpg" alt="">
-								<img src="<%=basePath%>img/Pic27.jpg" alt="">
-
+								<img src="img/Pic02.jpg" alt="">
+								<img src="img/Pic03.jpg" alt="">
+								<img src="img/Pic04.jpg" alt="">
+								<img src="img/Pic05.jpg" alt="">
+								<img src="img/Pic06.jpg" alt="">
+								<img src="img/Pic07.jpg" alt="">
+								<img src="img/Pic08.jpg" alt="">
+								<img src="img/Pic09.jpg" alt="">
+								<img src="img/Pic10.jpg" alt="">
+								<img src="img/Pic11.jpg" alt="">
+								<img src="img/Pic12.jpg" alt="">
+								<img src="img/Pic13.jpg" alt="">
+								<img src="img/Pic14.jpg" alt="">
+								<img src="img/Pic15.jpg" alt="">
+								<img src="img/Pic16.jpg" alt="">
+								<img src="img/Pic17.jpg" alt="">
+								<img src="img/Pic18.jpg" alt="">
+								<img src="img/Pic19.jpg" alt="">
+								<img src="img/Pic20.jpg" alt="">
+								<img src="img/Pic21.jpg" alt="">
+								<img src="img/Pic22.jpg" alt="">
+								<img src="img/Pic23.jpg" alt="">
+								<img src="img/Pic24.jpg" alt="">
+								<img src="img/Pic25.jpg" alt="">
+								<img src="img/Pic26.jpg" alt="">
+								<img src="img/Pic27.jpg" alt="">
 							</div>
 						</div>
-
+						
 						<div class="LayerFooter">
 							价格：<span>¥9999.59</span>
 							<button>加入购物车</button>
 						</div>
-
 						
 					</div>
 					
 				</li>
-				</c:forEach>
-				
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img25.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img25.jpg" alt=""></div>
 						<div class="pro-con"><h3>法国猪肋排 1kg/袋</h3><font>瘦肉多，绝对超值精排 </font><b>¥35.80</b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img05.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img05.jpg" alt=""></div>
 						<div class="pro-con"><h3>乌拉圭进口（无骨）牛肋条 约1kg</h3><font>BTV推荐，全网独家热销</font><b>¥59.80</b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img12.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img12.jpg" alt=""></div>
 						<div class="pro-con"><h3>智利肋排脆骨 1kg/袋</h3><b>¥56.60</b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img28.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img28.jpg" alt=""></div>
 						<div class="pro-con"><h3>温氏 农养鸡 袋装 （800g）</h3><b>¥38.80</b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img29.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img29.jpg" alt=""></div>
 						<div class="pro-con"><h3>江西萍乡土鸡蛋</h3><font>林地散养，原粮喂养，蛋黄大，蛋清粘稠</font><b>¥12.80</b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img30.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img30.jpg" alt=""></div>
 						<div class="pro-con"><h3>台湾皮蛋，松花蛋</h3><font></font><b>¥28.00<s>¥31.90</s></b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img07.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img07.jpg" alt=""></div>
 						<div class="pro-con"><h3>萍乡土鸡蛋</h3><font></font><b>¥28.00<s>¥31.90</s></b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img16.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img16.jpg" alt=""></div>
 						<div class="pro-con"><h3>新鲜猪肉</h3><font></font><b>¥28.00<s>¥31.90</s></b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
 				<li class="line">
 					<a href="#">
-						<div class="pro-img"><img src="<%=basePath%>img/img27.jpg" alt=""></div>
+						<div class="pro-img"><img src="img/img27.jpg" alt=""></div>
 						<div class="pro-con"><h3>鸡肉</h3><font></font><b>¥28.00<s>¥31.90</s></b><p>乐果派旗舰店</p></div>
 					</a>
 					<a href="#" class="list-cart"><i class="icon-cartadd"></i></a>
 				</li>
-
 			</ol>
-			<br> <br>
+			<br><br>
 		</div>
-
+		
 		<!--购物车-->
 		<div class="cartContent fadeInBottom100" id="cartContent">
-
+			
 			<div class="LayerHeader line">
-				<button class="Del">
-					<i class="icon-delete"></i>清空
-				</button>
-				<button class="close pl">
-					<i class="icon-plus rot45"></i>
-				</button>
+				<button class="Del"><i class="icon-delete"></i>清空</button>
+				<button class="close pl"><i class="icon-plus rot45"></i></button>
 			</div>
-
+			
 			<div class="cartContentList">
 				<ul class="line-li">
-
 					<li>
-						<img src="<%=basePath%>img/img01.jpg" alt=""><p>家乐都有机里脊肉 500g</p><span>¥150.00</span>
+						<img src="img/img01.jpg" alt=""><p>家乐都有机里脊肉 500g</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img02.jpg" alt=""><p>法国猪肋排 1kg/袋</p><span>¥150.00</span>
+						<img src="img/img02.jpg" alt=""><p>法国猪肋排 1kg/袋</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img03.jpg" alt=""><p>乌拉圭进口（无骨）牛肋条 约1kg</p><span>¥150.00</span>
+						<img src="img/img03.jpg" alt=""><p>乌拉圭进口（无骨）牛肋条 约1kg</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img04.jpg" alt=""><p>智利肋排脆骨 1kg/袋</p><span>¥150.00</span>
+						<img src="img/img04.jpg" alt=""><p>智利肋排脆骨 1kg/袋</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img05.jpg" alt=""><p>温氏 农养鸡 袋装 （800g）</p><span>¥150.00</span>
+						<img src="img/img05.jpg" alt=""><p>温氏 农养鸡 袋装 （800g）</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img06.jpg" alt=""><p>江西萍乡土鸡蛋</p><span>¥150.00</span>
+						<img src="img/img06.jpg" alt=""><p>江西萍乡土鸡蛋</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img07.jpg" alt=""><p>台湾皮蛋，松花蛋</p><span>¥150.00</span>
+						<img src="img/img07.jpg" alt=""><p>台湾皮蛋，松花蛋</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img08.jpg" alt=""><p>萍乡土鸡蛋</p><span>¥150.00</span>
+						<img src="img/img08.jpg" alt=""><p>萍乡土鸡蛋</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img09.jpg" alt=""><p>新鲜猪肉</p><span>¥150.00</span>
+						<img src="img/img09.jpg" alt=""><p>新鲜猪肉</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 					<li>
-						<img src="<%=basePath%>img/img10.jpg" alt=""><p>鸡肉</p><span>¥150.00</span>
+						<img src="img/img10.jpg" alt=""><p>鸡肉</p><span>¥150.00</span>
 						<div class="D-BuyNum"><button><i class="icon-reduce"></i></button><input type="number" class="line" value="9"><button><i class="icon-plus"></i></button></div>
 					</li>
 		
-
 				</ul>
 			</div>
-
+			
 			<div class="LayerFooter">
 				共计：<span>¥9999.59</span>
 			</div>
 		</div>
 
+		
 
-
-
+		
 		<!--配送点-->
 		<div class="DeliveryContent fadeInBottom100" id="DeliveryContent">
 
 			<div class="FilterContentList">
-
+		
 				<p>天河区</p>
 				<ul>
 					<li><span class="select icon-correct">华景新城</span></li>
@@ -472,19 +400,15 @@
 					<li><span>丽江花园</span></li>
 					<li><span>祈福新邨</span></li>
 				</ul>
-
+	
 			</div>
-
+			
 		</div>
-
-
 		<!--配送点范围-->
 		<div class="DeliverysContent fadeInBottom100" id="DeliverysContent">
 			<div class="LayerHeader">
 				<font class="icon-address"></font>华景新城 <span>配送小区范围</span>
-				<button class="close pl">
-					<i class="icon-plus rot45"></i>
-				</button>
+				<button class="close pl"><i class="icon-plus rot45"></i></button>
 			</div>
 			<div class="DeliverysContentBox">
 				<span>天湖居</span><span>翠湖居</span><span>绿怡居</span><span>翠怡居</span><span>青怡居</span><span>康怡居</span><span>蝶舞居</span><span>海晴居</span><span>山泉居</span><span>湖景居</span><span>迎风阁</span><span>月明轩</span><span>依湖湾</span><span>晋福楼</span><span>晓峰园</span><span>祈福新村</span><span>康怡雅园</span><span>绿怡花园</span><span>祈福名都</span><span>湖畔豪庭</span><span>祈福酒店</span><span>富豪山庄</span><span>活力花园</span><span>金山谷花园</span><span>锦绣生态园</span><span>南国奥林匹克花园(南国奥园)</span>
@@ -499,79 +423,23 @@
 
 	</article>
 
-<div class="cartContent fadeInBottom100" id="cartContent">
-
-		
-
-			<div class="cartContentList">
-				<ul class="line-li">
-				
-					<li><img src="img/img09.jpg" alt="">
-						<p>结账</p> 
-						</li>
-					<li><img src="img/img10.jpg" alt="">
-						<p>点餐</p> <span>¥150.00</span>
-					</li>
-
-				</ul>
-			</div>
-
-			
-		</div>
-
-
-
+	<!--底部栏目-->
 	<menu>
-	<%-- href="<%=basePath%>speak/speakwaiter.action?table=2" --%>
-	
-		<a id="waiter"><i class="icon-tel"></i>
-		
-		<select id="waiter" onchange="waiterChange()" style="background:transparent;border:0; color:white;" name="thing">
-		
-		<option style="border:0;background:#304853;" value="0">呼叫</option>
-		<option style="border:0;background:#304853;"  value="1">点餐</option>
-		<option style="border:0;background:#304853;"  value="2">结账</option>
-		<option style="border:0;background:#304853;"  value="3">纸巾</option>
-		</select>
-		</a>
-		
-		<a href="<%=basePath%>evalute/selectAllqian.action"><i class="icon-allorders"></i>评论</a>
-		
+		<a href="tel:18507996886"><i class="icon-tel"></i>电话</a>
+		<a href="member-order.html"><i class="icon-allorders"></i>订单</a>
 		<a href="javascript:void(0)" id="orderCart"><i class="icon-cart"><span>2</span></i>购物车</a>
 		<a href="member.html"><i class="icon-head"></i>我的</a>
 		<a><button onclick="location.href='order.html'">去结算</button></a>
 	</menu>
 	
-		<script type="text/JavaScript">
-							function waiterChange() {
-								var soft=$("#waiter option:selected").val();
-								
-								/* url:"<c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/>" */
-										window.location.href="<%=basePath%>speak/speakwaiter.action?table=2&&thing="+soft;
-								/* <c:url value='/drink/selectBySoftId.action?drink_soft_id=soft'/> */
-							}
-						</script>
-	
-		
-	 <div>	 
-
- </div>
-
-   
-	
-
 	<!--弹出圈圈loading-->
-	<div class="spinner" style="display: none;">
-		<i></i>
-	</div>
-
+	<div class="spinner" style="display: none;"><i></i></div>
+	
 	<!--弹出loading-->
 	<div class="msg-loading" style="display: none;">
 		<div class="msg-box">
 			<div class="msg-load">
-				<p>
-					loading<span class="dotting"></span>
-				</p>
+				<p>loading<span class="dotting"></span></p>
 			</div>
 			<div class="msg-top"></div>
 			<div class="msg-left"></div>
@@ -580,6 +448,6 @@
 	</div>
 
 </body>
-<script type="text/javascript" src="<%=basePath%>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/common.js"></script>
 </html>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>

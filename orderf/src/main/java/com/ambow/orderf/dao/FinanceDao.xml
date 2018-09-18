@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.FinanceDao">
+
+<resultMap type="Order" id="orderMap">
+
+   <id column="order_id" property="order_id"/>
+   <result column="order_price" property="order_price"/>
+   <result column="order_meth" property="order_meth"/>
+   <result column="order_time" property="order_time"/>
+   <result column="order_state" property="order_state"/>      
+   <association property="customer" javaType="Customer">
+   <id column="cust_id" property="cust_id"/>
+   <result column="cust_name" property="cust_name"/>
+   </association>
+   
+</resultMap>
+
+<select id="findAllexchange"  resultMap="orderMap" parameterType="Order">
+		SELECT
+	order_id,
+	order_state,
+	order_price,
+	order_meth,
+	order_time,
+	a.cust_id,
+	b.cust_name
+FROM
+	orders a
+LEFT JOIN
+(
+	SELECT
+		cust_id,
+		cust_name
+	FROM
+		customer
+) b ON a.cust_id = b.cust_id
+where order_state = 5
+<if test="customer!=null">
+<if test="customer.cust_name!=null">
+AND b.cust_name like "%"#{customer.cust_name}"%"
+</if>
+</if>
+<if test="order_meth!=null">
+AND order_meth =#{order_meth}
+</if>
+
+
+
+	</select>
+	
+</mapper>
