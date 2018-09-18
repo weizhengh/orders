@@ -5,10 +5,12 @@ import java.util.List;
 import com.ambow.orderf.pojo.Evalute;
 
 public interface EvaluteDao {
-	List<Evalute> selectAll();
+	List<Evalute> selectAll(Evalute evalute);
 	
 	void insertEvalute(Evalute evalute); 
 	
-	void deleteEvaluteById(Integer eva_id); 
+	void deleteEvaluteById(Integer eva_id);
+
+	Integer selectOrderById(String order_id); 
 	
 }

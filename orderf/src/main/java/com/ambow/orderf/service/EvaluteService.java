@@ -6,7 +6,7 @@ import com.ambow.orderf.pojo.Evalute;
 
 
 public interface EvaluteService {
-	List<Evalute> selectAll();
+	List<Evalute> selectAll(Evalute evalute);
 
 	void insertEvalute(Evalute evalute); 
 
@@ -15,4 +15,6 @@ public interface EvaluteService {
 	void deleteEvaluteById(Integer evalute_id); 
 	
 	Evalute selectEvaluteById(Integer evalute_id);
+	
+	Integer selectOrderById(String order_id);
 }

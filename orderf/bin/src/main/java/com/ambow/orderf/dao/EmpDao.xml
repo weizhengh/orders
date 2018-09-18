@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ambow.orderf.dao.EmpDao">
+ <resultMap type="Emp" id="EmpMap">
+ 	<id column="emp_id" property="emp_id"/>
+ 	<result column="emp_name" property="emp_name"/>
+ 	<result column="emp_password" property="emp_password"/>
+ 	<result column="emp_login" property="emp_login"/>
+ 	<result column="emp_salary" property="emp_salary"/>
+ 	<result column="emp_push" property="emp_push"/>
+ 	<result column="emp_state" property="emp_state"/>
+ 	<collection property="middleList" column="emp_id"
+ 	 javaType="ArrayList" ofType="EmpRoleMiddle"
+ 	 select="com.ambow.orderf.dao.EmpRoleMiddleDao.findRoleByEmpId">
+ 	 	<id column="middle_id" property="middle_id"/>
+ 	 	<result column="emp_id" property="emp_id"/> 
+ 	 	<result column="role_id" property="role_id"/> 			
+ 	 </collection>
+ </resultMap>
+ 
+ <!-- 员工根据用户名和密码登录 -->
+ <select id="loginEmp" parameterType="Emp" resultMap="EmpMap">
+ 	select * from emp where emp_login=#{emp_login} and emp_password=#{emp_password};
+ </select>
+ 
+ <!-- 查询所有员工信息 -->
+ <select id="findAllEmp" parameterType="emp" resultMap="EmpMap">
+ 	select * from emp 
+	 	<if test="emp_name != null">
+	 	 where 1= 1 and emp_name like "%"#{emp_name}"%"
+	 	</if>
+ </select>
+ 
+ <!-- 根据员工ID查询员工信息 -->
+ <select id="findById" parameterType="Integer" resultMap="EmpMap">
+ 	select * from emp where emp_id=#{emp_id};
+ </select>
+ 
+ <!-- 根据员工ID删除员工信息 -->
+ <delete id="deleteById" parameterType="Integer">
+ 	delete from emp where emp_id=#{emp_id};
+ </delete>
+ 
+ <!-- 添加新员工  -->
+ <insert id="addEmp" parameterType="Emp">
+ 	insert into emp(emp_name,emp_password,emp_login,
+ 	emp_salary,emp_state) 
+ 	values(#{emp_name},#{emp_password},#{emp_login},
+ 	#{emp_salary},1)
+ </insert>
+ 
+ <!-- 根据员工ID修改员工信息 -->
+ <update id="updateEmp" parameterType="Emp">
+ 	update emp 
+ 	<set>
+		emp_name=#{emp_name},
+		emp_password=#{emp_password},
+		emp_login=#{emp_login},
+		emp_salary=#{emp_salary},
+		emp_push=#{emp_push},
+ 	</set>
+ 	where emp_id=#{emp_id};
+ </update>
+ 
+ <!-- 修改员工状态 -->
+ <update id="updateState" parameterType="Emp">
+ 	update emp set emp_state=#{emp_state} where emp_id=#{emp_id}
+ </update>
+ </mapper>

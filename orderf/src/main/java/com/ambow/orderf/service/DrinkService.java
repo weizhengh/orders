@@ -19,10 +19,12 @@ public interface DrinkService {
 	int updateSelective(Drink drink); // �޸ľ�ˮ
 
 	int deleteByPrimaryKey(Integer drink_id); // ɾ����ˮ
-	
-	Drink selectByPrimaryKey(Integer drink_id); //���� ��ˮ
-	
-	List<Drink> selectBySoftId(Integer drink_soft_id); //根据分类查询
-	
-	List<Drink> selectByLike(String blur);//模糊查询
+
+	Drink selectByPrimaryKey(Integer drink_id); // ���� ��ˮ
+
+	List<Drink> selectBySoftId(Integer drink_soft_id); // 根据分类查询
+
+	List<Drink> selectByDrinkName(String drink_name); // 查重
+
+	List<Drink> selectByLike(String blur);// 模糊查询
 }

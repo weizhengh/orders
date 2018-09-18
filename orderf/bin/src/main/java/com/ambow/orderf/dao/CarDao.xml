@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.CarDao">
+
+
+	<insert id="addCar" parameterType="car" useGeneratedKeys="true"
+		keyProperty="car_id">
+		INSERT
+		INTO
+		CAR (
+		car_price,
+		car_priced,
+		car_cust_id
+		)
+		VALUES
+		(
+		#{car_price}, #{ car_priced }, #{ customer.cust_id });
+	</insert>
+
+	<insert id="addCaritem" parameterType="caritem">
+
+		INSERT
+		INTO CAR_ITEM (
+		car_id,
+		car_food_id,
+		car_drink_id,
+		num
+		)
+		VALUES
+		(
+		#{ car.car_id }, #{food.food_id }, #{ drink.drink_id },#{ num });
+	</insert>
+
+	<select id="findByCidOnFood" parameterType="int"
+		resultMap="CaritemFoodMap">
+		SELECT
+		*
+		FROM
+		car c
+		JOIN car_item i ON c.car_id = i.car_id
+		JOIN
+		food f ON i.car_food_id = f.food_id
+		WHERE
+		c.car_cust_id = #{cust_id}
+	</select>
+
+	<resultMap type="com.ambow.orderf.pojo.CarItem"
+		id="CaritemFoodMap">
+		<id property="car_item_id" column="car_item_id" />
+		<result property="num" column="num" />
+		<association property="food" column="car_food_id"
+			javaType="com.ambow.orderf.pojo.Food">
+			<id property="food_id" column="food_id" />
+			<result property="food_name" column="food_name" />
+			<result property="food_price" column="food_price" />
+			<result property="food_picture" column="food_picture" />
+			<result property="food_note" column="food_note" />
+			<result property="food_discount" column="drink_discount" />
+			<association property="food_soft" column="food_soft_id"
+				javaType="com.ambow.orderf.pojo.FoodSoft">
+				<id property="food_soft_id" column="food_soft_id" />
+				<result property="food_soft_name" column="food_soft_name" />
+			</association>
+		</association>
+
+		<association property="car" column="car_id"
+			javaType="com.ambow.orderf.pojo.Car">
+			<id property="car_id" column="car_id" />
+			<result property="car_price" column="car_price" />
+			<result property="car_priced" column="car_priced" />
+			<association property="customer" column="car_cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+
+
+
+	<select id="findByCidOnDrink" parameterType="int"
+		resultMap="CaritemdrinkMap">
+		SELECT
+		*
+		FROM
+		car c
+		JOIN car_item i ON c.car_id = i.car_id
+		JOIN
+		drink d ON i.car_drink_id = d.drink_id
+		WHERE
+		c.car_cust_id = #{cust_id}
+	</select>
+
+	<resultMap type="com.ambow.orderf.pojo.CarItem"
+		id="CaritemdrinkMap">
+		<id property="car_item_id" column="car_item_id" />
+		<result property="num" column="num" />
+		<association property="drink" column="car_drink_id"
+			javaType="com.ambow.orderf.pojo.Drink">
+			<id property="drink_id" column="drink_id" />
+			<result property="drink_name" column="drink_name" />
+			<result property="drink_price" column="drink_price" />
+			<result property="drink_picture" column="drink_picture" />
+			<result property="drink_note" column="drink_note" />
+			<result property="drink_discount" column="drink_discount" />
+			<association property="drink_soft" column="drink_soft_id"
+				javaType="com.ambow.orderf.pojo.DrinkSoft">
+				<id property="drink_soft_id" column="drink_soft_id" />
+				<result property="drink_soft_name" column="drink_soft_name" />
+			</association>
+		</association>
+
+		<association property="car" column="car_id"
+			javaType="com.ambow.orderf.pojo.Car">
+			<id property="car_id" column="car_id" />
+			<result property="car_price" column="car_price" />
+			<result property="car_priced" column="car_priced" />
+			<association property="customer" column="car_cust_id"
+				javaType="com.ambow.orderf.pojo.Customer">
+				<id property="cust_id" column="cust_id" />
+				<result property="cust_name" column="cust_name" />
+				<result property="cust_password" column="cust_password" />
+				<result property="cust_phone" column="cust_phone" />
+				<result property="cust_mail" column="cust_mail" />
+				<result property="cust_grade" column="cust_grade" />
+			</association>
+		</association>
+	</resultMap>
+
+
+	<delete id="delById" parameterType="int">
+		DELETE
+		FROM
+		car_item
+		WHERE
+		car_item_id = #{ caritem_id }
+	</delete>
+
+	<delete id="delByOid" parameterType="int">
+		DELETE
+		FROM
+		car_item
+		WHERE
+		car_id=#{ car_id }
+	</delete>
+
+
+	<delete id="delByCid" parameterType="int">
+		DELETE
+		FROM
+		car
+		WHERE
+		car_id =#{ car_id }
+	</delete>
+
+	<update id="updateByIds" parameterType="car">
+		UPDATE car
+		<set>
+			<if test="car_price!=null">
+				car_price = #{ car_price },
+			</if>
+			<if test="car_priced!=null">
+				car_priced = #{ car_priced }
+			</if>
+		</set>
+		WHERE
+		car_id = #{ car_id };
+	</update>
+
+	<update id="updateById" parameterType="carItem">
+		UPDATE car_item
+		<set>
+			<if test="num!=null">
+				num = #{ num }
+			</if>
+		</set>
+		WHERE
+		car_item_id = #{ car_item_id };
+	</update>
+
+</mapper>
+

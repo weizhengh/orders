@@ -57,13 +57,21 @@ public class DrinkSoftServiceImpl implements DrinkSoftService {
 		
 	
 		List<Drink> list=drinkDao.selectBySoftId(drink_soft_id);
-		System.out.println(list.toString());
+		
 		if(list.size()==0){
 			drinkSoftDao.deleteByPrimaryKey(drink_soft_id);
 		}else{
 		return 1;
 		}
 		return 0;
+	}
+	/**
+	 * 查重
+	 */
+
+	public List<DrinkSoft> selectByName(String drink_soft_name) {
+		
+		return drinkSoftDao.selectByName(drink_soft_name);
 	}
 	
 	

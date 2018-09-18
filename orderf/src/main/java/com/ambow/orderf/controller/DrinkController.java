@@ -4,17 +4,21 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ambow.orderf.pojo.Drink;
 import com.ambow.orderf.pojo.DrinkSoft;
 import com.ambow.orderf.service.DrinkService;
@@ -42,7 +46,72 @@ public class DrinkController {
 
 		return "admin/admin-drink";
 	}
+	/**
+	 * 查重
+	 * @param mode
+	 * @param drink_name
+	 * @return
+	 * @throws UnsupportedEncodingException 
+	 */
+	
+	
+	@RequestMapping(value="/selectByDrinkName",method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject selectByDrinkName(String drink_name,HttpServletResponse resp) throws UnsupportedEncodingException {
+		resp.setContentType("json/text");
+		
+		
+		
+		System.out.println(drink_name);
+		
+		
+		List<Drink> list = drinkService.selectByDrinkName(drink_name);
+		  JSONObject jsonObject = new JSONObject();
+		  System.out.println(list.toString());
+		if(list.size()!=0){
+			jsonObject.put("message", "有");
+			}else{
+				jsonObject.put("message", "没有");
+			}
+			return jsonObject;
+			
+		
+	}
 
+	/**
+	 *修改查重 
+	 */
+	
+	@RequestMapping(value="/selectupdateDrinkName",method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject selectupdateDrinkName(Integer id,String drink_name,HttpServletResponse resp) throws UnsupportedEncodingException {
+		resp.setContentType("json/text");
+		
+		System.out.println(drink_name);
+		
+		JSONObject jsonObject = new JSONObject();
+		List<Drink> list = drinkService.selectAll();
+		for (Drink drink : list) {
+			if(drink.getDrink_name().equals(drink_name)){
+				if(drink.getDrink_id()==id){continue;}
+				else{
+					jsonObject.put("message", "没有");
+					break;
+				}
+			}else{
+				jsonObject.put("message", "有");
+			}
+			
+		}
+		
+		  
+		
+			return jsonObject;
+			
+		
+	}
+	
+	
 	/**
 	 * 添加酒水
 	 * 
@@ -171,7 +240,7 @@ public class DrinkController {
 	@RequestMapping(value = "/updateSelective", method = RequestMethod.POST)
 	public String updateDrink(Drink drink, MultipartFile multipartFile,
 			HttpServletRequest request) throws IOException {
-		System.out.println(drink.getDrink_picture()+"aaaaaaaaaaaaaaa");
+		
 		System.out.println(multipartFile.getOriginalFilename()+1211);
 		if(multipartFile.getOriginalFilename()!=""){
 		
@@ -249,15 +318,36 @@ public class DrinkController {
 	}
 
 	/**
-	 * 删除酒水
+	 * 批量删除酒水
 	 * 
 	 * @return
 	 */
 
 	@RequestMapping("/deleteByPrimaryKey")
-	public String deleteByPrimaryKey(Integer drink_id) {
-
-		drinkService.deleteByPrimaryKey(drink_id);
+	public String deleteByPrimaryKey(Integer drink_id,HttpServletRequest request,
+			HttpServletResponse response) {
+		String items = request.getParameter("delitems");
+		 System.out.println(items);
+		String[] strs = items.split(",");
+		for (int i = 0; i < strs.length; i++) {
+			
+			int oid = Integer.parseInt(strs[i]);
+			System.out.println(oid);
+			drinkService.deleteByPrimaryKey(oid);
+		}
+		
+		return "redirect:/drink/selectAll.action";
+	}
+	/**
+	 * 删除
+	 */
+	
+	@RequestMapping("/deleteone")
+	public String deleteone(Integer drink_id) {
+		
+			drinkService.deleteByPrimaryKey(drink_id);
+		
+		
 		return "redirect:/drink/selectAll.action";
 	}
 

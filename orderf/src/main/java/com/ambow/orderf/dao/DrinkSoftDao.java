@@ -8,14 +8,16 @@ import com.ambow.orderf.pojo.Drink;
 import com.ambow.orderf.pojo.DrinkSoft;
 
 public interface DrinkSoftDao {
-	List<DrinkSoft> selectAll();// È«²é¾ÆË®Àà±ğ
+	List<DrinkSoft> selectAll();// È«ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
 
-	int insertSelective(DrinkSoft drinkSoft); // Ìí¼Ó¾ÆË®Àà±ğ
+	int insertSelective(DrinkSoft drinkSoft); // ï¿½ï¿½Ó¾ï¿½Ë®ï¿½ï¿½ï¿½
 
-	int updateSelective(DrinkSoft drinkSoft); // ĞŞ¸Ä¾ÆË®Àà±ğ
+	int updateSelective(DrinkSoft drinkSoft); // ï¿½Ş¸Ä¾ï¿½Ë®ï¿½ï¿½ï¿½
 	
-	int deleteByPrimaryKey(Integer drink_soft_id); //É¾³ı¾ÆË®Àà±ğ
+	int deleteByPrimaryKey(Integer drink_soft_id); //É¾ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
 	
-	DrinkSoft selectByPrimaryKey(Integer drink_soft_id); //µ¥²é ¾ÆË®Àà±ğ
+	DrinkSoft selectByPrimaryKey(Integer drink_soft_id); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ë®ï¿½ï¿½ï¿½
+	List<DrinkSoft> selectByName(String drink_soft_name);//æŸ¥é‡
+	
 
 }

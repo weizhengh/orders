@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.orderf.dao.PowerDao">
+
+<!-- 查询所有权限 -->
+<select id="findAll" resultType="Power">
+	select * from power
+</select>
+
+<!-- 添加权限 -->
+<insert id="addPower" parameterType="Power">
+	insert into power(power_name,power_url) values(#{power_name},#{power_url})
+</insert>
+
+<!-- 修改权限 -->
+<update id="updatePower" parameterType="Power">
+	update power
+	<set>
+		power_name=#{power_name},
+		power_url=#{power_url}
+	</set>
+	where power_id=#{power_id}
+</update>
+
+<!-- 删除权限 -->
+<delete id="delPower" parameterType="Integer">
+	delete from power where power_id=#{power_id}
+</delete>
+
+<!-- 根据权限ID查询权限信息 -->
+<select id="findByPowerId" parameterType="Integer">
+	select * from power where power_id=#{powerId} 
+</select>
+</mapper>

@@ -1,0 +1,18 @@
+<root>
+  <facet id="jst.jsf">
+    <node name="libprov">
+      <attribute name="provider-id" value="jsf-no-op-library-provider"/>
+    </node>
+  </facet>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  <facet id="jst.jaxrs">
+    <node name="libprov">
+      <attribute name="provider-id" value="jaxrs-no-op-library-provider"/>
+    </node>
+  </facet>
+=======
+>>>>>>> branch 'master' of https://github.com/weizhengh/orders.git
+>>>>>>> branch 'master' of https://github.com/weizhengh/orders.git
+</root>

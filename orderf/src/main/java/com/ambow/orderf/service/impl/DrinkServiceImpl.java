@@ -68,7 +68,7 @@ public class DrinkServiceImpl implements DrinkService {
 	public List<Drink> selectBySoftId(Integer drink_soft_id) {
 
 		List<Drink> list = drinkDao.selectBySoftId(drink_soft_id);
-		System.out.println(list.toString());
+		
 		return list;
 	}
 
@@ -78,6 +78,14 @@ public class DrinkServiceImpl implements DrinkService {
 	public List<Drink> selectByLike(String blur) {
 		
 		return drinkDao.selectByLike(blur);
+	}
+	/**
+	 * 查重
+	 */
+
+	public List<Drink> selectByDrinkName(String drink_name) {
+	
+		return drinkDao.selectByDrinkName(drink_name);
 	}
 
 }

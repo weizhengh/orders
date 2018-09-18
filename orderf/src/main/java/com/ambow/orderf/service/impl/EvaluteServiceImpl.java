@@ -14,8 +14,8 @@ public class EvaluteServiceImpl implements EvaluteService {
 	@Autowired
 	private EvaluteDao evaluteDao;
 
-	public List<Evalute> selectAll() {
-		List<Evalute> evaluteList = evaluteDao.selectAll();
+	public List<Evalute> selectAll(Evalute evalute) {
+		List<Evalute> evaluteList = evaluteDao.selectAll(evalute);
 		/*for (Evalute evalute : evaluteList) {
 			
 		}*/
@@ -23,6 +23,7 @@ public class EvaluteServiceImpl implements EvaluteService {
 	}
 
 	public void insertEvalute(Evalute evalute) {
+		evaluteDao.insertEvalute(evalute);
 	}
 
 	public void updateEvalute(Evalute evalute) {
@@ -35,5 +36,10 @@ public class EvaluteServiceImpl implements EvaluteService {
 	public Evalute selectEvaluteById(Integer eva_id) {
 		return null;
 //		return evaluteDao.selectEvaluteById(eva_id);
+	}
+
+	public Integer selectOrderById(String order_id) {
+		// TODO Auto-generated method stub
+		return evaluteDao.selectOrderById(order_id);
 	}
 }

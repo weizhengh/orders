@@ -23,7 +23,9 @@ public class Order implements java.io.Serializable {
 	private Integer order_pay;
 	private Integer order_meth;
 	private Integer order_state;
+	private Integer eva_state;
 	private String order_info;
+	
 	private Set<OrderItem> order_items = new HashSet<OrderItem>(0);
 
 	public Order() {
@@ -42,6 +44,15 @@ public class Order implements java.io.Serializable {
 
 	public Customer getCustomer() {
 		return customer;
+	}
+
+	public Integer getEva_state() {
+		return eva_state;
+	}
+
+
+	public void setEva_state(Integer eva_state) {
+		this.eva_state = eva_state;
 	}
 
 
@@ -130,15 +141,15 @@ public class Order implements java.io.Serializable {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Order [order_id=" + order_id + ", customer=" + customer
 				+ ", order_time=" + order_time + ", order_price=" + order_price
 				+ ", order_priced=" + order_priced + ", order_pay=" + order_pay
 				+ ", order_meth=" + order_meth + ", order_state=" + order_state
-				+ ", order_info=" + order_info + ", order_items=" + order_items
-				+ "]";
+				+ ", eva_state=" + eva_state + ", order_info=" + order_info
+				+ ", order_items=" + order_items + "]";
 	}
-
-
+	
 }
